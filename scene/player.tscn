@@ -1,0 +1,37 @@
+[gd_scene load_steps=6 format=3 uid="uid://c5beviu8n8ad0"]
+
+[ext_resource type="Texture2D" uid="uid://inusy26ncr0o" path="res://assets/sprite.png" id="1_y3i8j"]
+[ext_resource type="Script" path="res://src/Movement.gd" id="2_0xx5q"]
+[ext_resource type="Script" path="res://src/Controllable.gd" id="3_afvj6"]
+[ext_resource type="Script" path="res://src/Attack.gd" id="4_kt6sa"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_86auw"]
+size = Vector2(12, 17)
+
+[node name="Player" type="CharacterBody2D"]
+
+[node name="Sprite" type="Sprite2D" parent="."]
+position = Vector2(2.38419e-07, 2.38419e-07)
+texture = ExtResource("1_y3i8j")
+region_enabled = true
+region_rect = Rect2(0, 0, 16, 16)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_86auw")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+process_callback = 0
+position_smoothing_enabled = true
+
+[node name="Movement" type="Node" parent="."]
+script = ExtResource("2_0xx5q")
+speed = 200
+jump_power = -900
+acceleration = 30
+
+[node name="Controllable" type="Node" parent="."]
+script = ExtResource("3_afvj6")
+
+[node name="Attack" type="Node" parent="."]
+script = ExtResource("4_kt6sa")
