@@ -792,7 +792,7 @@ sources/0 = SubResource("TileSetAtlasSource_rs26q")
 [node name="Player" parent="." instance=ExtResource("1_y1asa")]
 position = Vector2(61, 129)
 
-[node name="TileMap" type="TileMap" parent="."]
+[node name="TileMap" type="TileMap" parent="." groups=["platform"]]
 tile_set = SubResource("TileSet_u1ocq")
 format = 2
 layer_0/name = "terrain"

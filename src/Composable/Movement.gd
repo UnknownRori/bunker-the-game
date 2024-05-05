@@ -1,14 +1,14 @@
 extends Node
 
 @export var speed = 550
-@export var jump_power = -1000
+@export var jump_power = -800
 
 @export var friction = 50
 @export var acceleration = 70
 
 @export var gravity = 60
 @export var max_jumps = 2
-@export var direction_face = 0
+@export var direction_face = 1
 var current_jump = 0
 
 @onready var parent = get_parent()

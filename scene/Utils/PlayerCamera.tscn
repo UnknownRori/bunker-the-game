@@ -1,8 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://txyla52r81r3"]
+[gd_scene load_steps=3 format=3 uid="uid://txyla52r81r3"]
 
+[ext_resource type="Script" path="res://src/PlayerCamera.gd" id="1_47prk"]
 [ext_resource type="PackedScene" uid="uid://6hr0qxmudxx1" path="res://scene/Utils/FPSCounter.tscn" id="1_wyh34"]
 
 [node name="PlayerCamera" type="Camera2D"]
+script = ExtResource("1_47prk")
 
 [node name="FpsCounter" parent="." instance=ExtResource("1_wyh34")]
 position = Vector2(-127, -110)

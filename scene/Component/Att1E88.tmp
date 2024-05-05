@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://ctgqlbgcwqhfr"]
+
+[ext_resource type="Script" path="res://src/Composable/AttackComponent.gd" id="1_ydq0r"]
+
+[node name="AttackComponent" type="Node"]
+script = ExtResource("1_ydq0r")
+
+[node name="BasicTimer" type="Timer" parent="."]
+
+[node name="SpecialTimer" type="Timer" parent="."]

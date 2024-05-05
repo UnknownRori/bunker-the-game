@@ -3,13 +3,14 @@ extends Node
 @onready var parent = get_parent()
 @onready var controllable = get_parent().get_node("Controllable")
 @onready var movement = get_parent().get_node("Movement")
+@onready var player_camera = get_parent().get_node("PlayerCamera")
 @onready var basic_timer = $BasicTimer
 @onready var special_timer = $SpecialTimer
 
 @onready var root = get_node("/root/World")
 
 @export var basic_firerate = 0.5
-@export var bullet_speed = 300
+@export var bullet_speed = 250
 
 @export var direction = Vector2.ZERO
 var can_fire_basic = true
@@ -43,6 +44,9 @@ func attack_basic():
 
 	can_fire_basic = false
 	basic_timer.start()
+	
+	if (player_camera):
+		player_camera.add_trauma(0.2)
 	
 	var bullet = basic.instantiate()
 	bullet.position = parent.position

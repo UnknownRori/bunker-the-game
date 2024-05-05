@@ -6,8 +6,8 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_m0mhi"]
 
 [node name="Bullet" type="Area2D"]
-collision_layer = 2
-collision_mask = 2
+gravity_space_override = 1
+gravity = 50.0
 script = ExtResource("1_l5qt3")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -17,3 +17,5 @@ shape = SubResource("RectangleShape2D_m0mhi")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.056, 0.056)
 texture = ExtResource("2_xrn6m")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
