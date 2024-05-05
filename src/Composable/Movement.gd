@@ -36,10 +36,10 @@ func flip_animate(direction):
 	if (!sprite):
 		return
 		
-	if (direction.x > 0):
+	if (parent.velocity.x > 0):
 		direction_face = 1
-	else:
-		direction_face = 2
+	elif (parent.velocity.x < 0):
+		direction_face = -1
 
 	if (direction_face == 0 || direction_face == 1):
 		sprite.flip_h = false
@@ -57,7 +57,6 @@ func gravity_update():
 	parent.velocity.y += gravity
 
 func jump(direction):
-	print(current_jump)
 	if direction.y:
 		if current_jump <= max_jumps:
 			parent.velocity.y = jump_power

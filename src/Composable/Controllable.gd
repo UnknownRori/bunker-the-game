@@ -14,14 +14,10 @@ func _process(delta):
 	if Input.is_action_just_pressed("up", 1.):
 		input_dir.y = 1
 		
-	if Input.is_action_just_pressed("A", 1.):
-		ACTION_A = true
-	if Input.is_action_just_pressed("B", 1.):
-		ACTION_B = true
-	if Input.is_action_just_pressed("Start", 1.):
-		START = true
-	if Input.is_action_just_pressed("Select", 1.):
-		SELECT = true
+	ACTION_A =Input.is_action_just_pressed("A", 1.)
+	ACTION_B =Input.is_action_just_pressed("B", 1.)
+	START =Input.is_action_just_pressed("Start", 1.)
+	SELECT =Input.is_action_just_pressed("Select", 1.)
 	
 	input_dir = input_dir.normalized()
 	MOVE_DIR = input_dir
