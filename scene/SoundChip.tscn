@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://bqmnb53rjvwjk"]
+
+[ext_resource type="Script" path="res://src/SoundChip.gd" id="1_8w33l"]
+
+[node name="SoundChip" type="Node"]
+script = ExtResource("1_8w33l")
+
+[node name="SawChannel" type="AudioStreamPlayer" parent="."]
+volume_db = -10.0
+
+[node name="NoiseChannel" type="AudioStreamPlayer" parent="."]

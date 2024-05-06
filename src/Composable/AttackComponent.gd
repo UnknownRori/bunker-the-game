@@ -4,6 +4,7 @@ extends Node
 @onready var controllable = get_parent().get_node("Controllable")
 @onready var movement = get_parent().get_node("Movement")
 @onready var player_camera = get_parent().get_node("PlayerCamera")
+@onready var sound_chip = get_node("/root/World/SoundChip")
 @onready var basic_timer = $BasicTimer
 @onready var special_timer = $SpecialTimer
 
@@ -46,11 +47,12 @@ func attack_basic():
 	basic_timer.start()
 	
 	if (player_camera):
-		player_camera.add_trauma(0.2)
+		player_camera.add_trauma(0.1)
 	
 	var bullet = basic.instantiate()
 	bullet.position = parent.position
 	var velocity = Vector2(movement.direction_face * bullet_speed, 0.)
+	sound_chip.play_shoot()
 	bullet.launch(velocity, parent.position)
 	root.add_child(bullet)
 	

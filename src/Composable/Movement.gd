@@ -14,6 +14,7 @@ var current_jump = 0
 @onready var parent = get_parent()
 @onready var sprite = get_parent().get_node("Sprite")
 @onready var controllable = get_parent().get_node("Controllable")
+@onready var sound_chip = get_node("/root/World/SoundChip")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
@@ -61,6 +62,8 @@ func jump(direction):
 		if current_jump <= max_jumps:
 			parent.velocity.y = jump_power
 			current_jump = current_jump + 1
+			if (controllable):
+				sound_chip.play_jump()
 	
 	if parent.is_on_floor():
 		current_jump = 1

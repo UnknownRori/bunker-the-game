@@ -10,7 +10,7 @@ func launch(vel: Vector2, pos: Vector2):
 func _physics_process(delta):
 	velocity.y += gravity * delta
 	position += velocity * delta
-	rotation = velocity.angle()
+	rotation = rad_to_deg(velocity.angle())
 	pass
 
 
