@@ -14,6 +14,7 @@ var current_jump = 0
 @onready var parent = get_parent()
 @onready var sprite = get_parent().get_node("Sprite")
 @onready var controllable = get_parent().get_node("Controllable")
+@onready var hp = get_parent().get_node("Health")
 @onready var sound_chip = get_node("/root/World/SoundChip")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -31,6 +32,21 @@ func _physics_process(delta):
 	
 	gravity_update()
 	parent.move_and_slide()
+
+	for i in parent.get_slide_collision_count():
+		var collision = parent.get_slide_collision(i)
+		var collider = collision.get_collider()
+		if collider.name == "Platform":
+			var tilemap = collider
+			# Stupid way to get map
+			var coordinate = tilemap.local_to_map(parent.position)
+			var tile = tilemap.get_cell_tile_data(0, coordinate)
+			if tile:
+				if tile.get_custom_data("spike"):
+					if hp:
+						# Todo : Make this not every frame
+						hp.damage(1)
+
 	pass
 	
 func flip_animate(direction):

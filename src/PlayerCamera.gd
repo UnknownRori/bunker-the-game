@@ -4,6 +4,10 @@ extends Camera2D
 @export var max_offset = Vector2(100, 75)
 @export var max_roll = 0.1
 
+@onready var parent = get_parent()
+@onready var hp = get_parent().get_node("Health")
+@onready var hp_bar = get_node("hp_bar")
+
 var trauma = 0.0
 var trauma_power = 2
 
@@ -19,7 +23,12 @@ func shake():
 func _ready():
 	randomize()
 
+func update_ui():
+	hp_bar.text = "[right]" + str(hp.hp) + "[/right]"
+
 func _process(delta):
 	if trauma:
 		trauma = max(trauma - decay * delta, 0)
 		shake()
+
+	update_ui()
