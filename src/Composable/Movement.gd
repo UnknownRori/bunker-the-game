@@ -44,8 +44,7 @@ func _physics_process(delta):
 			if tile:
 				if tile.get_custom_data("spike"):
 					if hp:
-						# Todo : Make this not every frame
-						hp.damage(1)
+						hp.damage_spike(10)
 
 	pass
 	

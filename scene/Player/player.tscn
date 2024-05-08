@@ -5,7 +5,7 @@
 [ext_resource type="Script" path="res://src/Composable/Movement.gd" id="3_nlp1q"]
 [ext_resource type="PackedScene" uid="uid://ctgqlbgcwqhfr" path="res://scene/Component/AttackComponent.tscn" id="3_psbq3"]
 [ext_resource type="Script" path="res://src/Composable/Controllable.gd" id="4_e3tjp"]
-[ext_resource type="Script" path="res://src/Composable/Health.gd" id="6_i3o40"]
+[ext_resource type="PackedScene" uid="uid://g40wu5scfhpc" path="res://scene/Component/Health.tscn" id="5_5toat"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_86auw"]
 size = Vector2(12, 17)
@@ -34,8 +34,7 @@ jump_power = -900
 acceleration = 30
 max_jumps = 1
 
+[node name="Health" parent="." instance=ExtResource("5_5toat")]
+
 [node name="Controllable" type="Node" parent="."]
 script = ExtResource("4_e3tjp")
-
-[node name="Health" type="Node" parent="."]
-script = ExtResource("6_i3o40")

@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://g40wu5scfhpc"]
+
+[ext_resource type="Script" path="res://src/Composable/Health.gd" id="1_81f8f"]
+
+[node name="Health" type="Node"]
+script = ExtResource("1_81f8f")
+
+[node name="SpikeTimer" type="Timer" parent="."]
