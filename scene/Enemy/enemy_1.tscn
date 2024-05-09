@@ -59,6 +59,8 @@ script = ExtResource("3_sf62v")
 max_jumps = 1
 
 [node name="Health" parent="." instance=ExtResource("4_awgl0")]
+hp = 30.0
+max_hp = 30.0
 
 [node name="GenericAI" parent="." instance=ExtResource("5_v1raw")]
 
