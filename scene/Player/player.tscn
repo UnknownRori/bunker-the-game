@@ -1,36 +1,37 @@
-[gd_scene load_steps=11 format=3 uid="uid://c5beviu8n8ad0"]
+[gd_scene load_steps=12 format=3 uid="uid://c5beviu8n8ad0"]
 
 [ext_resource type="Texture2D" uid="uid://inusy26ncr0o" path="res://assets/sprite.png" id="1_kje6p"]
 [ext_resource type="PackedScene" uid="uid://txyla52r81r3" path="res://scene/Utils/PlayerCamera.tscn" id="2_4mxj3"]
+[ext_resource type="Script" path="res://src/Composable/Sprite.gd" id="2_k3rdn"]
 [ext_resource type="Script" path="res://src/Composable/Movement.gd" id="3_nlp1q"]
 [ext_resource type="PackedScene" uid="uid://ctgqlbgcwqhfr" path="res://scene/Component/AttackComponent.tscn" id="3_psbq3"]
 [ext_resource type="Script" path="res://src/Composable/Controllable.gd" id="4_e3tjp"]
 [ext_resource type="PackedScene" uid="uid://g40wu5scfhpc" path="res://scene/Component/Health.tscn" id="5_5toat"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_itx6s"]
-atlas = ExtResource("1_kje6p")
-region = Rect2(16, 0, 16, 16)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_t3cfg"]
 atlas = ExtResource("1_kje6p")
 region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_itx6s"]
+atlas = ExtResource("1_kje6p")
+region = Rect2(16, 0, 16, 16)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_lodoa"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_itx6s")
+"texture": SubResource("AtlasTexture_t3cfg")
 }],
 "loop": true,
-"name": &"damage",
+"name": &"idle",
 "speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_t3cfg")
+"texture": SubResource("AtlasTexture_itx6s")
 }],
 "loop": true,
-"name": &"default",
+"name": &"idle_damage",
 "speed": 5.0
 }]
 
@@ -42,6 +43,8 @@ size = Vector2(12, 17)
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
 position = Vector2(2.38419e-07, 2.38419e-07)
 sprite_frames = SubResource("SpriteFrames_lodoa")
+animation = &"idle"
+script = ExtResource("2_k3rdn")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -0.5)

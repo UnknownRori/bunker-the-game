@@ -14,6 +14,7 @@ var spike_damage = true
 
 func damage(value) -> bool:
 	hp -= value
+	sprite.play_damage()
 	return is_dead()
 
 func damage_spike(value) -> bool:

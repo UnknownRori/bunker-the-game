@@ -21,5 +21,4 @@ func _on_body_entered(body):
 	if (body.is_in_group("enemy")):
 		var enemy_hp = body.get_node("Health")
 		enemy_hp.damage(damage)
-		print(enemy_hp.hp)
 		queue_free()
