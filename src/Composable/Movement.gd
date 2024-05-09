@@ -3,15 +3,15 @@ extends Node
 @export var speed: float = 250
 @export var jump_power: float = -800
 
-@export var friction: float = 40
-@export var acceleration: float = 100
+@export_range(0.0 , 1.0) var friction: float = 0.5
+@export_range(0.0 , 1.0) var acceleration: float = 0.8
 
-@export var gravity: float = 60
+@export var gravity: float = 4000
 @export var max_jumps: int = 2
 @export var direction_face: int = 1
 var current_jump: int = 0
 
-@onready var parent: Object = get_parent()
+@onready var parent: CharacterBody2D = get_parent()
 @onready var sprite: AnimatedSprite2D = get_parent().get_node("Sprite")
 @onready var controllable: Node = get_parent().get_node("Controllable")
 @onready var hp: Node = get_parent().get_node("Health")
@@ -24,15 +24,8 @@ func _physics_process(delta):
 	if (controllable):
 		direction = controllable.MOVE_DIR
 
-	if direction != Vector2.ZERO:
-		accelerate(direction)
-		flip_animate(direction)
-		jump(direction)
-	elif direction.x == 0:
-		add_friction()
-	
-	gravity_update()
-	parent.move_and_slide()
+	move(direction, delta)
+	flip_animate(direction)
 
 	for i in parent.get_slide_collision_count():
 		var collision = parent.get_slide_collision(i)
@@ -63,14 +56,18 @@ func flip_animate(direction):
 	else:
 		sprite.flip_h = true
 
-func accelerate(direction):
-	parent.velocity = parent.velocity.move_toward(speed * Vector2(direction.x, 0), acceleration)
+func move(direction: Vector2, delta: float):
+	# gravity
+	parent.velocity.y += gravity * delta
 
-func add_friction():
-	parent.velocity = parent.velocity.move_toward(Vector2.ZERO, friction)
+	if direction.x != 0:
+		parent.velocity.x = lerp(parent.velocity.x, direction.x * speed, acceleration)
+	else:
+		parent.velocity.x = lerp(parent.velocity.x, 0.0, friction)
 
-func gravity_update():
-	parent.velocity.y += gravity
+	parent.move_and_slide()
+	
+	jump(direction)
 
 func jump(direction):
 	if direction.y:
