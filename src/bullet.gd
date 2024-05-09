@@ -1,6 +1,7 @@
 extends Area2D
 
 @export var velocity = Vector2.ZERO
+@export var damage = 10
 
 func launch(vel: Vector2, pos: Vector2):
 	velocity = vel
@@ -16,4 +17,9 @@ func _physics_process(delta):
 
 func _on_body_entered(body):
 	if (body.is_in_group("platform")):
+		queue_free()
+	if (body.is_in_group("enemy")):
+		var enemy_hp = body.get_node("Health")
+		enemy_hp.damage(damage)
+		print(enemy_hp.hp)
 		queue_free()

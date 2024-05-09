@@ -11,7 +11,8 @@ extends Node
 @onready var root = get_node("/root/World")
 
 @export var basic_firerate = 0.5
-@export var bullet_speed = 250
+@export var basic_bullet_speed = 250
+@export var basic_bullet_damage = 10
 
 @export var direction = Vector2.ZERO
 var can_fire_basic = true
@@ -51,9 +52,10 @@ func attack_basic():
 	
 	var bullet = basic.instantiate()
 	bullet.position = parent.position
-	var velocity = Vector2(movement.direction_face * bullet_speed, 0.)
+	bullet.damage = basic_bullet_damage
+	var velocity = Vector2(movement.direction_face * basic_bullet_speed, 0.)
 	sound_chip.play_shoot()
-	bullet.launch(velocity, parent.position)
+	bullet.launch(velocity + parent.velocity, parent.position)
 	root.add_child(bullet)
 	
 func attack_special():

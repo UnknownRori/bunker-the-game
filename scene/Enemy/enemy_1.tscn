@@ -1,0 +1,77 @@
+[gd_scene load_steps=11 format=3 uid="uid://dtwrkbq1topst"]
+
+[ext_resource type="Texture2D" uid="uid://inusy26ncr0o" path="res://assets/sprite.png" id="1_ykxtj"]
+[ext_resource type="PackedScene" uid="uid://ctgqlbgcwqhfr" path="res://scene/Component/AttackComponent.tscn" id="2_g6tyi"]
+[ext_resource type="Script" path="res://src/Composable/Movement.gd" id="3_sf62v"]
+[ext_resource type="PackedScene" uid="uid://g40wu5scfhpc" path="res://scene/Component/Health.tscn" id="4_awgl0"]
+[ext_resource type="PackedScene" uid="uid://ilp7g2xf7oga" path="res://scene/Enemy/generic_ai.tscn" id="5_v1raw"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_he2uq"]
+atlas = ExtResource("1_ykxtj")
+region = Rect2(16, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k6yq8"]
+atlas = ExtResource("1_ykxtj")
+region = Rect2(0, 32, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_aqp54"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_he2uq")
+}],
+"loop": true,
+"name": &"damage",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k6yq8")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hyijo"]
+radius = 7.0
+height = 16.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_blkxa"]
+radius = 180.55
+
+[node name="Enemy1" type="CharacterBody2D" groups=["enemy"]]
+
+[node name="Sprite" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_aqp54")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_hyijo")
+
+[node name="AttackComponent" parent="." instance=ExtResource("2_g6tyi")]
+basic_firerate = 0.2
+
+[node name="Movement" type="Node" parent="."]
+script = ExtResource("3_sf62v")
+speed = 200
+jump_power = -900
+acceleration = 30
+max_jumps = 1
+
+[node name="Health" parent="." instance=ExtResource("4_awgl0")]
+hp = 30
+max_hp = 30
+
+[node name="GenericAI" parent="." instance=ExtResource("5_v1raw")]
+
+[node name="Front" type="RayCast2D" parent="."]
+target_position = Vector2(50, 0)
+
+[node name="FrontFloorDetection" type="RayCast2D" parent="."]
+position = Vector2(8, 1)
+target_position = Vector2(0, 10)
+
+[node name="PlayerDetection" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetection"]
+shape = SubResource("CircleShape2D_blkxa")

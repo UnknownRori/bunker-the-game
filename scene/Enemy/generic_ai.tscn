@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://ilp7g2xf7oga"]
+
+[ext_resource type="Script" path="res://src/Composable/generic_ai.gd" id="1_h5dng"]
+
+[node name="GenericAI" type="Node"]
+script = ExtResource("1_h5dng")

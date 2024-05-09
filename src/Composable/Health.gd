@@ -4,10 +4,13 @@ extends Node
 @export var max_hp = 100
 @export var damage_cooldown_spike = 1
 
+@onready var parent = get_parent()
 @onready var controllable = get_parent().get_node("Controllable")
+@onready var sprite = get_parent().get_node("Sprite")
 @onready var spike_timer = get_node("SpikeTimer")
 
-var spike_damage = false
+var damage_sprite_timer = 1
+var spike_damage = true
 
 func damage(value) -> bool:
 	hp -= value
@@ -24,7 +27,7 @@ func damage_spike(value) -> bool:
 	return is_dead()
 
 func is_dead() -> bool:
-	return hp < 0
+	return hp <= 0
 
 func set_damage_spike():
 	spike_damage = true
@@ -34,4 +37,6 @@ func _ready():
 	spike_timer.wait_time = damage_cooldown_spike
 
 func _process(delta):
+	if is_dead():
+		parent.queue_free()
 	pass
