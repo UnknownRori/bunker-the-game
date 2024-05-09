@@ -1,6 +1,6 @@
 extends AnimatedSprite2D
 
-@export var state = IDLE
+@export var state := IDLE
 
 enum {
 	IDLE

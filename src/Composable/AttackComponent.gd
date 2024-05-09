@@ -1,12 +1,12 @@
 extends Node
 
-@onready var parent = get_parent()
-@onready var controllable = get_parent().get_node("Controllable")
-@onready var movement = get_parent().get_node("Movement")
-@onready var player_camera = get_parent().get_node("PlayerCamera")
-@onready var sound_chip = get_node("/root/World/SoundChip")
-@onready var basic_timer = $BasicTimer
-@onready var special_timer = $SpecialTimer
+@onready var parent: Object = get_parent()
+@onready var controllable: Node = get_parent().get_node("Controllable")
+@onready var movement: Node = get_parent().get_node("Movement")
+@onready var player_camera: Camera2D = get_parent().get_node("PlayerCamera")
+@onready var sound_chip: Node = get_node("/root/World/SoundChip")
+@onready var basic_timer: Timer = $BasicTimer
+@onready var special_timer: Timer = $SpecialTimer
 
 @onready var root = get_node("/root/World")
 

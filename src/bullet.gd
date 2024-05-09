@@ -1,7 +1,7 @@
 extends Area2D
 
-@export var velocity = Vector2.ZERO
-@export var damage = 10
+@export var velocity: Vector2 = Vector2.ZERO
+@export var damage: float = 10
 
 func launch(vel: Vector2, pos: Vector2):
 	velocity = vel

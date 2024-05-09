@@ -1,13 +1,13 @@
 extends Node
 
-@export var hp = 100
-@export var max_hp = 100
-@export var damage_cooldown_spike = 1
+@export var hp: float = 100
+@export var max_hp: float = 100
+@export var damage_cooldown_spike: float = 1
 
-@onready var parent = get_parent()
-@onready var controllable = get_parent().get_node("Controllable")
-@onready var sprite = get_parent().get_node("Sprite")
-@onready var spike_timer = get_node("SpikeTimer")
+@onready var parent: Object = get_parent()
+@onready var controllable: Node = get_parent().get_node("Controllable")
+@onready var sprite: AnimatedSprite2D = get_parent().get_node("Sprite")
+@onready var spike_timer: Timer = get_node("SpikeTimer")
 
 var damage_sprite_timer = 1
 var spike_damage = true

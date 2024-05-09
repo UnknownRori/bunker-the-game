@@ -1,7 +1,8 @@
 extends Node
-@onready var parent = get_parent()
-@onready var movement = get_parent().get_node("Movement")
-@onready var attack = get_parent().get_node("AttackComponent")
+
+@onready var parent: Object = get_parent()
+@onready var movement: Node = get_parent().get_node("Movement")
+@onready var attack: Node = get_parent().get_node("AttackComponent")
 
 enum {
 	SIMPLE_WANDER,
