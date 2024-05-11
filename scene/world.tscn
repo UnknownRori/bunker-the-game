@@ -822,11 +822,12 @@ layer_0/tile_data = PackedInt32Array(655362, 262144, 0, 655363, 262144, 0, 65536
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
-position = Vector2(0, 136)
-motion_mirroring = Vector2(512, 0)
+position = Vector2(-6, 46)
+motion_mirroring = Vector2(256, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
 texture = ExtResource("3_pflic")
+centered = false
 
 [node name="Player" parent="." instance=ExtResource("1_y1asa")]
 position = Vector2(22, 94)
