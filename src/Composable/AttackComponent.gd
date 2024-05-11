@@ -56,7 +56,7 @@ func attack_basic():
 	bullet.damage = basic_bullet_damage
 	var velocity = Vector2(movement.direction_face * basic_bullet_speed, 0.)
 	sound_chip.play_shoot()
-	bullet.launch(velocity + parent.velocity, parent.position)
+	bullet.launch(Vector2(velocity.x  + parent.velocity.x , velocity.y), parent.position)
 	root.add_child(bullet)
 	shoot_basic = false
 	

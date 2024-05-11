@@ -63,7 +63,7 @@ func _physics_process(delta):
 
 			movement.direction.x = facing * wander_multiplier
 		SHOOTING:
-			if front_detector.is_colliding():
+			if front_detector.is_colliding() && front_detector.get_collider():
 				if !front_detector.get_collider().is_in_group("player"):
 					state = SIMPLE_WANDER
 			else:
