@@ -7,6 +7,8 @@
 [ext_resource type="Theme" uid="uid://d4m75u4u4cl6h" path="res://resources/default_theme.tres" id="4_tev5a"]
 
 [node name="PlayerCamera" type="Camera2D"]
+position_smoothing_enabled = true
+rotation_smoothing_enabled = true
 script = ExtResource("1_47prk")
 
 [node name="FpsCounter" parent="." instance=ExtResource("1_wyh34")]
