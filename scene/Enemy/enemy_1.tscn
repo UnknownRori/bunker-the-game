@@ -53,7 +53,7 @@ script = ExtResource("2_3aqmc")
 shape = SubResource("CapsuleShape2D_hyijo")
 
 [node name="AttackComponent" parent="." instance=ExtResource("2_g6tyi")]
-basic_firerate = 0.2
+basic_bullet_damage = 5
 basic = ExtResource("4_p5cma")
 
 [node name="Movement" type="Node" parent="."]

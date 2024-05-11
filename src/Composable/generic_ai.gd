@@ -41,7 +41,7 @@ func _physics_process(delta):
 			
 
 			if front_wall_detector.is_colliding():
-				if front_wall_detector.get_collider().is_in_group("platform"):
+				if !front_wall_detector.get_collider().is_in_group("player"):
 					front_blocked = true
 			if front_floor_detector.is_colliding():
 				if front_floor_detector.get_collider().is_in_group("platform"):

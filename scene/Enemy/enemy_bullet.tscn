@@ -7,6 +7,8 @@
 size = Vector2(21.3333, 28.4444)
 
 [node name="EnemyBullet" type="Area2D"]
+gravity_space_override = 1
+gravity = 50.0
 script = ExtResource("1_ybpii")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

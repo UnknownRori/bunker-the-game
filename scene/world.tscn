@@ -824,10 +824,16 @@ motion_mirroring = Vector2(512, 0)
 texture = ExtResource("3_pflic")
 
 [node name="Player" parent="." instance=ExtResource("1_y1asa")]
-position = Vector2(21, 94)
+position = Vector2(22, 94)
 
 [node name="Enemy1" parent="." instance=ExtResource("5_vw78p")]
 position = Vector2(403, 127)
 
 [node name="Enemy2" parent="." instance=ExtResource("5_vw78p")]
 position = Vector2(255, 116)
+
+[node name="Enemy3" parent="." instance=ExtResource("5_vw78p")]
+position = Vector2(608, 206)
+
+[node name="Enemy4" parent="." instance=ExtResource("5_vw78p")]
+position = Vector2(704, 206)
