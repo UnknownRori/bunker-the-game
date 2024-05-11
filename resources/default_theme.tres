@@ -1,0 +1,6 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://d4m75u4u4cl6h"]
+
+[ext_resource type="FontFile" uid="uid://jhrwydl0q4b0" path="res://assets/bm-japan.ttf" id="1_5ljlv"]
+
+[resource]
+default_font = ExtResource("1_5ljlv")

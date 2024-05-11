@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://txyla52r81r3"]
+[gd_scene load_steps=6 format=3 uid="uid://txyla52r81r3"]
 
 [ext_resource type="Script" path="res://src/PlayerCamera.gd" id="1_47prk"]
 [ext_resource type="PackedScene" uid="uid://6hr0qxmudxx1" path="res://scene/Utils/FPSCounter.tscn" id="1_wyh34"]
 [ext_resource type="Texture2D" uid="uid://inusy26ncr0o" path="res://assets/sprite.png" id="3_7o2y0"]
 [ext_resource type="FontFile" uid="uid://jhrwydl0q4b0" path="res://assets/bm-japan.ttf" id="4_rkium"]
+[ext_resource type="Theme" uid="uid://d4m75u4u4cl6h" path="res://resources/default_theme.tres" id="4_tev5a"]
 
 [node name="PlayerCamera" type="Camera2D"]
 script = ExtResource("1_47prk")
@@ -23,6 +24,7 @@ offset_left = 32.0
 offset_top = -104.0
 offset_right = 106.0
 offset_bottom = -93.0
+theme = ExtResource("4_tev5a")
 theme_override_fonts/normal_font = ExtResource("4_rkium")
 theme_override_font_sizes/normal_font_size = 12
 bbcode_enabled = true

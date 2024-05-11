@@ -1,10 +1,11 @@
-[gd_scene load_steps=12 format=3 uid="uid://dtwrkbq1topst"]
+[gd_scene load_steps=13 format=3 uid="uid://dtwrkbq1topst"]
 
 [ext_resource type="Texture2D" uid="uid://inusy26ncr0o" path="res://assets/sprite.png" id="1_ykxtj"]
 [ext_resource type="Script" path="res://src/Composable/Sprite.gd" id="2_3aqmc"]
 [ext_resource type="PackedScene" uid="uid://ctgqlbgcwqhfr" path="res://scene/Component/AttackComponent.tscn" id="2_g6tyi"]
 [ext_resource type="Script" path="res://src/Composable/Movement.gd" id="3_sf62v"]
 [ext_resource type="PackedScene" uid="uid://g40wu5scfhpc" path="res://scene/Component/Health.tscn" id="4_awgl0"]
+[ext_resource type="PackedScene" uid="uid://dnqrn0ge4xuq4" path="res://scene/Enemy/enemy_bullet.tscn" id="4_p5cma"]
 [ext_resource type="PackedScene" uid="uid://ilp7g2xf7oga" path="res://scene/Enemy/generic_ai.tscn" id="5_v1raw"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_k6yq8"]
@@ -53,9 +54,11 @@ shape = SubResource("CapsuleShape2D_hyijo")
 
 [node name="AttackComponent" parent="." instance=ExtResource("2_g6tyi")]
 basic_firerate = 0.2
+basic = ExtResource("4_p5cma")
 
 [node name="Movement" type="Node" parent="."]
 script = ExtResource("3_sf62v")
+speed = 150.0
 max_jumps = 1
 
 [node name="Health" parent="." instance=ExtResource("4_awgl0")]
@@ -64,12 +67,15 @@ max_hp = 30.0
 
 [node name="GenericAI" parent="." instance=ExtResource("5_v1raw")]
 
-[node name="Front" type="RayCast2D" parent="."]
-target_position = Vector2(50, 0)
+[node name="FrontWallDetection" type="RayCast2D" parent="."]
+target_position = Vector2(16, 0)
 
 [node name="FrontFloorDetection" type="RayCast2D" parent="."]
-position = Vector2(8, 1)
-target_position = Vector2(0, 10)
+position = Vector2(12, 0)
+target_position = Vector2(0, 14)
+
+[node name="Front" type="RayCast2D" parent="."]
+target_position = Vector2(100, 0)
 
 [node name="PlayerDetection" type="Area2D" parent="."]
 

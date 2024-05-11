@@ -17,6 +17,7 @@ extends Node
 @export var direction = Vector2.ZERO
 var can_fire_basic = true
 
+@export var shoot_basic = false
 @export var basic = preload("res://scene/Player/player_bullet.tscn")
 
 func _ready():
@@ -33,7 +34,7 @@ func set_fire_basic():
 	can_fire_basic = true
 
 func attack_basic():
-	var shoot = false
+	var shoot = shoot_basic
 	if (controllable):
 		if (controllable.ACTION_A):
 			shoot = true
@@ -57,6 +58,7 @@ func attack_basic():
 	sound_chip.play_shoot()
 	bullet.launch(velocity + parent.velocity, parent.position)
 	root.add_child(bullet)
+	shoot_basic = false
 	
 func attack_special():
 	pass

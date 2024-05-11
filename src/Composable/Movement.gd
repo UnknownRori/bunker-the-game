@@ -9,6 +9,7 @@ extends Node
 @export var gravity: float = 4000
 @export var max_jumps: int = 2
 @export var direction_face: int = 1
+@export var direction := Vector2.ZERO
 var current_jump: int = 0
 
 @onready var parent: CharacterBody2D = get_parent()
@@ -19,8 +20,6 @@ var current_jump: int = 0
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
-	var direction = Vector2.ZERO
-	
 	if (controllable):
 		direction = controllable.MOVE_DIR
 
@@ -40,7 +39,7 @@ func _physics_process(delta):
 					if hp:
 						hp.damage_spike(10)
 
-	pass
+	direction = Vector2.ZERO
 	
 func flip_animate(direction):
 	if (!sprite):
