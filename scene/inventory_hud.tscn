@@ -1,0 +1,47 @@
+[gd_scene load_steps=3 format=3 uid="uid://bnbe6ms34mig1"]
+
+[ext_resource type="Texture2D" uid="uid://inusy26ncr0o" path="res://assets/sprite.png" id="1_tbhdt"]
+[ext_resource type="Theme" uid="uid://d4m75u4u4cl6h" path="res://resources/default_theme.tres" id="2_8m8sv"]
+
+[node name="InventoryHUD" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Slot 1" type="Sprite2D" parent="."]
+position = Vector2(26, 216)
+texture = ExtResource("1_tbhdt")
+region_enabled = true
+region_rect = Rect2(240, 16, 16, 16)
+
+[node name="Label" type="Label" parent="Slot 1"]
+offset_left = -2.0
+offset_top = -12.0
+offset_right = 3.0
+offset_bottom = -7.0
+theme = ExtResource("2_8m8sv")
+theme_override_font_sizes/font_size = 5
+text = "B"
+
+[node name="Slot 2" type="Sprite2D" parent="."]
+position = Vector2(8, 216)
+texture = ExtResource("1_tbhdt")
+region_enabled = true
+region_rect = Rect2(240, 16, 16, 16)
+
+[node name="Label" type="Label" parent="Slot 2"]
+offset_left = -2.0
+offset_top = -12.0
+offset_right = 3.0
+offset_bottom = -7.0
+theme = ExtResource("2_8m8sv")
+theme_override_font_sizes/font_size = 5
+text = "A"
+
+[node name="Sprite2D" type="Sprite2D" parent="Slot 2"]
+texture = ExtResource("1_tbhdt")
+region_enabled = true
+region_rect = Rect2(192, 0, 16, 16)

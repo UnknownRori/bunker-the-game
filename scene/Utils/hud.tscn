@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://b335a2su6du1"]
+[gd_scene load_steps=7 format=3 uid="uid://b335a2su6du1"]
 
 [ext_resource type="Script" path="res://src/HUD.gd" id="1_5rn2q"]
+[ext_resource type="PackedScene" uid="uid://bnbe6ms34mig1" path="res://scene/inventory_hud.tscn" id="2_alcrv"]
 [ext_resource type="PackedScene" uid="uid://6hr0qxmudxx1" path="res://scene/Utils/FPSCounter.tscn" id="2_qtn3h"]
 [ext_resource type="Texture2D" uid="uid://inusy26ncr0o" path="res://assets/sprite.png" id="3_oq1tj"]
 [ext_resource type="Theme" uid="uid://d4m75u4u4cl6h" path="res://resources/default_theme.tres" id="4_811sv"]
@@ -8,6 +9,8 @@
 
 [node name="HUD" type="CanvasLayer"]
 script = ExtResource("1_5rn2q")
+
+[node name="InventoryHUD" parent="." instance=ExtResource("2_alcrv")]
 
 [node name="FpsCounter" parent="." instance=ExtResource("2_qtn3h")]
 position = Vector2(5, 6)
