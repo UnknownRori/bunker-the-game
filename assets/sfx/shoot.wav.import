@@ -12,7 +12,7 @@ dest_files=["res://.godot/imported/shoot.wav-e9bec753846e12fa31bfb2e7cf2b2288.sa
 
 [params]
 
-force/8_bit=false
+force/8_bit=true
 force/mono=false
 force/max_rate=false
 force/max_rate_hz=44100

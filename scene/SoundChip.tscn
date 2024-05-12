@@ -5,7 +5,11 @@
 [node name="SoundChip" type="Node"]
 script = ExtResource("1_8w33l")
 
+[node name="MusicChannel" type="AudioStreamPlayer" parent="."]
+volume_db = -2.5
+
 [node name="SawChannel" type="AudioStreamPlayer" parent="."]
-volume_db = -10.0
+volume_db = -8.0
 
 [node name="NoiseChannel" type="AudioStreamPlayer" parent="."]
+volume_db = -0.5
