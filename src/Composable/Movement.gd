@@ -16,7 +16,7 @@ var current_jump: int = 0
 @onready var sprite: AnimatedSprite2D = get_parent().get_node("Sprite")
 @onready var controllable: Node = get_parent().get_node("Controllable")
 @onready var hp: Node = get_parent().get_node("Health")
-@onready var sound_chip: Node = get_node("/root/World/SoundChip")
+@onready var sound_chip: Node = SoundChip
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):

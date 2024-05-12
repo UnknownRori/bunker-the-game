@@ -17,6 +17,10 @@ run/max_fps=60
 boot_splash/image="res://assets/splash-screen.png"
 config/icon="res://icon.svg"
 
+[autoload]
+
+SoundChip="*res://scene/SoundChip.tscn"
+
 [display]
 
 window/size/viewport_width=256

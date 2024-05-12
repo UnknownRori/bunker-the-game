@@ -21,8 +21,10 @@ func play_select():
 	$SawChannel.play()
 
 func play_music(music):
-	$MusicChannel.stream = music
-	$MusicChannel.play()
+	if !music_channel == music:
+		$MusicChannel.stream = music
+		$MusicChannel.play()
+		music_channel = music
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):

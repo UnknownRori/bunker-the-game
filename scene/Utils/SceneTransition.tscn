@@ -1,0 +1,80 @@
+[gd_scene load_steps=9 format=3 uid="uid://dkvbiwk5atbt3"]
+
+[ext_resource type="Shader" path="res://resources/shaders/SceneTransition.gdshader" id="1_4ocov"]
+[ext_resource type="Script" path="res://src/SceneTransition.gd" id="1_8fues"]
+
+[sub_resource type="Animation" id="Animation_mpcbd"]
+resource_name = "SceneTransition"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:material:shader_parameter/disolve_state")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.1]
+}
+
+[sub_resource type="Animation" id="Animation_p52ri"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:material:shader_parameter/disolve_state")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.1]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_il1uv"]
+_data = {
+"RESET": SubResource("Animation_p52ri"),
+"SceneTransition": SubResource("Animation_mpcbd")
+}
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_cbfx5"]
+noise_type = 3
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_bthrj"]
+width = 256
+height = 256
+noise = SubResource("FastNoiseLite_cbfx5")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_r61nu"]
+shader = ExtResource("1_4ocov")
+shader_parameter/disolve_state = 1.1
+shader_parameter/dissolve_pattern = SubResource("NoiseTexture2D_bthrj")
+
+[node name="SceneTransition" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_8fues")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_il1uv")
+}
+
+[node name="ColorRect" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_r61nu")
+layout_mode = 0
+offset_top = -14.0
+offset_right = 256.0
+offset_bottom = 242.0
+color = Color(0, 0, 0, 1)
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 256.0
+offset_bottom = 224.0

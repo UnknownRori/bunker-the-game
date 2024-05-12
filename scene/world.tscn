@@ -1,6 +1,5 @@
-[gd_scene load_steps=14 format=3 uid="uid://b6ykw5m575uhe"]
+[gd_scene load_steps=13 format=3 uid="uid://b6ykw5m575uhe"]
 
-[ext_resource type="PackedScene" uid="uid://bqmnb53rjvwjk" path="res://scene/SoundChip.tscn" id="1_d3a22"]
 [ext_resource type="Script" path="res://src/world.gd" id="1_ruf3k"]
 [ext_resource type="PackedScene" uid="uid://c5beviu8n8ad0" path="res://scene/Player/player.tscn" id="1_y1asa"]
 [ext_resource type="Texture2D" uid="uid://bx1rm5slmfq88" path="res://assets/tilemap.png" id="2_3tquv"]
@@ -812,8 +811,6 @@ size = Vector2(1844.5, 328)
 
 [node name="World" type="Node2D"]
 script = ExtResource("1_ruf3k")
-
-[node name="SoundChip" parent="." instance=ExtResource("1_d3a22")]
 
 [node name="Platform" type="TileMap" parent="." groups=["platform"]]
 tile_set = SubResource("TileSet_u1ocq")

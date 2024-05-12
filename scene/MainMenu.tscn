@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://src/MainMenu.gd" id="1_6t50g"]
 [ext_resource type="Theme" uid="uid://d4m75u4u4cl6h" path="res://resources/default_theme.tres" id="1_uaubm"]
 [ext_resource type="Texture2D" uid="uid://cvli1im40d20g" path="res://assets/menu.png" id="2_0da20"]
-[ext_resource type="PackedScene" uid="uid://bqmnb53rjvwjk" path="res://scene/SoundChip.tscn" id="2_8xkvd"]
+[ext_resource type="PackedScene" uid="uid://dkvbiwk5atbt3" path="res://scene/Utils/SceneTransition.tscn" id="5_j3y2w"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -13,8 +13,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_6t50g")
-
-[node name="SoundChip" parent="." instance=ExtResource("2_8xkvd")]
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 0
@@ -60,3 +58,6 @@ offset_bottom = 178.0
 theme = ExtResource("1_uaubm")
 text = ">              <"
 vertical_alignment = 1
+
+[node name="SceneTransition" parent="." instance=ExtResource("5_j3y2w")]
+layout_mode = 1
