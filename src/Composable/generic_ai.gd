@@ -32,9 +32,8 @@ func _physics_process(delta):
 	match state:
 		SIMPLE_WANDER:
 			# Change state to attack player if it exist on the raycast
-			if front_detector.is_colliding():
-				if front_detector.get_collider().is_in_group("player"):
-					state = SHOOTING
+			if front_detector.is_colliding() and front_detector.get_collider().is_in_group("player"):
+				state = SHOOTING
 
 			var front_floor_exist := false
 			var front_blocked := false
