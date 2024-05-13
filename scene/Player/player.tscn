@@ -57,6 +57,8 @@ basic_firerate = 0.2
 
 [node name="Movement" type="Node" parent="."]
 script = ExtResource("3_nlp1q")
+jump_power = -500.0
+gravity = 2450.0
 max_jumps = 1
 
 [node name="Health" parent="." instance=ExtResource("5_5toat")]
