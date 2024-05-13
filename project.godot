@@ -10,7 +10,7 @@ config_version=5
 
 [application]
 
-config/name="The Dungeon"
+config/name="Bunker the Game"
 run/main_scene="res://scene/world.tscn"
 config/features=PackedStringArray("4.2", "GL Compatibility")
 run/max_fps=60
