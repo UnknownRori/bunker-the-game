@@ -855,10 +855,12 @@ position = Vector2(608, 206)
 position = Vector2(704, 206)
 
 [node name="MovingPlatform" parent="." instance=ExtResource("6_ncfk1")]
-position = Vector2(986, 166)
+position = Vector2(958, 165)
+offset = Vector2(200, 0)
 
 [node name="MovingPlatform2" parent="." instance=ExtResource("6_ncfk1")]
 position = Vector2(1178, 193)
+offset = Vector2(100, 0)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(764.25, 524)
