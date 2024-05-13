@@ -78,6 +78,8 @@ target_position = Vector2(0, 14)
 target_position = Vector2(100, 0)
 
 [node name="PlayerDetection" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetection"]
 shape = SubResource("CircleShape2D_blkxa")

@@ -14,15 +14,25 @@ extends Node
 @export var basic_bullet_speed = 250
 @export var basic_bullet_damage = 10
 
+@export var special_firerate = 0.5
+@export var special_bullet_speed = 250
+@export var special_bullet_damage = 10
+
 @export var direction = Vector2.ZERO
 var can_fire_basic = true
+var can_fire_special = true
 
 @export var shoot_basic = false
+@export var shoot_special = false
 @export var basic = preload("res://scene/Player/player_bullet.tscn")
+@export var special = preload("res://scene/Player/player_grenade.tscn")
 
 func _ready():
 	basic_timer.connect("timeout", set_fire_basic)
 	basic_timer.wait_time = basic_firerate
+	
+	special_timer.connect("timeout", set_fire_special)
+	special_timer.wait_time = special_firerate
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -32,6 +42,9 @@ func _process(delta):
 
 func set_fire_basic():
 	can_fire_basic = true
+	
+func set_fire_special():
+	can_fire_special = true
 
 func attack_basic():
 	var shoot = shoot_basic
@@ -61,4 +74,28 @@ func attack_basic():
 	shoot_basic = false
 	
 func attack_special():
-	pass
+	var shoot = shoot_special
+	if (controllable):
+		if (controllable.ACTION_B):
+			shoot = true
+	
+	# I don't know why false && false equals to true
+	if !can_fire_special:
+		return
+	if !shoot:
+		return
+
+	can_fire_special = false
+	special_timer.start()
+	
+	if (player_camera):
+		player_camera.add_trauma(0.1)
+	
+	var special = special.instantiate()
+	special.position = parent.position
+	special.damage = special_bullet_damage
+	var velocity = Vector2(movement.direction_face * special_bullet_speed, 0.)
+	sound_chip.play_shoot()
+	special.launch(Vector2(velocity.x  + parent.velocity.x , velocity.y), parent.position)
+	root.add_child(special)
+	shoot_special = false

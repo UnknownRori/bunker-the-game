@@ -40,6 +40,10 @@ func _physics_process(delta):
 						hp.damage_spike(10)
 
 	direction = Vector2.ZERO
+
+func _process(delta):
+	if parent.is_on_floor():
+		current_jump = 1
 	
 func flip_animate(direction):
 	if (!sprite):
@@ -75,6 +79,3 @@ func jump(direction):
 			current_jump = current_jump + 1
 			if (controllable):
 				sound_chip.play_jump()
-	
-	if parent.is_on_floor():
-		current_jump = 1

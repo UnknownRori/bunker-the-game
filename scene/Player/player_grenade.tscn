@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://bldq612gj7m3g"]
+
+[ext_resource type="Texture2D" uid="uid://inusy26ncr0o" path="res://assets/sprite.png" id="1_4ckl8"]
+[ext_resource type="Script" path="res://src/player_grenade.gd" id="1_cwq0l"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2yysq"]
+radius = 3.0
+height = 10.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_aqucp"]
+radius = 22.0227
+
+[node name="PlayerGrenade" type="Node2D"]
+script = ExtResource("1_cwq0l")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_4ckl8")
+region_enabled = true
+region_rect = Rect2(208, 0, 16, 16)
+
+[node name="Collider" type="Area2D" parent="."]
+gravity = 50.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Collider"]
+shape = SubResource("CapsuleShape2D_2yysq")
+
+[node name="ExplosionRadius" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ExplosionRadius"]
+shape = SubResource("CircleShape2D_aqucp")
+
+[connection signal="body_entered" from="Collider" to="." method="_on_collider_body_entered"]

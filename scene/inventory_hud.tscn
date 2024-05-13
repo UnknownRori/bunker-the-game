@@ -26,6 +26,11 @@ theme = ExtResource("2_8m8sv")
 theme_override_font_sizes/font_size = 5
 text = "B"
 
+[node name="Sprite2D" type="Sprite2D" parent="Slot 1"]
+texture = ExtResource("1_tbhdt")
+region_enabled = true
+region_rect = Rect2(208, 0, 16, 16)
+
 [node name="Slot 2" type="Sprite2D" parent="."]
 position = Vector2(8, 216)
 texture = ExtResource("1_tbhdt")
