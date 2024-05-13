@@ -10,6 +10,7 @@ void vertex() {
 void fragment() {
 	COLOR = texture(TEXTURE, UV);
 	float pattern_val = texture(dissolve_pattern, UV).r;
+	COLOR.rgb = vec3(0);
 	COLOR.a *= step(disolve_state, pattern_val);
 }
 

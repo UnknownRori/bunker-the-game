@@ -49,6 +49,6 @@ func update_input():
 	if Input.is_action_just_pressed("Start"):
 		match state:
 			START_GAME:
-				$SceneTransition.change_scene(scene_world)
+				SceneTransition.change_scene(scene_world)
 			EXIT:
 				get_tree().quit()

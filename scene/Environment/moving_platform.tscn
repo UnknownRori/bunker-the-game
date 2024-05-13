@@ -1,17 +1,21 @@
-[gd_scene load_steps=3 format=3 uid="uid://bi7meh3gvw2u1"]
+[gd_scene load_steps=4 format=3 uid="uid://bi7meh3gvw2u1"]
 
+[ext_resource type="Script" path="res://src/moving_platform.gd" id="1_6dygk"]
 [ext_resource type="Texture2D" uid="uid://bx1rm5slmfq88" path="res://assets/tilemap.png" id="1_onq2i"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6tvj2"]
 size = Vector2(39, 13)
 
-[node name="MovingPlatform" type="StaticBody2D"]
+[node name="MovingPlatform" type="Node2D"]
+script = ExtResource("1_6dygk")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="AnimatableBody2D" type="AnimatableBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatableBody2D"]
+position = Vector2(0.5, 0.5)
+shape = SubResource("RectangleShape2D_6tvj2")
+
+[node name="Sprite2D" type="Sprite2D" parent="AnimatableBody2D"]
 texture = ExtResource("1_onq2i")
 region_enabled = true
 region_rect = Rect2(96, 0, 48, 14)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0.5, 0.5)
-shape = SubResource("RectangleShape2D_6tvj2")

@@ -1,9 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://dx4hviigwx15w"]
+[gd_scene load_steps=4 format=3 uid="uid://dx4hviigwx15w"]
 
 [ext_resource type="Script" path="res://src/MainMenu.gd" id="1_6t50g"]
 [ext_resource type="Theme" uid="uid://d4m75u4u4cl6h" path="res://resources/default_theme.tres" id="1_uaubm"]
 [ext_resource type="Texture2D" uid="uid://cvli1im40d20g" path="res://assets/menu.png" id="2_0da20"]
-[ext_resource type="PackedScene" uid="uid://dkvbiwk5atbt3" path="res://scene/Utils/SceneTransition.tscn" id="5_j3y2w"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -58,6 +57,3 @@ offset_bottom = 178.0
 theme = ExtResource("1_uaubm")
 text = ">              <"
 vertical_alignment = 1
-
-[node name="SceneTransition" parent="." instance=ExtResource("5_j3y2w")]
-layout_mode = 1

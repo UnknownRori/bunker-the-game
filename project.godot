@@ -20,6 +20,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 SoundChip="*res://scene/SoundChip.tscn"
+SceneTransition="*res://scene/Utils/SceneTransition.tscn"
 
 [display]
 
