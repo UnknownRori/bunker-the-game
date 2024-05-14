@@ -1,25 +1,152 @@
-[gd_scene load_steps=2 format=3 uid="uid://bpbbjyoiusboi"]
+[gd_scene load_steps=3 format=3 uid="uid://bpbbjyoiusboi"]
 
 [ext_resource type="Theme" uid="uid://d4m75u4u4cl6h" path="res://resources/default_theme.tres" id="1_lsf6t"]
+[ext_resource type="Script" path="res://src/Help.gd" id="1_v5djj"]
 
 [node name="Help" type="Control"]
+process_mode = 3
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_v5djj")
 
 [node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
 offset_right = 256.0
 offset_bottom = 256.0
 color = Color(0.14902, 0.0392157, 0.203922, 1)
 
+[node name="Label2" type="Label" parent="."]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 169.0
+offset_right = 249.0
+offset_bottom = 192.0
+theme = ExtResource("1_lsf6t")
+text = "Press Start to Go Back"
+
 [node name="Label" type="Label" parent="."]
 layout_mode = 0
+offset_top = 6.0
 offset_right = 256.0
-offset_bottom = 23.0
+offset_bottom = 29.0
 theme = ExtResource("1_lsf6t")
 text = "Help"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Control" type="Control" parent="."]
+anchors_preset = 0
+offset_left = 31.0
+offset_top = 38.0
+offset_right = 223.0
+offset_bottom = 78.0
+
+[node name="Control" type="Control" parent="Control"]
+anchors_preset = 0
+offset_right = 208.0
+offset_bottom = 17.0
+
+[node name="Label2" type="Label" parent="Control/Control"]
+layout_mode = 0
+offset_left = 18.0
+offset_top = 3.0
+offset_right = 30.0
+offset_bottom = 16.0
+theme = ExtResource("1_lsf6t")
+theme_override_font_sizes/font_size = 13
+text = "A"
+
+[node name="Label" type="Label" parent="Control/Control"]
+layout_mode = 0
+offset_left = 65.0
+offset_top = 2.0
+offset_right = 187.0
+offset_bottom = 15.0
+theme = ExtResource("1_lsf6t")
+theme_override_font_sizes/font_size = 13
+text = "Primary Attack"
+
+[node name="Control" type="Control" parent="Control/Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_top = 22.0
+offset_right = 208.0
+offset_bottom = 39.0
+
+[node name="Label2" type="Label" parent="Control/Control/Control"]
+layout_mode = 0
+offset_left = 18.0
+offset_top = 3.0
+offset_right = 30.0
+offset_bottom = 16.0
+theme = ExtResource("1_lsf6t")
+theme_override_font_sizes/font_size = 13
+text = "B"
+
+[node name="Label" type="Label" parent="Control/Control/Control"]
+layout_mode = 0
+offset_left = 65.0
+offset_top = 2.0
+offset_right = 215.0
+offset_bottom = 15.0
+theme = ExtResource("1_lsf6t")
+theme_override_font_sizes/font_size = 13
+text = "Secondary Attack"
+
+[node name="Control2" type="Control" parent="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_top = 47.0
+offset_right = 208.0
+offset_bottom = 64.0
+
+[node name="Label2" type="Label" parent="Control/Control2"]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 3.0
+offset_right = 48.0
+offset_bottom = 16.0
+theme = ExtResource("1_lsf6t")
+theme_override_font_sizes/font_size = 13
+text = "Start"
+
+[node name="Label" type="Label" parent="Control/Control2"]
+layout_mode = 0
+offset_left = 65.0
+offset_top = 2.0
+offset_right = 215.0
+offset_bottom = 15.0
+theme = ExtResource("1_lsf6t")
+theme_override_font_sizes/font_size = 13
+text = "Accept & Pause"
+
+[node name="Control2" type="Control" parent="Control/Control2"]
+layout_mode = 3
+anchors_preset = 0
+offset_top = 29.0
+offset_right = 208.0
+offset_bottom = 46.0
+
+[node name="Label2" type="Label" parent="Control/Control2/Control2"]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 3.0
+offset_right = 48.0
+offset_bottom = 16.0
+theme = ExtResource("1_lsf6t")
+theme_override_font_sizes/font_size = 13
+text = "Select"
+
+[node name="Label" type="Label" parent="Control/Control2/Control2"]
+layout_mode = 0
+offset_left = 65.0
+offset_top = 2.0
+offset_right = 215.0
+offset_bottom = 15.0
+theme = ExtResource("1_lsf6t")
+theme_override_font_sizes/font_size = 13
+text = "Accept & Pause"

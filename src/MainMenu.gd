@@ -9,12 +9,9 @@ enum {
 @onready var select = $Select
 @onready var sound = SoundChip
 @onready var state := START_GAME
-@onready var bgm = preload("res://assets/bgm/bgm.wav")
-@onready var scene_world = preload("res://scene/world.tscn")
-@onready var help = preload("res://scene/Help.tscn")
 
 func _ready():
-	SoundChip.play_music(bgm)
+	SoundChip.play_music(load("res://assets/bgm/bgm.wav"))
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -55,8 +52,8 @@ func update_input():
 	if Input.is_action_just_pressed("Start"):
 		match state:
 			START_GAME:
-				SceneTransition.change_scene(scene_world)
+				SceneTransition.change_scene(load("res://scene/world.tscn"))
 			HELP:
-				SceneTransition.change_scene(help)
+				SceneTransition.change_scene(load("res://scene/Help.tscn"))
 			EXIT:
 				get_tree().quit()
