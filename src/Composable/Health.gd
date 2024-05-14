@@ -39,5 +39,7 @@ func _ready():
 
 func _process(delta):
 	if is_dead():
+		if parent.dead_callback:
+			parent.dead_callback()
 		parent.queue_free()
 	pass

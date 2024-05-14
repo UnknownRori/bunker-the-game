@@ -8,7 +8,8 @@ func _ready():
 	pass # Replace with function body.
 
 func update_ui():
-	hp_bar.text = "[right]" + str(hp.hp) + "[/right]"
+	if get_parent().get_node("Player"):
+		hp_bar.text = "[right]" + str(hp.hp) + "[/right]"
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):

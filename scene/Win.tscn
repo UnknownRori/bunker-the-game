@@ -1,0 +1,47 @@
+[gd_scene load_steps=2 format=3 uid="uid://bklintg5jigef"]
+
+[ext_resource type="Theme" uid="uid://d4m75u4u4cl6h" path="res://resources/default_theme.tres" id="1_k8800"]
+
+[node name="Win" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 256.0
+offset_bottom = 256.0
+color = Color(0.14902, 0.0392157, 0.203922, 1)
+
+[node name="Label" type="Label" parent="."]
+offset_top = 19.0
+offset_right = 256.0
+offset_bottom = 46.0
+theme = ExtResource("1_k8800")
+theme_override_colors/font_shadow_color = Color(1, 0.560784, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 1
+theme_override_constants/outline_size = 1
+theme_override_constants/shadow_outline_size = 0
+theme_override_font_sizes/font_size = 17
+text = "Thank You for Playing!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="."]
+offset_top = 183.0
+offset_right = 256.0
+offset_bottom = 210.0
+theme = ExtResource("1_k8800")
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 1
+theme_override_constants/outline_size = 1
+theme_override_constants/shadow_outline_size = 0
+theme_override_font_sizes/font_size = 10
+text = "Press Start to Continue"
+horizontal_alignment = 1
+vertical_alignment = 1
