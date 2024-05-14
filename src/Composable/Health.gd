@@ -39,7 +39,7 @@ func _ready():
 
 func _process(delta):
 	if is_dead():
-		if parent.dead_callback:
+		if parent.is_in_group("player"):
 			parent.dead_callback()
 		parent.queue_free()
 	pass
