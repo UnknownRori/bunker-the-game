@@ -75,6 +75,7 @@ theme_override_font_sizes/font_size = 28
 text = "Bunker"
 
 [node name="the Game" type="Label" parent="."]
+layout_mode = 0
 offset_left = 59.0
 offset_top = 62.0
 offset_right = 197.0
