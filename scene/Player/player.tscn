@@ -61,7 +61,6 @@ special_bullet_speed = 100
 
 [node name="Movement" type="Node" parent="."]
 script = ExtResource("3_nlp1q")
-jump_power = -500.0
 gravity = 2450.0
 max_jumps = 1
 

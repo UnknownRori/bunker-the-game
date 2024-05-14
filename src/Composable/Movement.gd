@@ -1,7 +1,7 @@
 extends Node
 
 @export var speed: float = 250
-@export var jump_power: float = -800
+@export var jump_power: float = -600
 
 @export_range(0.0 , 1.0) var friction: float = 0.5
 @export_range(0.0 , 1.0) var acceleration: float = 0.8
@@ -10,6 +10,7 @@ extends Node
 @export var max_jumps: int = 2
 @export var direction_face: int = 1
 @export var direction := Vector2.ZERO
+var jump_lerp = 0.
 var current_jump: int = 0
 
 @onready var parent: CharacterBody2D = get_parent()
@@ -70,12 +71,16 @@ func move(direction: Vector2, delta: float):
 
 	parent.move_and_slide()
 	
-	jump(direction)
+	jump(direction, delta)
 
-func jump(direction):
+func jump(direction, delta):
 	if direction.y:
 		if current_jump <= max_jumps:
-			parent.velocity.y = jump_power
-			current_jump = current_jump + 1
+			if jump_lerp == 0:
+				current_jump = current_jump + 1
+			parent.velocity.y = lerp(jump_power, gravity, jump_lerp)
+			jump_lerp += delta
 			if (controllable):
 				sound_chip.play_jump()
+	else:
+		jump_lerp = 0
