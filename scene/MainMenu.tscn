@@ -37,7 +37,16 @@ alignment = 1
 [node name="Start" type="Label" parent="HBoxContainer/VBoxContainer"]
 layout_mode = 2
 theme = ExtResource("1_uaubm")
-text = "Start"
+text = "Start
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Help" type="Label" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("1_uaubm")
+text = "Help
+"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -51,9 +60,9 @@ vertical_alignment = 1
 [node name="Select" type="Label" parent="."]
 layout_mode = 0
 offset_left = 75.0
-offset_top = 158.0
+offset_top = 189.0
 offset_right = 182.0
-offset_bottom = 178.0
+offset_bottom = 209.0
 theme = ExtResource("1_uaubm")
 text = ">              <"
 vertical_alignment = 1

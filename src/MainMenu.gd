@@ -2,7 +2,8 @@ extends Control
 
 enum {
 	START_GAME,
-	EXIT
+	HELP,
+	EXIT,
 }
 
 @onready var select = $Select
@@ -10,6 +11,7 @@ enum {
 @onready var state := START_GAME
 @onready var bgm = preload("res://assets/bgm/bgm.wav")
 @onready var scene_world = preload("res://scene/world.tscn")
+@onready var help = preload("res://scene/Help.tscn")
 
 func _ready():
 	SoundChip.play_music(bgm)
@@ -24,31 +26,37 @@ func update_ui():
 	const x := 75
 	match state:
 		START_GAME:
-			select.position = Vector2(x, 159)
+			select.position = Vector2(x, 148)
+		HELP:
+			select.position = Vector2(x, 169)
 		EXIT:
-			select.position = Vector2(x, 177)
+			select.position = Vector2(x, 189)
 
 func update_input():
+	if Input.is_action_just_pressed("down") or Input.is_action_just_pressed("up"):
+		sound.play_select()
 	if Input.is_action_just_pressed("down"):
 		match state:
 			START_GAME:
-				sound.play_select()
+				state = HELP
+			HELP:
 				state = EXIT
 			EXIT:
-				sound.play_select()
 				state = START_GAME
 	if Input.is_action_just_pressed("up"):
 		match state:
 			START_GAME:
-				sound.play_select()
 				state = EXIT
-			EXIT:
-				sound.play_select()
+			HELP:
 				state = START_GAME
+			EXIT:
+				state = HELP
 	
 	if Input.is_action_just_pressed("Start"):
 		match state:
 			START_GAME:
 				SceneTransition.change_scene(scene_world)
+			HELP:
+				SceneTransition.change_scene(help)
 			EXIT:
 				get_tree().quit()
