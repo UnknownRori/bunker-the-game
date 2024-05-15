@@ -13,10 +13,12 @@ extends Node
 @export var basic_firerate = 0.5
 @export var basic_bullet_speed = 250
 @export var basic_bullet_damage = 10
+@export var basic_dispersion = 0.2
 
 @export var special_firerate = 0.5
 @export var special_bullet_speed = 250
 @export var special_bullet_damage = 10
+@export var special_dispersion = 0.2
 
 @export var direction = Vector2.ZERO
 var can_fire_basic = true

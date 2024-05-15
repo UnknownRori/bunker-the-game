@@ -29,6 +29,10 @@ window/size/viewport_height=224
 window/size/resizable=false
 window/stretch/mode="canvas_items"
 
+[editor]
+
+movie_writer/movie_file="F:/Other Folder and Files/Akbar File/dev/godot/bunker-the-game/demo.avi"
+
 [input]
 
 ui_accept={

@@ -1,6 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://bwlrdbsd62w12"]
+[gd_scene load_steps=9 format=3 uid="uid://bwlrdbsd62w12"]
 
 [ext_resource type="Texture2D" uid="uid://inusy26ncr0o" path="res://assets/sprite.png" id="1_001ed"]
+[ext_resource type="Script" path="res://src/Environment/ExplodingSprite.gd" id="2_5kr0i"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_tg75i"]
 atlas = ExtResource("1_001ed")
@@ -48,3 +49,8 @@ animations = [{
 [node name="ExplodingSprite" type="AnimatedSprite2D"]
 sprite_frames = SubResource("SpriteFrames_njx3j")
 animation = &"explode"
+script = ExtResource("2_5kr0i")
+
+[node name="Timer" type="Timer" parent="."]
+
+[connection signal="animation_looped" from="." to="." method="_on_animation_looped"]

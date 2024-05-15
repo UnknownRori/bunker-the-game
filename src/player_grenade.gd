@@ -4,6 +4,8 @@ extends Node2D
 @export var damage: float = 10
 @export var gravity: float = 450
 
+var explosion = preload("res://scene/Environment/ExplodingSprite.tscn")
+
 func launch(vel: Vector2, pos: Vector2):
 	velocity = vel + Vector2(0, -200)
 	position = pos
@@ -23,6 +25,11 @@ func _physics_process(delta):
 
 func _on_collider_body_entered(body):
 	if (body.is_in_group("platform")):
+		explosion = explosion.instantiate()
+		explosion.position = position
+		var root = get_node("/root/World")
+		root.add_child(explosion)
+		SoundChip.play_explosion()
 		var overlap = $ExplosionRadius.get_overlapping_bodies()
 		for i in overlap:
 			if (i.is_in_group("enemy")):

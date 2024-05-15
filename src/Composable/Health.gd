@@ -14,6 +14,9 @@ var spike_damage = true
 
 func restore_full():
 	hp = max_hp
+	
+func is_max():
+	return max_hp == hp
 
 func damage(value) -> bool:
 	hp -= value
