@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://bpbbjyoiusboi"]
+[gd_scene load_steps=4 format=3 uid="uid://bpbbjyoiusboi"]
 
 [ext_resource type="Theme" uid="uid://d4m75u4u4cl6h" path="res://resources/default_theme.tres" id="1_lsf6t"]
 [ext_resource type="Script" path="res://src/Help.gd" id="1_v5djj"]
+[ext_resource type="Theme" uid="uid://c8ou3x4kufrg7" path="res://resources/title.tres" id="2_dcmi3"]
 
 [node name="Help" type="Control"]
 process_mode = 3
@@ -21,19 +22,20 @@ color = Color(0.14902, 0.0392157, 0.203922, 1)
 
 [node name="Label2" type="Label" parent="."]
 layout_mode = 0
-offset_left = 10.0
 offset_top = 169.0
-offset_right = 249.0
+offset_right = 256.0
 offset_bottom = 192.0
-theme = ExtResource("1_lsf6t")
+theme = ExtResource("2_dcmi3")
 text = "Press Start to Go Back"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Label" type="Label" parent="."]
 layout_mode = 0
 offset_top = 6.0
 offset_right = 256.0
 offset_bottom = 29.0
-theme = ExtResource("1_lsf6t")
+theme = ExtResource("2_dcmi3")
 text = "Help"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -57,7 +59,6 @@ offset_top = 3.0
 offset_right = 30.0
 offset_bottom = 16.0
 theme = ExtResource("1_lsf6t")
-theme_override_font_sizes/font_size = 13
 text = "A"
 
 [node name="Label" type="Label" parent="Control/Control"]
@@ -67,7 +68,6 @@ offset_top = 2.0
 offset_right = 187.0
 offset_bottom = 15.0
 theme = ExtResource("1_lsf6t")
-theme_override_font_sizes/font_size = 13
 text = "Primary Attack"
 
 [node name="Control" type="Control" parent="Control/Control"]
@@ -84,7 +84,6 @@ offset_top = 3.0
 offset_right = 30.0
 offset_bottom = 16.0
 theme = ExtResource("1_lsf6t")
-theme_override_font_sizes/font_size = 13
 text = "B"
 
 [node name="Label" type="Label" parent="Control/Control/Control"]
@@ -94,7 +93,6 @@ offset_top = 2.0
 offset_right = 215.0
 offset_bottom = 15.0
 theme = ExtResource("1_lsf6t")
-theme_override_font_sizes/font_size = 13
 text = "Secondary Attack"
 
 [node name="Control2" type="Control" parent="Control"]
@@ -111,7 +109,6 @@ offset_top = 3.0
 offset_right = 48.0
 offset_bottom = 16.0
 theme = ExtResource("1_lsf6t")
-theme_override_font_sizes/font_size = 13
 text = "Start"
 
 [node name="Label" type="Label" parent="Control/Control2"]
@@ -121,7 +118,6 @@ offset_top = 2.0
 offset_right = 215.0
 offset_bottom = 15.0
 theme = ExtResource("1_lsf6t")
-theme_override_font_sizes/font_size = 13
 text = "Accept & Pause"
 
 [node name="Control2" type="Control" parent="Control/Control2"]
@@ -138,7 +134,6 @@ offset_top = 3.0
 offset_right = 48.0
 offset_bottom = 16.0
 theme = ExtResource("1_lsf6t")
-theme_override_font_sizes/font_size = 13
 text = "Select"
 
 [node name="Label" type="Label" parent="Control/Control2/Control2"]
@@ -148,5 +143,4 @@ offset_top = 2.0
 offset_right = 215.0
 offset_bottom = 15.0
 theme = ExtResource("1_lsf6t")
-theme_override_font_sizes/font_size = 13
-text = "Accept & Pause"
+text = "Pick up items"

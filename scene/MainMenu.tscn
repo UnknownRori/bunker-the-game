@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://dx4hviigwx15w"]
+[gd_scene load_steps=5 format=3 uid="uid://dx4hviigwx15w"]
 
 [ext_resource type="Script" path="res://src/MainMenu.gd" id="1_6t50g"]
 [ext_resource type="Theme" uid="uid://d4m75u4u4cl6h" path="res://resources/default_theme.tres" id="1_uaubm"]
 [ext_resource type="Texture2D" uid="uid://cvli1im40d20g" path="res://assets/menu.png" id="2_0da20"]
+[ext_resource type="Theme" uid="uid://c8ou3x4kufrg7" path="res://resources/title.tres" id="4_4apg4"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -59,10 +60,10 @@ vertical_alignment = 1
 
 [node name="Select" type="Label" parent="."]
 layout_mode = 0
-offset_left = 75.0
-offset_top = 189.0
-offset_right = 182.0
-offset_bottom = 209.0
+offset_left = 95.0
+offset_top = 182.0
+offset_right = 159.0
+offset_bottom = 202.0
 theme = ExtResource("1_uaubm")
 text = ">              <"
 vertical_alignment = 1
@@ -73,7 +74,7 @@ offset_left = 62.0
 offset_top = 33.0
 offset_right = 186.0
 offset_bottom = 61.0
-theme = ExtResource("1_uaubm")
+theme = ExtResource("4_4apg4")
 theme_override_colors/font_shadow_color = Color(1, 0.560784, 0, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/shadow_offset_x = 3
@@ -89,7 +90,7 @@ offset_left = 59.0
 offset_top = 62.0
 offset_right = 197.0
 offset_bottom = 90.0
-theme = ExtResource("1_uaubm")
+theme = ExtResource("4_4apg4")
 theme_override_colors/font_shadow_color = Color(1, 0.560784, 0, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/shadow_offset_x = 3

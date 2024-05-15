@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://bnbe6ms34mig1"]
 
 [ext_resource type="Texture2D" uid="uid://inusy26ncr0o" path="res://assets/sprite.png" id="1_tbhdt"]
-[ext_resource type="Theme" uid="uid://d4m75u4u4cl6h" path="res://resources/default_theme.tres" id="2_8m8sv"]
+[ext_resource type="Theme" uid="uid://da5eresrk8qc0" path="res://resources/hud.tres" id="3_518hv"]
 
 [node name="InventoryHUD" type="Control"]
 layout_mode = 3
@@ -18,11 +18,11 @@ region_enabled = true
 region_rect = Rect2(240, 16, 16, 16)
 
 [node name="Label" type="Label" parent="Slot 1"]
-offset_left = -2.0
+offset_left = -1.0
 offset_top = -12.0
-offset_right = 3.0
+offset_right = 4.0
 offset_bottom = -7.0
-theme = ExtResource("2_8m8sv")
+theme = ExtResource("3_518hv")
 theme_override_font_sizes/font_size = 5
 text = "B"
 
@@ -38,11 +38,11 @@ region_enabled = true
 region_rect = Rect2(240, 16, 16, 16)
 
 [node name="Label" type="Label" parent="Slot 2"]
-offset_left = -2.0
+offset_left = -1.0
 offset_top = -12.0
 offset_right = 3.0
 offset_bottom = -7.0
-theme = ExtResource("2_8m8sv")
+theme = ExtResource("3_518hv")
 theme_override_font_sizes/font_size = 5
 text = "A"
 

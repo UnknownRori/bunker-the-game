@@ -8,12 +8,11 @@
 script = ExtResource("1_61yus")
 
 [node name="Text" type="RichTextLabel" parent="."]
-offset_top = -1.0
+offset_top = 2.0
 offset_right = 40.0
-offset_bottom = 18.0
+offset_bottom = 21.0
 theme = ExtResource("2_5yi2c")
 theme_override_fonts/normal_font = ExtResource("2_3p67h")
-theme_override_font_sizes/normal_font_size = 6
 text = "60"
 deselect_on_focus_loss_enabled = false
 drag_and_drop_selection_enabled = false

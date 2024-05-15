@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://bx5pl2jyfy36v"]
 
 [ext_resource type="Script" path="res://src/GameOver.gd" id="1_g20pc"]
-[ext_resource type="Theme" uid="uid://d4m75u4u4cl6h" path="res://resources/default_theme.tres" id="1_hkbpa"]
+[ext_resource type="Theme" uid="uid://c8ou3x4kufrg7" path="res://resources/title.tres" id="2_nby5b"]
 
 [node name="GameOver" type="Control"]
 layout_mode = 3
@@ -23,14 +23,13 @@ layout_mode = 0
 offset_top = 94.0
 offset_right = 256.0
 offset_bottom = 121.0
-theme = ExtResource("1_hkbpa")
+theme = ExtResource("2_nby5b")
 theme_override_colors/font_shadow_color = Color(1, 0.560784, 0, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/shadow_offset_x = 2
 theme_override_constants/shadow_offset_y = 1
 theme_override_constants/outline_size = 1
 theme_override_constants/shadow_outline_size = 0
-theme_override_font_sizes/font_size = 27
 text = "You Died"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -40,13 +39,12 @@ layout_mode = 0
 offset_top = 129.0
 offset_right = 256.0
 offset_bottom = 156.0
-theme = ExtResource("1_hkbpa")
+theme = ExtResource("2_nby5b")
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/shadow_offset_x = 2
 theme_override_constants/shadow_offset_y = 1
 theme_override_constants/outline_size = 1
 theme_override_constants/shadow_outline_size = 0
-theme_override_font_sizes/font_size = 12
 text = "Press Start to Restart"
 horizontal_alignment = 1
 vertical_alignment = 1

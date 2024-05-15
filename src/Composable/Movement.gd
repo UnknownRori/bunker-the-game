@@ -62,7 +62,8 @@ func flip_animate(direction):
 
 func move(direction: Vector2, delta: float):
 	# gravity
-	parent.velocity.y += gravity * delta
+	if parent.velocity.y < gravity:
+		parent.velocity.y += gravity * delta
 
 	if direction.x != 0:
 		parent.velocity.x = lerp(parent.velocity.x, direction.x * speed, acceleration)

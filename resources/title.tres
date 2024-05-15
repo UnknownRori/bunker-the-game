@@ -1,0 +1,7 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://c8ou3x4kufrg7"]
+
+[ext_resource type="FontFile" uid="uid://jhrwydl0q4b0" path="res://assets/bm-japan.ttf" id="1_xptyw"]
+
+[resource]
+default_font = ExtResource("1_xptyw")
+default_font_size = 12

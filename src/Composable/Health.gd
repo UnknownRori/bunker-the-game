@@ -12,6 +12,9 @@ extends Node
 var damage_sprite_timer = 1
 var spike_damage = true
 
+func restore_full():
+	hp = max_hp
+
 func damage(value) -> bool:
 	hp -= value
 	sprite.play_damage()
