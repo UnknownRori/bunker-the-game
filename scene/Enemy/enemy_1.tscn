@@ -15,15 +15,15 @@ shader = ExtResource("2_5r2ey")
 shader_parameter/flash_color = Color(1, 1, 1, 1)
 shader_parameter/flash_modifier = false
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_lvs7s"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_i5ukp"]
 atlas = ExtResource("1_ykxtj")
-region = Rect2(1, 32, 16, 16)
+region = Rect2(0, 32, 16, 16)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_duk6b"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_lvs7s")
+"texture": SubResource("AtlasTexture_i5ukp")
 }],
 "loop": true,
 "name": &"idle",
