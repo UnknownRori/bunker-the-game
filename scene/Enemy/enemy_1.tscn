@@ -1,12 +1,19 @@
-[gd_scene load_steps=12 format=3 uid="uid://dtwrkbq1topst"]
+[gd_scene load_steps=14 format=3 uid="uid://dtwrkbq1topst"]
 
 [ext_resource type="PackedScene" uid="uid://csw7fbg0tf7eu" path="res://scene/Component/sprite.tscn" id="1_wh5cv"]
 [ext_resource type="Texture2D" uid="uid://inusy26ncr0o" path="res://assets/sprite.png" id="1_ykxtj"]
+[ext_resource type="Shader" path="res://resources/shaders/FlashDamage.gdshader" id="2_5r2ey"]
 [ext_resource type="PackedScene" uid="uid://ctgqlbgcwqhfr" path="res://scene/Component/AttackComponent.tscn" id="2_g6tyi"]
 [ext_resource type="Script" path="res://src/Composable/Movement.gd" id="3_sf62v"]
 [ext_resource type="PackedScene" uid="uid://g40wu5scfhpc" path="res://scene/Component/Health.tscn" id="4_awgl0"]
 [ext_resource type="PackedScene" uid="uid://dnqrn0ge4xuq4" path="res://scene/Enemy/enemy_bullet.tscn" id="4_p5cma"]
 [ext_resource type="PackedScene" uid="uid://ilp7g2xf7oga" path="res://scene/Enemy/generic_ai.tscn" id="5_v1raw"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xewhs"]
+resource_local_to_scene = true
+shader = ExtResource("2_5r2ey")
+shader_parameter/flash_color = Color(1, 1, 1, 1)
+shader_parameter/flash_modifier = false
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lvs7s"]
 atlas = ExtResource("1_ykxtj")
@@ -33,6 +40,7 @@ radius = 180.55
 [node name="Enemy1" type="CharacterBody2D" groups=["enemy"]]
 
 [node name="Sprite" parent="." instance=ExtResource("1_wh5cv")]
+material = SubResource("ShaderMaterial_xewhs")
 sprite_frames = SubResource("SpriteFrames_duk6b")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
