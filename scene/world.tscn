@@ -885,12 +885,6 @@ position = Vector2(1718, 162)
 [node name="HealthPickup" parent="." instance=ExtResource("9_8o6q6")]
 position = Vector2(1737, 54)
 
-[node name="Middle DeathZone" parent="." instance=ExtResource("10_c3vlk")]
-
-[node name="CollisionShape2D" parent="Middle DeathZone" index="0"]
-position = Vector2(741.5, 680.5)
-shape = SubResource("RectangleShape2D_xdi0k")
-
 [node name="MovingPlatform3" parent="." instance=ExtResource("6_ncfk1")]
 position = Vector2(906, 1205)
 offset = Vector2(500, 0)
@@ -929,6 +923,12 @@ position = Vector2(63, 61)
 
 [node name="HealthPickup3" parent="." instance=ExtResource("9_8o6q6")]
 position = Vector2(616, 1120)
+
+[node name="Middle DeathZone" parent="." instance=ExtResource("10_c3vlk")]
+
+[node name="CollisionShape2D" parent="Middle DeathZone" index="0"]
+position = Vector2(741.5, 680.5)
+shape = SubResource("RectangleShape2D_xdi0k")
 
 [node name="Middle DeathZone2" parent="." instance=ExtResource("10_c3vlk")]
 position = Vector2(744, 2248)

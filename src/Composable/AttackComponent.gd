@@ -76,7 +76,7 @@ func attack_basic(is_up):
 	bullet.position = parent.position
 	bullet.damage = basic_bullet_damage
 	var velocity = Vector2.ZERO
-	print(is_up)
+
 	if is_up:
 		velocity = Vector2(movement.direction_face, -basic_bullet_speed)
 	else:
