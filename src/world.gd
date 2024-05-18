@@ -6,6 +6,7 @@ extends Node2D
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	sound.play_music(bgm)
+	DiscordPresence.set_detail("In The Demo Stage")
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

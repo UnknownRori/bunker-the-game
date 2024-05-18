@@ -22,6 +22,8 @@ config/icon="res://icon.svg"
 
 SoundChip="*res://scene/SoundChip.tscn"
 SceneTransition="*res://scene/Utils/SceneTransition.tscn"
+DiscordRPCLoader="*res://addons/discord-rpc-gd/nodes/discord_autoload.gd"
+DiscordPresence="*res://src/DiscordPresence.gd"
 
 [display]
 
@@ -33,6 +35,10 @@ window/stretch/mode="canvas_items"
 [editor]
 
 movie_writer/movie_file="F:/Other Folder and Files/Akbar File/dev/godot/bunker-the-game/demo.avi"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/discord-rpc-gd/plugin.cfg")
 
 [input]
 

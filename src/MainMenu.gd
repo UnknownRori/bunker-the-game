@@ -12,6 +12,7 @@ enum {
 
 func _ready():
 	SoundChip.play_music(load("res://assets/bgm/bgm.wav"))
+	DiscordPresence.set_detail("In Main Menu")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
