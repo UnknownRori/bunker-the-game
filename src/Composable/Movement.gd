@@ -74,14 +74,39 @@ func move(direction: Vector2, delta: float):
 	
 	jump(direction, delta)
 
+# TODO : Refactor this later
 func jump(direction, delta):
-	if direction.y:
-		if current_jump <= max_jumps:
-			if jump_lerp == 0:
-				current_jump = current_jump + 1
-			parent.velocity.y = lerp(jump_power, gravity, jump_lerp)
-			jump_lerp += delta
-			if (controllable):
-				sound_chip.play_jump()
+	if controllable:
+		if !controllable.SWAP:
+			if direction.y:
+				if current_jump <= max_jumps:
+					if jump_lerp == 0:
+						current_jump = current_jump + 1
+					parent.velocity.y = lerp(jump_power, gravity, jump_lerp)
+					jump_lerp += delta
+					if (controllable):
+						sound_chip.play_jump()
+			else:
+				jump_lerp = 0
+		else:
+			if controllable.ACTION_B:
+				if current_jump <= max_jumps:
+					if jump_lerp == 0:
+						current_jump = current_jump + 1
+					parent.velocity.y = lerp(jump_power, gravity, jump_lerp)
+					jump_lerp += delta
+					if (controllable):
+						sound_chip.play_jump()
+			else:
+				jump_lerp = 0
 	else:
-		jump_lerp = 0
+		if direction.y:
+			if current_jump <= max_jumps:
+				if jump_lerp == 0:
+					current_jump = current_jump + 1
+				parent.velocity.y = lerp(jump_power, gravity, jump_lerp)
+				jump_lerp += delta
+				if (controllable):
+					sound_chip.play_jump()
+		else:
+			jump_lerp = 0

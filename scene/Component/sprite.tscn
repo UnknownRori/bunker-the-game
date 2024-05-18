@@ -1,0 +1,75 @@
+[gd_scene load_steps=10 format=3 uid="uid://csw7fbg0tf7eu"]
+
+[ext_resource type="Shader" path="res://resources/shaders/FlashDamage.gdshader" id="1_ex0v8"]
+[ext_resource type="Texture2D" uid="uid://inusy26ncr0o" path="res://assets/sprite.png" id="2_fqfnx"]
+[ext_resource type="Script" path="res://src/Composable/Sprite.gd" id="3_262iy"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8r4wi"]
+resource_local_to_scene = true
+shader = ExtResource("1_ex0v8")
+shader_parameter/flash_color = Color(1, 1, 1, 1)
+shader_parameter/flash_modifier = false
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dlg78"]
+atlas = ExtResource("2_fqfnx")
+region = Rect2(0, 64, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_bfems"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dlg78")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="Animation" id="Animation_s58ax"]
+resource_name = "damage"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:material:shader_parameter/flash_modifier")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_d7113"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:material:shader_parameter/flash_modifier")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_h3m3h"]
+_data = {
+"RESET": SubResource("Animation_d7113"),
+"damage": SubResource("Animation_s58ax")
+}
+
+[node name="Sprite" type="AnimatedSprite2D"]
+material = SubResource("ShaderMaterial_8r4wi")
+sprite_frames = SubResource("SpriteFrames_bfems")
+animation = &"idle"
+script = ExtResource("3_262iy")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../..")
+libraries = {
+"": SubResource("AnimationLibrary_h3m3h")
+}

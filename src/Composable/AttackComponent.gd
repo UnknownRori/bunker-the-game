@@ -38,7 +38,13 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	attack_basic()
+	var is_up = false
+	if controllable:
+		if controllable.SWAP:
+			if controllable.MOVE_DIR.y > 0:
+				is_up = true
+	
+	attack_basic(is_up)
 	attack_special()
 	pass
 
@@ -48,7 +54,7 @@ func set_fire_basic():
 func set_fire_special():
 	can_fire_special = true
 
-func attack_basic():
+func attack_basic(is_up):
 	var shoot = shoot_basic
 	if (controllable):
 		if (controllable.ACTION_A):
@@ -69,17 +75,23 @@ func attack_basic():
 	var bullet = basic.instantiate()
 	bullet.position = parent.position
 	bullet.damage = basic_bullet_damage
-	var velocity = Vector2(movement.direction_face * basic_bullet_speed, 0.)
-	sound_chip.play_shoot()
+	var velocity = Vector2.ZERO
+	print(is_up)
+	if is_up:
+		velocity = Vector2(movement.direction_face, -basic_bullet_speed)
+	else:
+		velocity = Vector2(movement.direction_face * basic_bullet_speed, 0.)
 	bullet.launch(Vector2(velocity.x  + parent.velocity.x , velocity.y), parent.position)
 	root.add_child(bullet)
+	sound_chip.play_shoot()
 	shoot_basic = false
 	
 func attack_special():
 	var shoot = shoot_special
 	if (controllable):
-		if (controllable.ACTION_B):
-			shoot = true
+		if !controllable.SWAP:
+			if controllable.ACTION_B:
+				shoot = true
 	
 	# I don't know why false && false equals to true
 	if !can_fire_special:

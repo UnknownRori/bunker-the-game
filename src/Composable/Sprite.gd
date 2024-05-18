@@ -1,5 +1,7 @@
 extends AnimatedSprite2D
 
+@onready var animation_player = get_node("AnimationPlayer")
+
 @export var state := IDLE
 
 enum {
@@ -9,7 +11,5 @@ enum {
 func play_damage():
 	match state:
 		IDLE: 
-			play("idle_damage")
-			await get_tree().create_timer(0.1).timeout
-			play("idle")
+			animation_player.play("damage")
 			

@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://b6ykw5m575uhe"]
+[gd_scene load_steps=18 format=3 uid="uid://b6ykw5m575uhe"]
 
 [ext_resource type="Script" path="res://src/world.gd" id="1_ruf3k"]
 [ext_resource type="PackedScene" uid="uid://c5beviu8n8ad0" path="res://scene/Player/player.tscn" id="1_y1asa"]
@@ -12,6 +12,7 @@
 [ext_resource type="Script" path="res://src/Environment/DeathZone.gd" id="10_373a2"]
 [ext_resource type="PackedScene" uid="uid://bku2q6rqjug3g" path="res://scene/Environment/Elevator.tscn" id="11_cbbfk"]
 [ext_resource type="PackedScene" uid="uid://bh52j8kscnprc" path="res://scene/Boss.tscn" id="12_a82o8"]
+[ext_resource type="PackedScene" uid="uid://ck5nk1gr3wjed" path="res://scene/Enemy/WallDefense.tscn" id="13_ykx6e"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_17hwv"]
 
@@ -844,7 +845,7 @@ texture = ExtResource("3_pflic")
 centered = false
 
 [node name="Player" parent="." instance=ExtResource("1_y1asa")]
-position = Vector2(31, 43)
+position = Vector2(58, 81)
 
 [node name="Enemy1" parent="." instance=ExtResource("5_vw78p")]
 position = Vector2(403, 127)
@@ -917,6 +918,12 @@ offset = Vector2(0, 895)
 
 [node name="Boss" parent="." instance=ExtResource("12_a82o8")]
 position = Vector2(3242, 1114)
+
+[node name="WallDefense" parent="." instance=ExtResource("13_ykx6e")]
+position = Vector2(1531, 16)
+
+[node name="WallDefense2" parent="." instance=ExtResource("13_ykx6e")]
+position = Vector2(63, 61)
 
 [connection signal="body_entered" from="Middle DeathZone" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Middle DeathZone" to="." method="_on_area_2d_body_exited"]

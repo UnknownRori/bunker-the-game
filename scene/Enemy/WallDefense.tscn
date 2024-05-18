@@ -1,0 +1,42 @@
+[gd_scene load_steps=8 format=3 uid="uid://ck5nk1gr3wjed"]
+
+[ext_resource type="PackedScene" uid="uid://csw7fbg0tf7eu" path="res://scene/Component/sprite.tscn" id="1_ktudg"]
+[ext_resource type="PackedScene" uid="uid://ctgqlbgcwqhfr" path="res://scene/Component/AttackComponent.tscn" id="2_ub6gv"]
+[ext_resource type="PackedScene" uid="uid://dnqrn0ge4xuq4" path="res://scene/Enemy/enemy_bullet.tscn" id="3_qctil"]
+[ext_resource type="PackedScene" uid="uid://g40wu5scfhpc" path="res://scene/Component/Health.tscn" id="4_d17gr"]
+[ext_resource type="Script" path="res://src/TurretEnemy.gd" id="5_by4jx"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_px3q7"]
+size = Vector2(9, 5)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2reqr"]
+radius = 180.55
+
+[node name="WallDefense" type="StaticBody2D" groups=["enemy"]]
+
+[node name="Sprite" parent="." instance=ExtResource("1_ktudg")]
+position = Vector2(3, 6)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(2.5, 0.5)
+shape = SubResource("RectangleShape2D_px3q7")
+
+[node name="AttackComponent" parent="." instance=ExtResource("2_ub6gv")]
+basic_bullet_damage = 5
+basic = ExtResource("3_qctil")
+
+[node name="Health" parent="." instance=ExtResource("4_d17gr")]
+hp = 30.0
+max_hp = 30.0
+
+[node name="TurretEnemy" type="Node" parent="."]
+script = ExtResource("5_by4jx")
+
+[node name="PlayerDetection" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetection"]
+shape = SubResource("CircleShape2D_2reqr")
+
+[connection signal="body_entered" from="PlayerDetection" to="TurretEnemy" method="_on_player_detection_body_entered"]
