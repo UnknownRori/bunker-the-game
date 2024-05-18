@@ -1,10 +1,17 @@
-[gd_scene load_steps=8 format=3 uid="uid://ck5nk1gr3wjed"]
+[gd_scene load_steps=10 format=3 uid="uid://ck5nk1gr3wjed"]
 
 [ext_resource type="PackedScene" uid="uid://csw7fbg0tf7eu" path="res://scene/Component/sprite.tscn" id="1_ktudg"]
+[ext_resource type="Shader" path="res://resources/shaders/FlashDamage.gdshader" id="1_x7c5s"]
 [ext_resource type="PackedScene" uid="uid://ctgqlbgcwqhfr" path="res://scene/Component/AttackComponent.tscn" id="2_ub6gv"]
 [ext_resource type="PackedScene" uid="uid://dnqrn0ge4xuq4" path="res://scene/Enemy/enemy_bullet.tscn" id="3_qctil"]
 [ext_resource type="PackedScene" uid="uid://g40wu5scfhpc" path="res://scene/Component/Health.tscn" id="4_d17gr"]
 [ext_resource type="Script" path="res://src/TurretEnemy.gd" id="5_by4jx"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_x1huw"]
+resource_local_to_scene = true
+shader = ExtResource("1_x7c5s")
+shader_parameter/flash_color = Color(1, 1, 1, 1)
+shader_parameter/flash_modifier = false
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_px3q7"]
 size = Vector2(9, 5)
@@ -15,6 +22,7 @@ radius = 180.55
 [node name="WallDefense" type="StaticBody2D" groups=["enemy"]]
 
 [node name="Sprite" parent="." instance=ExtResource("1_ktudg")]
+material = SubResource("ShaderMaterial_x1huw")
 position = Vector2(3, 6)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

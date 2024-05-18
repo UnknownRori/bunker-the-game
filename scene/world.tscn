@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://b6ykw5m575uhe"]
+[gd_scene load_steps=19 format=3 uid="uid://b6ykw5m575uhe"]
 
 [ext_resource type="Script" path="res://src/world.gd" id="1_ruf3k"]
 [ext_resource type="PackedScene" uid="uid://c5beviu8n8ad0" path="res://scene/Player/player.tscn" id="1_y1asa"]
@@ -9,7 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://bi7meh3gvw2u1" path="res://scene/Environment/moving_platform.tscn" id="6_ncfk1"]
 [ext_resource type="PackedScene" uid="uid://b335a2su6du1" path="res://scene/Utils/hud.tscn" id="7_uua3g"]
 [ext_resource type="PackedScene" uid="uid://ufehmgdh3xly" path="res://scene/Pickup/HealthPickup.tscn" id="9_8o6q6"]
-[ext_resource type="Script" path="res://src/Environment/DeathZone.gd" id="10_373a2"]
+[ext_resource type="PackedScene" uid="uid://dk3x8rtq2h4qc" path="res://scene/Environment/DeathZone.tscn" id="10_c3vlk"]
 [ext_resource type="PackedScene" uid="uid://bku2q6rqjug3g" path="res://scene/Environment/Elevator.tscn" id="11_cbbfk"]
 [ext_resource type="PackedScene" uid="uid://bh52j8kscnprc" path="res://scene/Boss.tscn" id="12_a82o8"]
 [ext_resource type="PackedScene" uid="uid://ck5nk1gr3wjed" path="res://scene/Enemy/WallDefense.tscn" id="13_ykx6e"]
@@ -811,8 +811,11 @@ custom_data_layer_0/name = "spike"
 custom_data_layer_0/type = 1
 sources/0 = SubResource("TileSetAtlasSource_rs26q")
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_6tikx"]
-size = Vector2(1844.5, 726)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xdi0k"]
+size = Vector2(1253, 791)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kgybb"]
+size = Vector2(1350, 4018)
 
 [node name="World" type="Node2D"]
 script = ExtResource("1_ruf3k")
@@ -882,12 +885,11 @@ position = Vector2(1718, 162)
 [node name="HealthPickup" parent="." instance=ExtResource("9_8o6q6")]
 position = Vector2(1737, 54)
 
-[node name="Middle DeathZone" type="Area2D" parent="."]
-script = ExtResource("10_373a2")
+[node name="Middle DeathZone" parent="." instance=ExtResource("10_c3vlk")]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Middle DeathZone"]
-position = Vector2(764.25, 723)
-shape = SubResource("RectangleShape2D_6tikx")
+[node name="CollisionShape2D" parent="Middle DeathZone" index="0"]
+position = Vector2(741.5, 680.5)
+shape = SubResource("RectangleShape2D_xdi0k")
 
 [node name="MovingPlatform3" parent="." instance=ExtResource("6_ncfk1")]
 position = Vector2(906, 1205)
@@ -925,5 +927,15 @@ position = Vector2(1531, 16)
 [node name="WallDefense2" parent="." instance=ExtResource("13_ykx6e")]
 position = Vector2(63, 61)
 
-[connection signal="body_entered" from="Middle DeathZone" to="." method="_on_area_2d_body_entered"]
-[connection signal="body_exited" from="Middle DeathZone" to="." method="_on_area_2d_body_exited"]
+[node name="HealthPickup3" parent="." instance=ExtResource("9_8o6q6")]
+position = Vector2(616, 1120)
+
+[node name="Middle DeathZone2" parent="." instance=ExtResource("10_c3vlk")]
+position = Vector2(744, 2248)
+
+[node name="CollisionShape2D" parent="Middle DeathZone2" index="0"]
+position = Vector2(41, 1014)
+shape = SubResource("RectangleShape2D_kgybb")
+
+[editable path="Middle DeathZone"]
+[editable path="Middle DeathZone2"]

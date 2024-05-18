@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://dk3x8rtq2h4qc"]
+
+[ext_resource type="Script" path="res://src/Environment/DeathZone.gd" id="1_0yxh1"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6tikx"]
+size = Vector2(1844.5, 809)
+
+[node name="Middle DeathZone" type="Area2D"]
+script = ExtResource("1_0yxh1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_6tikx")
+
+[node name="Timer" type="Timer" parent="."]
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
