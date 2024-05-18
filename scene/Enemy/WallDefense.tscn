@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://ck5nk1gr3wjed"]
+[gd_scene load_steps=11 format=3 uid="uid://ck5nk1gr3wjed"]
 
 [ext_resource type="PackedScene" uid="uid://csw7fbg0tf7eu" path="res://scene/Component/sprite.tscn" id="1_ktudg"]
 [ext_resource type="Shader" path="res://resources/shaders/FlashDamage.gdshader" id="1_x7c5s"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://dnqrn0ge4xuq4" path="res://scene/Enemy/enemy_bullet.tscn" id="3_qctil"]
 [ext_resource type="PackedScene" uid="uid://g40wu5scfhpc" path="res://scene/Component/Health.tscn" id="4_d17gr"]
 [ext_resource type="Script" path="res://src/TurretEnemy.gd" id="5_by4jx"]
+[ext_resource type="PackedScene" uid="uid://2q685qh536nx" path="res://scene/Component/Inventory.tscn" id="7_k222v"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_x1huw"]
 resource_local_to_scene = true
@@ -33,7 +34,6 @@ shape = SubResource("RectangleShape2D_px3q7")
 basic_firerate = 2.0
 basic_bullet_speed = 100
 basic_bullet_damage = 5
-basic = ExtResource("3_qctil")
 
 [node name="Health" parent="." instance=ExtResource("4_d17gr")]
 hp = 30.0
@@ -41,6 +41,11 @@ max_hp = 30.0
 
 [node name="TurretEnemy" type="Node" parent="."]
 script = ExtResource("5_by4jx")
+
+[node name="Inventory" parent="." instance=ExtResource("7_k222v")]
+basic = ExtResource("3_qctil")
+special = null
+special_has = 0
 
 [node name="PlayerDetection" type="Area2D" parent="."]
 

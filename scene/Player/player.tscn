@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://c5beviu8n8ad0"]
+[gd_scene load_steps=15 format=3 uid="uid://c5beviu8n8ad0"]
 
 [ext_resource type="Texture2D" uid="uid://inusy26ncr0o" path="res://assets/sprite.png" id="1_kje6p"]
 [ext_resource type="Script" path="res://src/player.gd" id="1_m17h1"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://ctgqlbgcwqhfr" path="res://scene/Component/AttackComponent.tscn" id="3_psbq3"]
 [ext_resource type="Script" path="res://src/Composable/Controllable.gd" id="4_e3tjp"]
 [ext_resource type="PackedScene" uid="uid://g40wu5scfhpc" path="res://scene/Component/Health.tscn" id="5_5toat"]
+[ext_resource type="PackedScene" uid="uid://2q685qh536nx" path="res://scene/Component/Inventory.tscn" id="10_vik5h"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_i4j5x"]
 resource_local_to_scene = true
@@ -61,3 +62,5 @@ max_jumps = 1
 
 [node name="Controllable" type="Node" parent="."]
 script = ExtResource("4_e3tjp")
+
+[node name="Inventory" parent="." instance=ExtResource("10_vik5h")]

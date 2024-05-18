@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://dtwrkbq1topst"]
+[gd_scene load_steps=15 format=3 uid="uid://dtwrkbq1topst"]
 
 [ext_resource type="PackedScene" uid="uid://csw7fbg0tf7eu" path="res://scene/Component/sprite.tscn" id="1_wh5cv"]
 [ext_resource type="Texture2D" uid="uid://inusy26ncr0o" path="res://assets/sprite.png" id="1_ykxtj"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://g40wu5scfhpc" path="res://scene/Component/Health.tscn" id="4_awgl0"]
 [ext_resource type="PackedScene" uid="uid://dnqrn0ge4xuq4" path="res://scene/Enemy/enemy_bullet.tscn" id="4_p5cma"]
 [ext_resource type="PackedScene" uid="uid://ilp7g2xf7oga" path="res://scene/Enemy/generic_ai.tscn" id="5_v1raw"]
+[ext_resource type="PackedScene" uid="uid://2q685qh536nx" path="res://scene/Component/Inventory.tscn" id="9_sakck"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_xewhs"]
 resource_local_to_scene = true
@@ -48,7 +49,6 @@ shape = SubResource("CapsuleShape2D_hyijo")
 
 [node name="AttackComponent" parent="." instance=ExtResource("2_g6tyi")]
 basic_bullet_damage = 5
-basic = ExtResource("4_p5cma")
 
 [node name="Movement" type="Node" parent="."]
 script = ExtResource("3_sf62v")
@@ -58,6 +58,11 @@ max_jumps = 1
 [node name="Health" parent="." instance=ExtResource("4_awgl0")]
 hp = 30.0
 max_hp = 30.0
+
+[node name="Inventory" parent="." instance=ExtResource("9_sakck")]
+basic = ExtResource("4_p5cma")
+special = null
+special_has = 0
 
 [node name="GenericAI" parent="." instance=ExtResource("5_v1raw")]
 

@@ -4,6 +4,7 @@ extends Node
 @onready var controllable: Node = get_parent().get_node("Controllable")
 @onready var movement: Node = get_parent().get_node("Movement")
 @onready var player_camera: Camera2D = get_parent().get_node("PlayerCamera")
+@onready var inventory: Node = get_parent().get_node("Inventory")
 @onready var sound_chip: Node = SoundChip
 @onready var basic_timer: Timer = $BasicTimer
 @onready var special_timer: Timer = $SpecialTimer
@@ -27,8 +28,6 @@ var can_fire_special = true
 
 @export var shoot_basic = false
 @export var shoot_special = false
-@export var basic = preload("res://scene/Player/player_bullet.tscn")
-@export var special = preload("res://scene/Player/player_grenade.tscn")
 
 func _ready():
 	basic_timer.connect("timeout", set_fire_basic)
@@ -70,6 +69,12 @@ func attack_basic(is_up):
 		return
 	if !shoot:
 		return
+	if inventory.basic_has == 0:
+		return
+	if inventory.basic_has == 0:
+		return
+	else:
+		inventory.basic_has -= 1
 
 	can_fire_basic = false
 	basic_timer.start()
@@ -77,7 +82,7 @@ func attack_basic(is_up):
 	if (player_camera):
 		player_camera.add_trauma(0.1)
 	
-	var bullet = basic.instantiate()
+	var bullet = inventory.basic.instantiate()
 	bullet.position = parent.position
 	bullet.damage = basic_bullet_damage
 	var velocity = Vector2.ZERO
@@ -108,6 +113,10 @@ func attack_special():
 		return
 	if !shoot:
 		return
+	if inventory.special_has == 0:
+		return
+	else:
+		inventory.special_has -= 1
 
 	can_fire_special = false
 	special_timer.start()
@@ -115,7 +124,7 @@ func attack_special():
 	if (player_camera):
 		player_camera.add_trauma(0.1)
 	
-	var special = special.instantiate()
+	var special = inventory.special.instantiate()
 	special.position = parent.position
 	special.damage = special_bullet_damage
 	var velocity = Vector2(movement.direction_face * special_bullet_speed, 0.)

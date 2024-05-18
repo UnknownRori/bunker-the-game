@@ -1,0 +1,156 @@
+[gd_scene load_steps=20 format=3 uid="uid://bh52j8kscnprc"]
+
+[ext_resource type="Texture2D" uid="uid://inusy26ncr0o" path="res://assets/sprite.png" id="1_8sf23"]
+[ext_resource type="PackedScene" uid="uid://g40wu5scfhpc" path="res://scene/Component/Health.tscn" id="1_he5rk"]
+[ext_resource type="Script" path="res://src/Boss/Boss1.gd" id="1_qd2pc"]
+[ext_resource type="PackedScene" uid="uid://csw7fbg0tf7eu" path="res://scene/Component/sprite.tscn" id="2_sadoc"]
+[ext_resource type="Shader" path="res://resources/shaders/FlashDamage.gdshader" id="3_p3lbv"]
+[ext_resource type="PackedScene" uid="uid://2q685qh536nx" path="res://scene/Component/Inventory.tscn" id="5_ok081"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8tqcg"]
+size = Vector2(28, 22)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_80evx"]
+resource_local_to_scene = true
+shader = ExtResource("3_p3lbv")
+shader_parameter/flash_color = Color(1, 1, 1, 1)
+shader_parameter/flash_modifier = false
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fcx4k"]
+atlas = ExtResource("1_8sf23")
+region = Rect2(0, 112, 16, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_u4pyj"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fcx4k")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_x1f5f"]
+resource_local_to_scene = true
+shader = ExtResource("3_p3lbv")
+shader_parameter/flash_color = Color(1, 1, 1, 1)
+shader_parameter/flash_modifier = false
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vkddw"]
+atlas = ExtResource("1_8sf23")
+region = Rect2(32, 112, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ftd0i"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vkddw")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_sm7da"]
+resource_local_to_scene = true
+shader = ExtResource("3_p3lbv")
+shader_parameter/flash_color = Color(1, 1, 1, 1)
+shader_parameter/flash_modifier = false
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_a5uop"]
+resource_local_to_scene = true
+shader = ExtResource("3_p3lbv")
+shader_parameter/flash_color = Color(1, 1, 1, 1)
+shader_parameter/flash_modifier = false
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_sh28h"]
+resource_local_to_scene = true
+shader = ExtResource("3_p3lbv")
+shader_parameter/flash_color = Color(1, 1, 1, 1)
+shader_parameter/flash_modifier = false
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v4ums"]
+atlas = ExtResource("1_8sf23")
+region = Rect2(64, 112, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_vinge"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v4ums")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5xjcn"]
+size = Vector2(30, 19)
+
+[node name="Boss1" type="Node2D" groups=["enemy_boss"]]
+script = ExtResource("1_qd2pc")
+
+[node name="Left" type="StaticBody2D" parent="." groups=["enemy"]]
+
+[node name="Health" parent="Left" instance=ExtResource("1_he5rk")]
+
+[node name="Inventory" parent="Left" instance=ExtResource("5_ok081")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Left"]
+position = Vector2(-50, -5)
+shape = SubResource("RectangleShape2D_8tqcg")
+
+[node name="LeftGunPort" parent="Left" instance=ExtResource("2_sadoc")]
+material = SubResource("ShaderMaterial_80evx")
+position = Vector2(-50, 2)
+sprite_frames = SubResource("SpriteFrames_u4pyj")
+centered = false
+offset = Vector2(-8, 0)
+
+[node name="Sprite" parent="Left" instance=ExtResource("2_sadoc")]
+material = SubResource("ShaderMaterial_x1f5f")
+position = Vector2(-50, 0)
+sprite_frames = SubResource("SpriteFrames_ftd0i")
+animation = &"default"
+
+[node name="Right" type="StaticBody2D" parent="." groups=["enemy"]]
+position = Vector2(100, 0)
+
+[node name="Health" parent="Right" instance=ExtResource("1_he5rk")]
+
+[node name="Inventory" parent="Right" instance=ExtResource("5_ok081")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Right"]
+position = Vector2(-50, -5)
+shape = SubResource("RectangleShape2D_8tqcg")
+
+[node name="LeftGunPort" parent="Right" instance=ExtResource("2_sadoc")]
+material = SubResource("ShaderMaterial_sm7da")
+position = Vector2(-50, 2)
+sprite_frames = SubResource("SpriteFrames_u4pyj")
+centered = false
+offset = Vector2(-8, 0)
+
+[node name="Sprite" parent="Right" instance=ExtResource("2_sadoc")]
+material = SubResource("ShaderMaterial_a5uop")
+position = Vector2(-50, 0)
+sprite_frames = SubResource("SpriteFrames_ftd0i")
+animation = &"default"
+
+[node name="Core" type="StaticBody2D" parent="." groups=["enemy"]]
+
+[node name="Sprite" parent="Core" instance=ExtResource("2_sadoc")]
+material = SubResource("ShaderMaterial_sh28h")
+sprite_frames = SubResource("SpriteFrames_vinge")
+animation = &"default"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Core"]
+position = Vector2(0, -6.5)
+shape = SubResource("RectangleShape2D_5xjcn")
+
+[node name="Health" parent="Core" instance=ExtResource("1_he5rk")]
+
+[node name="Inventory" parent="Core" instance=ExtResource("5_ok081")]
+
+[connection signal="death" from="Core/Health" to="." method="_on_core_death"]

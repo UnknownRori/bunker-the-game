@@ -9,6 +9,9 @@ extends Node
 @onready var sprite: AnimatedSprite2D = get_parent().get_node("Sprite")
 @onready var spike_timer: Timer = get_node("SpikeTimer")
 
+signal damage_signal
+signal death
+
 var damage_sprite_timer = 1
 var spike_damage = true
 
@@ -20,7 +23,13 @@ func is_max():
 
 func damage(value) -> bool:
 	hp -= value
+	
 	sprite.play_damage()
+	if is_dead():
+		emit_signal("death")
+	else:
+		emit_signal("damage_signal")
+
 	return is_dead()
 
 func damage_spike(value) -> bool:
