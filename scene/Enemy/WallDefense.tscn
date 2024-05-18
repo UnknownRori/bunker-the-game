@@ -32,6 +32,7 @@ shape = SubResource("RectangleShape2D_px3q7")
 [node name="AttackComponent" parent="." instance=ExtResource("2_ub6gv")]
 basic_bullet_damage = 5
 basic = ExtResource("3_qctil")
+special = null
 
 [node name="Health" parent="." instance=ExtResource("4_d17gr")]
 hp = 30.0
@@ -41,10 +42,9 @@ max_hp = 30.0
 script = ExtResource("5_by4jx")
 
 [node name="PlayerDetection" type="Area2D" parent="."]
-collision_layer = 2
-collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetection"]
 shape = SubResource("CircleShape2D_2reqr")
 
 [connection signal="body_entered" from="PlayerDetection" to="TurretEnemy" method="_on_player_detection_body_entered"]
+[connection signal="body_exited" from="PlayerDetection" to="TurretEnemy" method="_on_player_detection_body_exited"]

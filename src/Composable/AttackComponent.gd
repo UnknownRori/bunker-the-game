@@ -43,6 +43,9 @@ func _process(delta):
 		if controllable.SWAP:
 			if controllable.MOVE_DIR.y > 0:
 				is_up = true
+				direction.y = controllable.MOVE_DIR.y
+	if movement:
+		direction.x = movement.direction_face
 	
 	attack_basic(is_up)
 	attack_special()
@@ -78,10 +81,12 @@ func attack_basic(is_up):
 	var velocity = Vector2.ZERO
 
 	if is_up:
-		velocity = Vector2(movement.direction_face, -basic_bullet_speed)
+		velocity = direction * Vector2(0, -basic_bullet_speed)
 	else:
-		velocity = Vector2(movement.direction_face * basic_bullet_speed, 0.)
-	bullet.launch(Vector2(velocity.x  + parent.velocity.x , velocity.y), parent.position)
+		velocity = direction * Vector2(basic_bullet_speed, 0.)
+	if "velocity" in parent:
+		velocity += parent.velocity
+	bullet.launch(velocity, parent.position)
 	root.add_child(bullet)
 	sound_chip.play_shoot()
 	shoot_basic = false

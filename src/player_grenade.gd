@@ -4,6 +4,7 @@ extends Node2D
 @export var damage: float = 10
 @export var gravity: float = 450
 
+@onready var camera = get_node("/root/World/Player/PlayerCamera")
 var explosion = preload("res://scene/Environment/ExplodingSprite.tscn")
 
 func launch(vel: Vector2, pos: Vector2):
@@ -30,6 +31,7 @@ func _on_collider_body_entered(body):
 		var root = get_node("/root/World")
 		root.add_child(explosion)
 		SoundChip.play_explosion()
+		camera.add_trauma(0.2)
 		var overlap = $ExplosionRadius.get_overlapping_bodies()
 		for i in overlap:
 			if (i.is_in_group("enemy")):
