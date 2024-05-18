@@ -21,6 +21,7 @@ extends Node
 @export var special_dispersion = 0.2
 
 @export var direction = Vector2.ZERO
+@export var raw_direction = false
 var can_fire_basic = true
 var can_fire_special = true
 
@@ -49,6 +50,7 @@ func _process(delta):
 	
 	attack_basic(is_up)
 	attack_special()
+	is_up = false
 	pass
 
 func set_fire_basic():
@@ -80,12 +82,15 @@ func attack_basic(is_up):
 	bullet.damage = basic_bullet_damage
 	var velocity = Vector2.ZERO
 
-	if is_up:
-		velocity = direction * Vector2(0, -basic_bullet_speed)
+	if raw_direction:
+		velocity = direction * basic_bullet_speed
 	else:
-		velocity = direction * Vector2(basic_bullet_speed, 0.)
+		if is_up:
+			velocity = direction * Vector2(0, -basic_bullet_speed)
+		else:
+			velocity = direction * Vector2(basic_bullet_speed, 0.)
 	if "velocity" in parent:
-		velocity += parent.velocity
+		velocity.x += parent.velocity.x
 	bullet.launch(velocity, parent.position)
 	root.add_child(bullet)
 	sound_chip.play_shoot()

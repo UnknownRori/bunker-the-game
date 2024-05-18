@@ -29,8 +29,9 @@ func shoot_player():
 	if !track_ready:
 		return
 		
-	attack.shoot_basic = true
 	attack.direction = dir
+	attack.raw_direction = true
+	attack.shoot_basic = true
 
 
 func _on_player_detection_body_entered(body):

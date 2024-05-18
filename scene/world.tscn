@@ -916,10 +916,10 @@ offset = Vector2(0, 895)
 position = Vector2(3242, 1114)
 
 [node name="WallDefense" parent="." instance=ExtResource("13_ykx6e")]
-position = Vector2(1531, 16)
+position = Vector2(1295, 16)
 
 [node name="WallDefense2" parent="." instance=ExtResource("13_ykx6e")]
-position = Vector2(63, 61)
+position = Vector2(1017, 15)
 
 [node name="HealthPickup3" parent="." instance=ExtResource("9_8o6q6")]
 position = Vector2(616, 1120)

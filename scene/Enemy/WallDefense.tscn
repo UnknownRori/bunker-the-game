@@ -17,7 +17,7 @@ shader_parameter/flash_modifier = false
 size = Vector2(9, 5)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_2reqr"]
-radius = 180.55
+radius = 225.056
 
 [node name="WallDefense" type="StaticBody2D" groups=["enemy"]]
 
@@ -30,9 +30,10 @@ position = Vector2(2.5, 0.5)
 shape = SubResource("RectangleShape2D_px3q7")
 
 [node name="AttackComponent" parent="." instance=ExtResource("2_ub6gv")]
+basic_firerate = 2.0
+basic_bullet_speed = 100
 basic_bullet_damage = 5
 basic = ExtResource("3_qctil")
-special = null
 
 [node name="Health" parent="." instance=ExtResource("4_d17gr")]
 hp = 30.0
