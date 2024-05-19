@@ -11,6 +11,7 @@ config_version=5
 [application]
 
 config/name="Bunker the Game"
+config/description="A simple fast paced action platformer created using GDScript for Lospec 2 Game Jam it's currently targeted for LS16 Home Console (Lospec 2 Console) with 256x224 Resolution, strict color pallete, a limited sound channel, control and more."
 run/main_scene="res://scene/world.tscn"
 config/features=PackedStringArray("4.2", "GL Compatibility")
 run/max_fps=60
@@ -388,6 +389,7 @@ right={
 textures/canvas_textures/default_texture_filter=0
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
+anti_aliasing/screen_space_roughness_limiter/enabled=false
 2d/snap/snap_2d_transforms_to_pixel=true
 2d/snap/snap_2d_vertices_to_pixel=true
 2d/size/mode=0
