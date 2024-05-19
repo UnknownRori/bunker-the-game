@@ -7,25 +7,30 @@ extends Node
 @export var SELECT   = false
 @export var SWAP	 = false
 
+@export var accept_input = true
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	var input_dir = Vector2.ZERO
-	input_dir.x = Input.get_axis("left", "right")
 	
-	if Input.is_action_just_pressed("Select"):
-		SWAP = !SWAP
+	if accept_input:
+		input_dir.x = Input.get_axis("left", "right")
 	
-	if SWAP:
-		if Input.is_action_pressed("up", 1.):
-			input_dir.y = 1
-	else:
-		if Input.is_action_just_pressed("up", 1.):
-			input_dir.y = 1
+		if Input.is_action_just_pressed("Select"):
+			SWAP = !SWAP
 		
-	ACTION_A =Input.is_action_just_pressed("A", 1.)
-	ACTION_B =Input.is_action_just_pressed("B", 1.)
-	START =Input.is_action_just_pressed("Start", 1.)
-	SELECT =Input.is_action_just_pressed("Select", 1.)
+		if SWAP:
+			if Input.is_action_pressed("up", 1.):
+				input_dir.y = 1
+		else:
+			if Input.is_action_just_pressed("up", 1.):
+				input_dir.y = 1
+			
+		ACTION_A =Input.is_action_just_pressed("A", 1.)
+		ACTION_B =Input.is_action_just_pressed("B", 1.)
+		START =Input.is_action_just_pressed("Start", 1.)
+		SELECT =Input.is_action_just_pressed("Select", 1.)
+		
+		input_dir = input_dir.normalized()
 	
-	input_dir = input_dir.normalized()
 	MOVE_DIR = input_dir

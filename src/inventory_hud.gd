@@ -11,6 +11,9 @@ var infinity = "∞"
 
 func update_ui():
 	var inventory = parent.inventory
+	
+	if parent:
+		return
 	if inventory:
 		if inventory.basic_has < 0:
 			slot1_count.text = infinity

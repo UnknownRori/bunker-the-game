@@ -1,74 +1,18 @@
-[gd_scene load_steps=24 format=3 uid="uid://bh52j8kscnprc"]
+[gd_scene load_steps=29 format=3 uid="uid://bh52j8kscnprc"]
 
 [ext_resource type="Texture2D" uid="uid://inusy26ncr0o" path="res://assets/sprite.png" id="1_8sf23"]
 [ext_resource type="PackedScene" uid="uid://g40wu5scfhpc" path="res://scene/Component/Health.tscn" id="1_he5rk"]
 [ext_resource type="Script" path="res://src/Boss/Boss1.gd" id="1_qd2pc"]
 [ext_resource type="PackedScene" uid="uid://csw7fbg0tf7eu" path="res://scene/Component/sprite.tscn" id="2_sadoc"]
 [ext_resource type="Shader" path="res://resources/shaders/FlashDamage.gdshader" id="3_p3lbv"]
-[ext_resource type="PackedScene" uid="uid://dnqrn0ge4xuq4" path="res://scene/Enemy/enemy_bullet.tscn" id="4_arbxm"]
-[ext_resource type="PackedScene" uid="uid://ctgqlbgcwqhfr" path="res://scene/Component/AttackComponent.tscn" id="4_c5tnt"]
-[ext_resource type="Script" path="res://src/TurretEnemy.gd" id="5_d1y4j"]
 [ext_resource type="PackedScene" uid="uid://2q685qh536nx" path="res://scene/Component/Inventory.tscn" id="5_ok081"]
+[ext_resource type="PackedScene" uid="uid://ctgqlbgcwqhfr" path="res://scene/Component/AttackComponent.tscn" id="7_m4s3v"]
+[ext_resource type="Script" path="res://src/Boss/Boss1BaseTurret.gd" id="7_r1qkv"]
+[ext_resource type="PackedScene" uid="uid://dnqrn0ge4xuq4" path="res://scene/Enemy/enemy_bullet.tscn" id="7_xfg76"]
+[ext_resource type="Script" path="res://src/TurretEnemy.gd" id="8_s8ems"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_oaxtv"]
 size = Vector2(291, 197)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_8tqcg"]
-size = Vector2(28, 22)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_80evx"]
-resource_local_to_scene = true
-shader = ExtResource("3_p3lbv")
-shader_parameter/flash_color = Color(1, 1, 1, 1)
-shader_parameter/flash_modifier = false
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_fcx4k"]
-atlas = ExtResource("1_8sf23")
-region = Rect2(0, 112, 16, 32)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_u4pyj"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_fcx4k")
-}],
-"loop": true,
-"name": &"idle",
-"speed": 5.0
-}]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_x1f5f"]
-resource_local_to_scene = true
-shader = ExtResource("3_p3lbv")
-shader_parameter/flash_color = Color(1, 1, 1, 1)
-shader_parameter/flash_modifier = false
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_vkddw"]
-atlas = ExtResource("1_8sf23")
-region = Rect2(32, 112, 32, 32)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_ftd0i"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_vkddw")
-}],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_sm7da"]
-resource_local_to_scene = true
-shader = ExtResource("3_p3lbv")
-shader_parameter/flash_color = Color(1, 1, 1, 1)
-shader_parameter/flash_modifier = false
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_a5uop"]
-resource_local_to_scene = true
-shader = ExtResource("3_p3lbv")
-shader_parameter/flash_color = Color(1, 1, 1, 1)
-shader_parameter/flash_modifier = false
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_sh28h"]
 resource_local_to_scene = true
@@ -76,15 +20,15 @@ shader = ExtResource("3_p3lbv")
 shader_parameter/flash_color = Color(1, 1, 1, 1)
 shader_parameter/flash_modifier = false
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_v4ums"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_fgh2d"]
 atlas = ExtResource("1_8sf23")
-region = Rect2(64, 112, 32, 32)
+region = Rect2(32, 112, 32, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_vinge"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_v4ums")
+"texture": SubResource("AtlasTexture_fgh2d")
 }],
 "loop": true,
 "name": &"default",
@@ -92,10 +36,85 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5xjcn"]
-size = Vector2(30, 19)
+size = Vector2(30, 23)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_utwua"]
+resource_local_to_scene = true
+shader = ExtResource("3_p3lbv")
+shader_parameter/flash_color = Color(1, 1, 1, 1)
+shader_parameter/flash_modifier = false
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nlikj"]
+atlas = ExtResource("1_8sf23")
+region = Rect2(0, 112, 32, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_dnt3r"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nlikj")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_t2ffp"]
+size = Vector2(22, 16)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_f4gy7"]
+resource_local_to_scene = true
+shader = ExtResource("3_p3lbv")
+shader_parameter/flash_color = Color(1, 1, 1, 1)
+shader_parameter/flash_modifier = false
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_18dkx"]
+atlas = ExtResource("1_8sf23")
+region = Rect2(0, 128, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_uk4hc"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_18dkx")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_10ru2"]
+resource_local_to_scene = true
+shader = ExtResource("3_p3lbv")
+shader_parameter/flash_color = Color(1, 1, 1, 1)
+shader_parameter/flash_modifier = false
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b1deq"]
+atlas = ExtResource("1_8sf23")
+region = Rect2(0, 144, 32, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_v0tyw"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b1deq")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ks4fh"]
+size = Vector2(13, 12)
+
+[sub_resource type="ImageTexture" id="ImageTexture_pv7ey"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i1gtt"]
+atlas = SubResource("ImageTexture_pv7ey")
 
 [node name="Boss1" type="Node2D" groups=["enemy_boss"]]
 script = ExtResource("1_qd2pc")
+metadata/_edit_horizontal_guides_ = [-16.0]
 
 [node name="PlayerDetection" type="Area2D" parent="."]
 
@@ -103,76 +122,7 @@ script = ExtResource("1_qd2pc")
 position = Vector2(5, 45.5)
 shape = SubResource("RectangleShape2D_oaxtv")
 
-[node name="Left" type="StaticBody2D" parent="." groups=["enemy"]]
-
-[node name="Health" parent="Left" instance=ExtResource("1_he5rk")]
-
-[node name="Inventory" parent="Left" instance=ExtResource("5_ok081")]
-basic = ExtResource("4_arbxm")
-special = null
-
-[node name="AttackComponent" parent="Left" instance=ExtResource("4_c5tnt")]
-raw_direction = true
-
-[node name="TurretEnemy" type="Node" parent="Left"]
-script = ExtResource("5_d1y4j")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Left"]
-position = Vector2(-50, -5)
-shape = SubResource("RectangleShape2D_8tqcg")
-
-[node name="Gunport" parent="Left" instance=ExtResource("2_sadoc")]
-material = SubResource("ShaderMaterial_80evx")
-position = Vector2(-50, 2)
-sprite_frames = SubResource("SpriteFrames_u4pyj")
-centered = false
-offset = Vector2(-8, 0)
-
-[node name="Sprite" parent="Left" instance=ExtResource("2_sadoc")]
-material = SubResource("ShaderMaterial_x1f5f")
-position = Vector2(-50, 0)
-sprite_frames = SubResource("SpriteFrames_ftd0i")
-animation = &"default"
-
-[node name="Barrel" type="Marker2D" parent="Left"]
-position = Vector2(-50, 27)
-
-[node name="Right" type="StaticBody2D" parent="." groups=["enemy"]]
-position = Vector2(100, 0)
-
-[node name="Health" parent="Right" instance=ExtResource("1_he5rk")]
-
-[node name="Inventory" parent="Right" instance=ExtResource("5_ok081")]
-basic = ExtResource("4_arbxm")
-special = null
-
-[node name="AttackComponent" parent="Right" instance=ExtResource("4_c5tnt")]
-raw_direction = true
-
-[node name="TurretEnemy" type="Node" parent="Right"]
-script = ExtResource("5_d1y4j")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Right"]
-position = Vector2(-50, -5)
-shape = SubResource("RectangleShape2D_8tqcg")
-
-[node name="Gunport" parent="Right" instance=ExtResource("2_sadoc")]
-material = SubResource("ShaderMaterial_sm7da")
-position = Vector2(-50, 2)
-sprite_frames = SubResource("SpriteFrames_u4pyj")
-centered = false
-offset = Vector2(-8, 0)
-
-[node name="Sprite" parent="Right" instance=ExtResource("2_sadoc")]
-material = SubResource("ShaderMaterial_a5uop")
-position = Vector2(-50, 0)
-sprite_frames = SubResource("SpriteFrames_ftd0i")
-animation = &"default"
-
-[node name="Barrel" type="Marker2D" parent="Right"]
-position = Vector2(-50, 27)
-
-[node name="Core" type="StaticBody2D" parent="." groups=["enemy"]]
+[node name="Core" type="StaticBody2D" parent="."]
 
 [node name="Sprite" parent="Core" instance=ExtResource("2_sadoc")]
 material = SubResource("ShaderMaterial_sh28h")
@@ -180,14 +130,219 @@ sprite_frames = SubResource("SpriteFrames_vinge")
 animation = &"default"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Core"]
-position = Vector2(0, -6.5)
+position = Vector2(0, -4.5)
 shape = SubResource("RectangleShape2D_5xjcn")
 
 [node name="Health" parent="Core" instance=ExtResource("1_he5rk")]
 
 [node name="Inventory" parent="Core" instance=ExtResource("5_ok081")]
 
-[connection signal="body_entered" from="PlayerDetection" to="Right/TurretEnemy" method="_on_player_detection_body_entered"]
-[connection signal="body_entered" from="PlayerDetection" to="Left/TurretEnemy" method="_on_player_detection_body_entered"]
-[connection signal="body_exited" from="PlayerDetection" to="Right/TurretEnemy" method="_on_player_detection_body_exited"]
+[node name="LeftBaseTurret" type="StaticBody2D" parent="." groups=["enemy"]]
+position = Vector2(-41, -8)
+script = ExtResource("7_r1qkv")
+
+[node name="Health" parent="LeftBaseTurret" instance=ExtResource("1_he5rk")]
+
+[node name="Sprite" parent="LeftBaseTurret" instance=ExtResource("2_sadoc")]
+material = SubResource("ShaderMaterial_utwua")
+sprite_frames = SubResource("SpriteFrames_dnt3r")
+animation = &"default"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LeftBaseTurret"]
+shape = SubResource("RectangleShape2D_t2ffp")
+
+[node name="Left" parent="LeftBaseTurret" instance=ExtResource("2_sadoc")]
+material = SubResource("ShaderMaterial_f4gy7")
+position = Vector2(-8, 16)
+sprite_frames = SubResource("SpriteFrames_uk4hc")
+animation = &"default"
+
+[node name="Right" parent="LeftBaseTurret" instance=ExtResource("2_sadoc")]
+material = SubResource("ShaderMaterial_f4gy7")
+position = Vector2(8, 16)
+scale = Vector2(-1, 1)
+sprite_frames = SubResource("SpriteFrames_uk4hc")
+animation = &"default"
+
+[node name="LeftTurret" type="StaticBody2D" parent="LeftBaseTurret" groups=["enemy"]]
+position = Vector2(-8, 13)
+
+[node name="Health" parent="LeftBaseTurret/LeftTurret" instance=ExtResource("1_he5rk")]
+
+[node name="Inventory" parent="LeftBaseTurret/LeftTurret" instance=ExtResource("5_ok081")]
+basic = ExtResource("7_xfg76")
+special = null
+
+[node name="AttackComponent" parent="LeftBaseTurret/LeftTurret" instance=ExtResource("7_m4s3v")]
+basic_firerate = 2.0
+basic_bullet_damage = 5
+raw_direction = true
+
+[node name="TurretComponent" type="Node" parent="LeftBaseTurret/LeftTurret"]
+script = ExtResource("8_s8ems")
+shoot = false
+
+[node name="Barrel" type="Marker2D" parent="LeftBaseTurret/LeftTurret"]
+position = Vector2(29, 1)
+
+[node name="Sprite" parent="LeftBaseTurret/LeftTurret" instance=ExtResource("2_sadoc")]
+material = SubResource("ShaderMaterial_10ru2")
+position = Vector2(-0.111292, 0.813667)
+sprite_frames = SubResource("SpriteFrames_v0tyw")
+animation = &"default"
+offset = Vector2(11.1113, 0.186331)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LeftBaseTurret/LeftTurret"]
+position = Vector2(0, 1)
+shape = SubResource("RectangleShape2D_ks4fh")
+
+[node name="RightTurret" type="StaticBody2D" parent="LeftBaseTurret" groups=["enemy"]]
+position = Vector2(8, 13)
+
+[node name="Health" parent="LeftBaseTurret/RightTurret" instance=ExtResource("1_he5rk")]
+
+[node name="Inventory" parent="LeftBaseTurret/RightTurret" instance=ExtResource("5_ok081")]
+basic = ExtResource("7_xfg76")
+special = null
+
+[node name="AttackComponent" parent="LeftBaseTurret/RightTurret" instance=ExtResource("7_m4s3v")]
+basic_firerate = 2.0
+basic_bullet_damage = 5
+raw_direction = true
+
+[node name="TurretComponent" type="Node" parent="LeftBaseTurret/RightTurret"]
+script = ExtResource("8_s8ems")
+shoot = false
+
+[node name="Barrel" type="Marker2D" parent="LeftBaseTurret/RightTurret"]
+position = Vector2(28, 1)
+
+[node name="Sprite" parent="LeftBaseTurret/RightTurret" instance=ExtResource("2_sadoc")]
+material = SubResource("ShaderMaterial_10ru2")
+position = Vector2(-0.111292, 0.813667)
+sprite_frames = SubResource("SpriteFrames_v0tyw")
+animation = &"default"
+offset = Vector2(11.1113, 0.186331)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LeftBaseTurret/RightTurret"]
+position = Vector2(0, 1)
+shape = SubResource("RectangleShape2D_ks4fh")
+
+[node name="RightBaseTurret" type="StaticBody2D" parent="." groups=["enemy"]]
+position = Vector2(41, -8)
+script = ExtResource("7_r1qkv")
+
+[node name="Health" parent="RightBaseTurret" instance=ExtResource("1_he5rk")]
+
+[node name="Sprite" parent="RightBaseTurret" instance=ExtResource("2_sadoc")]
+material = SubResource("ShaderMaterial_utwua")
+sprite_frames = SubResource("SpriteFrames_dnt3r")
+animation = &"default"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RightBaseTurret"]
+shape = SubResource("RectangleShape2D_t2ffp")
+
+[node name="Left" parent="RightBaseTurret" instance=ExtResource("2_sadoc")]
+material = SubResource("ShaderMaterial_f4gy7")
+position = Vector2(-8, 16)
+sprite_frames = SubResource("SpriteFrames_uk4hc")
+animation = &"default"
+
+[node name="Right" parent="RightBaseTurret" instance=ExtResource("2_sadoc")]
+material = SubResource("ShaderMaterial_f4gy7")
+position = Vector2(8, 16)
+scale = Vector2(-1, 1)
+sprite_frames = SubResource("SpriteFrames_uk4hc")
+animation = &"default"
+
+[node name="LeftTurret" type="StaticBody2D" parent="RightBaseTurret" groups=["enemy"]]
+position = Vector2(-8, 13)
+
+[node name="Health" parent="RightBaseTurret/LeftTurret" instance=ExtResource("1_he5rk")]
+
+[node name="Inventory" parent="RightBaseTurret/LeftTurret" instance=ExtResource("5_ok081")]
+basic = ExtResource("7_xfg76")
+special = null
+
+[node name="AttackComponent" parent="RightBaseTurret/LeftTurret" instance=ExtResource("7_m4s3v")]
+basic_firerate = 2.0
+basic_bullet_damage = 5
+raw_direction = true
+
+[node name="TurretComponent" type="Node" parent="RightBaseTurret/LeftTurret"]
+script = ExtResource("8_s8ems")
+shoot = false
+
+[node name="Barrel" type="Marker2D" parent="RightBaseTurret/LeftTurret"]
+position = Vector2(29, 1)
+
+[node name="Sprite" parent="RightBaseTurret/LeftTurret" instance=ExtResource("2_sadoc")]
+material = SubResource("ShaderMaterial_10ru2")
+position = Vector2(-0.111292, 0.813667)
+sprite_frames = SubResource("SpriteFrames_v0tyw")
+animation = &"default"
+offset = Vector2(11.1113, 0.186331)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RightBaseTurret/LeftTurret"]
+position = Vector2(0, 1)
+shape = SubResource("RectangleShape2D_ks4fh")
+
+[node name="RightTurret" type="StaticBody2D" parent="RightBaseTurret" groups=["enemy"]]
+position = Vector2(8, 13)
+
+[node name="Health" parent="RightBaseTurret/RightTurret" instance=ExtResource("1_he5rk")]
+
+[node name="Inventory" parent="RightBaseTurret/RightTurret" instance=ExtResource("5_ok081")]
+basic = ExtResource("7_xfg76")
+special = null
+
+[node name="AttackComponent" parent="RightBaseTurret/RightTurret" instance=ExtResource("7_m4s3v")]
+basic_firerate = 2.0
+basic_bullet_damage = 5
+raw_direction = true
+
+[node name="TurretComponent" type="Node" parent="RightBaseTurret/RightTurret"]
+script = ExtResource("8_s8ems")
+shoot = false
+
+[node name="Barrel" type="Marker2D" parent="RightBaseTurret/RightTurret"]
+position = Vector2(28, 1)
+
+[node name="Sprite" parent="RightBaseTurret/RightTurret" instance=ExtResource("2_sadoc")]
+material = SubResource("ShaderMaterial_10ru2")
+position = Vector2(-0.111292, 0.813667)
+sprite_frames = SubResource("SpriteFrames_v0tyw")
+animation = &"default"
+offset = Vector2(11.1113, 0.186331)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RightBaseTurret/RightTurret"]
+position = Vector2(0, 1)
+shape = SubResource("RectangleShape2D_ks4fh")
+
+[node name="GPUParticles2D" type="CPUParticles2D" parent="."]
+position = Vector2(-41, -2)
+amount = 4
+lifetime = 2.0
+explosiveness = 1.0
+randomness = 1.0
+lifetime_randomness = 1.0
+texture = SubResource("AtlasTexture_i1gtt")
+emission_shape = 3
+emission_rect_extents = Vector2(15, 15)
+direction = Vector2(4, 4)
+spread = 93.65
+gravity = Vector2(0, 0)
+
+[connection signal="body_entered" from="PlayerDetection" to="LeftBaseTurret/LeftTurret/TurretComponent" method="_on_player_detection_body_entered"]
+[connection signal="body_entered" from="PlayerDetection" to="LeftBaseTurret/RightTurret/TurretComponent" method="_on_player_detection_body_entered"]
+[connection signal="body_entered" from="PlayerDetection" to="RightBaseTurret/LeftTurret/TurretComponent" method="_on_player_detection_body_entered"]
+[connection signal="body_entered" from="PlayerDetection" to="RightBaseTurret/RightTurret/TurretComponent" method="_on_player_detection_body_entered"]
+[connection signal="body_exited" from="PlayerDetection" to="LeftBaseTurret/LeftTurret/TurretComponent" method="_on_player_detection_body_exited"]
+[connection signal="body_exited" from="PlayerDetection" to="LeftBaseTurret/RightTurret/TurretComponent" method="_on_player_detection_body_exited"]
+[connection signal="body_exited" from="PlayerDetection" to="RightBaseTurret/LeftTurret/TurretComponent" method="_on_player_detection_body_exited"]
+[connection signal="body_exited" from="PlayerDetection" to="RightBaseTurret/RightTurret/TurretComponent" method="_on_player_detection_body_exited"]
 [connection signal="death" from="Core/Health" to="." method="_on_core_death"]
+[connection signal="death" from="LeftBaseTurret/Health" to="." method="_on_turret_death"]
+[connection signal="death" from="LeftBaseTurret/Health" to="LeftBaseTurret" method="_on_base_death"]
+[connection signal="death" from="RightBaseTurret/Health" to="." method="_on_turret_death"]
+[connection signal="death" from="RightBaseTurret/Health" to="RightBaseTurret" method="_on_base_death"]

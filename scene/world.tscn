@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://b6ykw5m575uhe"]
+[gd_scene load_steps=28 format=3 uid="uid://b6ykw5m575uhe"]
 
 [ext_resource type="Script" path="res://src/world.gd" id="1_ruf3k"]
 [ext_resource type="PackedScene" uid="uid://c5beviu8n8ad0" path="res://scene/Player/player.tscn" id="1_y1asa"]
@@ -813,31 +813,37 @@ custom_data_layer_0/name = "spike"
 custom_data_layer_0/type = 1
 sources/0 = SubResource("TileSetAtlasSource_rs26q")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_80evx"]
-resource_local_to_scene = true
-shader = ExtResource("11_5oolw")
-shader_parameter/flash_color = Color(1, 1, 1, 1)
-shader_parameter/flash_modifier = false
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_x1f5f"]
-resource_local_to_scene = true
-shader = ExtResource("11_5oolw")
-shader_parameter/flash_color = Color(1, 1, 1, 1)
-shader_parameter/flash_modifier = false
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_sm7da"]
-resource_local_to_scene = true
-shader = ExtResource("11_5oolw")
-shader_parameter/flash_color = Color(1, 1, 1, 1)
-shader_parameter/flash_modifier = false
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_a5uop"]
-resource_local_to_scene = true
-shader = ExtResource("11_5oolw")
-shader_parameter/flash_color = Color(1, 1, 1, 1)
-shader_parameter/flash_modifier = false
-
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_sh28h"]
+resource_local_to_scene = true
+shader = ExtResource("11_5oolw")
+shader_parameter/flash_color = Color(1, 1, 1, 1)
+shader_parameter/flash_modifier = false
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_utwua"]
+resource_local_to_scene = true
+shader = ExtResource("11_5oolw")
+shader_parameter/flash_color = Color(1, 1, 1, 1)
+shader_parameter/flash_modifier = false
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_f4gy7"]
+resource_local_to_scene = true
+shader = ExtResource("11_5oolw")
+shader_parameter/flash_color = Color(1, 1, 1, 1)
+shader_parameter/flash_modifier = false
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_joju1"]
+resource_local_to_scene = true
+shader = ExtResource("11_5oolw")
+shader_parameter/flash_color = Color(1, 1, 1, 1)
+shader_parameter/flash_modifier = false
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_10ru2"]
+resource_local_to_scene = true
+shader = ExtResource("11_5oolw")
+shader_parameter/flash_color = Color(1, 1, 1, 1)
+shader_parameter/flash_modifier = false
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_hh0k0"]
 resource_local_to_scene = true
 shader = ExtResource("11_5oolw")
 shader_parameter/flash_color = Color(1, 1, 1, 1)
@@ -946,31 +952,28 @@ position = Vector2(2776, 245)
 offset = Vector2(0, 895)
 
 [node name="Boss" parent="." instance=ExtResource("12_a82o8")]
-position = Vector2(3232, 982)
+position = Vector2(3235, 981)
 
 [node name="CollisionShape2D" parent="Boss/PlayerDetection" index="0"]
 position = Vector2(-0.5, 75.5)
 
-[node name="LeftGunPort" parent="Boss/Left" index="5"]
-material = SubResource("ShaderMaterial_80evx")
-
-[node name="Sprite" parent="Boss/Left" index="6"]
-material = SubResource("ShaderMaterial_x1f5f")
-
-[node name="LeftGunPort" parent="Boss/Right" index="5"]
-material = SubResource("ShaderMaterial_sm7da")
-
-[node name="Sprite" parent="Boss/Right" index="6"]
-material = SubResource("ShaderMaterial_a5uop")
-
 [node name="Sprite" parent="Boss/Core" index="0"]
 material = SubResource("ShaderMaterial_sh28h")
 
-[node name="WallDefense" parent="." instance=ExtResource("13_ykx6e")]
-position = Vector2(1295, 16)
+[node name="Sprite" parent="Boss/LeftBaseTurret" index="1"]
+material = SubResource("ShaderMaterial_utwua")
 
-[node name="WallDefense2" parent="." instance=ExtResource("13_ykx6e")]
-position = Vector2(1017, 15)
+[node name="Left" parent="Boss/LeftBaseTurret" index="3"]
+material = SubResource("ShaderMaterial_f4gy7")
+
+[node name="Right" parent="Boss/LeftBaseTurret" index="4"]
+material = SubResource("ShaderMaterial_joju1")
+
+[node name="Sprite" parent="Boss/LeftBaseTurret/LeftTurret" index="5"]
+material = SubResource("ShaderMaterial_10ru2")
+
+[node name="Sprite" parent="Boss/LeftBaseTurret/RightTurret" index="5"]
+material = SubResource("ShaderMaterial_hh0k0")
 
 [node name="HealthPickup3" parent="." instance=ExtResource("9_8o6q6")]
 position = Vector2(616, 1120)
@@ -997,8 +1000,18 @@ position = Vector2(3218, 1085)
 position = Vector2(14.5, -27.5)
 shape = SubResource("RectangleShape2D_eat5b")
 
+[node name="WallDefense" parent="." instance=ExtResource("13_ykx6e")]
+position = Vector2(1295, 16)
+
+[node name="WallDefense2" parent="." instance=ExtResource("13_ykx6e")]
+position = Vector2(1017, 15)
+
 [node name="WallDefense3" parent="." instance=ExtResource("13_ykx6e")]
 position = Vector2(2643, 1098)
+
+[connection signal="done_camera" from="BossArea" to="Player" method="_on_boss_area_done_camera"]
+[connection signal="done_camera" from="BossArea" to="Boss" method="_on_boss_area_done_camera"]
+[connection signal="start_camera" from="BossArea" to="Player" method="_on_boss_area_start_camera"]
 
 [editable path="Boss"]
 [editable path="Middle DeathZone"]

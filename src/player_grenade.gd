@@ -5,7 +5,7 @@ extends Node2D
 @export var gravity: float = 450
 
 @onready var camera = get_node("/root/World/Player/PlayerCamera")
-var explosion = preload("res://scene/Environment/ExplodingSprite.tscn")
+var explosion_sprite = preload("res://scene/Environment/ExplodingSprite.tscn")
 
 func launch(vel: Vector2, pos: Vector2):
 	velocity = vel + Vector2(0, -200)
@@ -31,7 +31,7 @@ func _on_collider_body_entered(body):
 		explode()
 
 func explode():
-	explosion = explosion.instantiate()
+	var explosion = explosion_sprite.instantiate()
 	explosion.position = position
 	var root = get_node("/root/World")
 	root.add_child(explosion)

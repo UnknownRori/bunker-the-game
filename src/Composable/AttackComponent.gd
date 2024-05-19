@@ -98,9 +98,13 @@ func attack_basic(is_up):
 	if "velocity" in parent:
 		velocity.x += parent.velocity.x
 	if barrel:
-		bullet.launch(velocity, direction.x * barrel.position + parent.position)
+		var offset = 0
+		if direction.x < 0:
+			if movement:
+				offset = direction.x * barrel.position.x
+		bullet.launch(velocity, Vector2(offset + barrel.global_position.x, barrel.global_position.y))
 	else:
-		bullet.launch(velocity, parent.position)
+		bullet.launch(velocity, parent.global_position)
 	root.add_child(bullet)
 	sound_chip.play_shoot()
 	shoot_basic = false
