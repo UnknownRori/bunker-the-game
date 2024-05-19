@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://b6ykw5m575uhe"]
+[gd_scene load_steps=33 format=3 uid="uid://b6ykw5m575uhe"]
 
 [ext_resource type="Script" path="res://src/world.gd" id="1_ruf3k"]
 [ext_resource type="PackedScene" uid="uid://c5beviu8n8ad0" path="res://scene/Player/player.tscn" id="1_y1asa"]
@@ -849,6 +849,36 @@ shader = ExtResource("11_5oolw")
 shader_parameter/flash_color = Color(1, 1, 1, 1)
 shader_parameter/flash_modifier = false
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_y8nvo"]
+resource_local_to_scene = true
+shader = ExtResource("11_5oolw")
+shader_parameter/flash_color = Color(1, 1, 1, 1)
+shader_parameter/flash_modifier = false
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mjok1"]
+resource_local_to_scene = true
+shader = ExtResource("11_5oolw")
+shader_parameter/flash_color = Color(1, 1, 1, 1)
+shader_parameter/flash_modifier = false
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_lmwld"]
+resource_local_to_scene = true
+shader = ExtResource("11_5oolw")
+shader_parameter/flash_color = Color(1, 1, 1, 1)
+shader_parameter/flash_modifier = false
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_f0wib"]
+resource_local_to_scene = true
+shader = ExtResource("11_5oolw")
+shader_parameter/flash_color = Color(1, 1, 1, 1)
+shader_parameter/flash_modifier = false
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_75nk8"]
+resource_local_to_scene = true
+shader = ExtResource("11_5oolw")
+shader_parameter/flash_color = Color(1, 1, 1, 1)
+shader_parameter/flash_modifier = false
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xdi0k"]
 size = Vector2(1253, 791)
 
@@ -974,6 +1004,21 @@ material = SubResource("ShaderMaterial_10ru2")
 
 [node name="Sprite" parent="Boss/LeftBaseTurret/RightTurret" index="5"]
 material = SubResource("ShaderMaterial_hh0k0")
+
+[node name="Sprite" parent="Boss/RightBaseTurret" index="1"]
+material = SubResource("ShaderMaterial_y8nvo")
+
+[node name="Left" parent="Boss/RightBaseTurret" index="3"]
+material = SubResource("ShaderMaterial_mjok1")
+
+[node name="Right" parent="Boss/RightBaseTurret" index="4"]
+material = SubResource("ShaderMaterial_lmwld")
+
+[node name="Sprite" parent="Boss/RightBaseTurret/LeftTurret" index="5"]
+material = SubResource("ShaderMaterial_f0wib")
+
+[node name="Sprite" parent="Boss/RightBaseTurret/RightTurret" index="5"]
+material = SubResource("ShaderMaterial_75nk8")
 
 [node name="HealthPickup3" parent="." instance=ExtResource("9_8o6q6")]
 position = Vector2(616, 1120)

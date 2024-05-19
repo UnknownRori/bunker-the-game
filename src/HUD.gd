@@ -1,8 +1,6 @@
 extends CanvasLayer
 
-# Fix this shit if the game is over and the player start again
 @onready var hp = get_parent().get_node("Player").get_node("Health")
-@onready var inventory = get_parent().get_node("Player").get_node("Inventory")
 @onready var hp_bar = get_node("hp_bar")
 
 # Called when the node enters the scene tree for the first time.
