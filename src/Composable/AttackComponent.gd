@@ -2,6 +2,7 @@ extends Node
 
 @onready var parent: Object = get_parent()
 @onready var controllable: Node = get_parent().get_node("Controllable")
+@onready var barrel: Marker2D = get_parent().get_node("Barrel")
 @onready var movement: Node = get_parent().get_node("Movement")
 @onready var player_camera: Camera2D = get_parent().get_node("PlayerCamera")
 @onready var inventory: Node = get_parent().get_node("Inventory")
@@ -96,7 +97,10 @@ func attack_basic(is_up):
 			velocity = direction * Vector2(basic_bullet_speed, 0.)
 	if "velocity" in parent:
 		velocity.x += parent.velocity.x
-	bullet.launch(velocity, parent.position)
+	if barrel:
+		bullet.launch(velocity, direction.x * barrel.position + parent.position)
+	else:
+		bullet.launch(velocity, parent.position)
 	root.add_child(bullet)
 	sound_chip.play_shoot()
 	shoot_basic = false
@@ -129,6 +133,9 @@ func attack_special():
 	special.damage = special_bullet_damage
 	var velocity = Vector2(movement.direction_face * special_bullet_speed, 0.)
 	sound_chip.play_shoot()
-	special.launch(Vector2(velocity.x  + parent.velocity.x , velocity.y), parent.position)
+	if barrel:
+		special.launch(Vector2(velocity.x  + parent.velocity.x , velocity.y), direction.x * barrel.position + parent.position)
+	else:
+		special.launch(Vector2(velocity.x  + parent.velocity.x , velocity.y), parent.position)
 	root.add_child(special)
 	shoot_special = false

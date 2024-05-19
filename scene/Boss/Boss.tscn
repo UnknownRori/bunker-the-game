@@ -1,11 +1,17 @@
-[gd_scene load_steps=20 format=3 uid="uid://bh52j8kscnprc"]
+[gd_scene load_steps=24 format=3 uid="uid://bh52j8kscnprc"]
 
 [ext_resource type="Texture2D" uid="uid://inusy26ncr0o" path="res://assets/sprite.png" id="1_8sf23"]
 [ext_resource type="PackedScene" uid="uid://g40wu5scfhpc" path="res://scene/Component/Health.tscn" id="1_he5rk"]
 [ext_resource type="Script" path="res://src/Boss/Boss1.gd" id="1_qd2pc"]
 [ext_resource type="PackedScene" uid="uid://csw7fbg0tf7eu" path="res://scene/Component/sprite.tscn" id="2_sadoc"]
 [ext_resource type="Shader" path="res://resources/shaders/FlashDamage.gdshader" id="3_p3lbv"]
+[ext_resource type="PackedScene" uid="uid://dnqrn0ge4xuq4" path="res://scene/Enemy/enemy_bullet.tscn" id="4_arbxm"]
+[ext_resource type="PackedScene" uid="uid://ctgqlbgcwqhfr" path="res://scene/Component/AttackComponent.tscn" id="4_c5tnt"]
+[ext_resource type="Script" path="res://src/TurretEnemy.gd" id="5_d1y4j"]
 [ext_resource type="PackedScene" uid="uid://2q685qh536nx" path="res://scene/Component/Inventory.tscn" id="5_ok081"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_oaxtv"]
+size = Vector2(291, 197)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8tqcg"]
 size = Vector2(28, 22)
@@ -91,17 +97,31 @@ size = Vector2(30, 19)
 [node name="Boss1" type="Node2D" groups=["enemy_boss"]]
 script = ExtResource("1_qd2pc")
 
+[node name="PlayerDetection" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetection"]
+position = Vector2(5, 45.5)
+shape = SubResource("RectangleShape2D_oaxtv")
+
 [node name="Left" type="StaticBody2D" parent="." groups=["enemy"]]
 
 [node name="Health" parent="Left" instance=ExtResource("1_he5rk")]
 
 [node name="Inventory" parent="Left" instance=ExtResource("5_ok081")]
+basic = ExtResource("4_arbxm")
+special = null
+
+[node name="AttackComponent" parent="Left" instance=ExtResource("4_c5tnt")]
+raw_direction = true
+
+[node name="TurretEnemy" type="Node" parent="Left"]
+script = ExtResource("5_d1y4j")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Left"]
 position = Vector2(-50, -5)
 shape = SubResource("RectangleShape2D_8tqcg")
 
-[node name="LeftGunPort" parent="Left" instance=ExtResource("2_sadoc")]
+[node name="Gunport" parent="Left" instance=ExtResource("2_sadoc")]
 material = SubResource("ShaderMaterial_80evx")
 position = Vector2(-50, 2)
 sprite_frames = SubResource("SpriteFrames_u4pyj")
@@ -114,18 +134,29 @@ position = Vector2(-50, 0)
 sprite_frames = SubResource("SpriteFrames_ftd0i")
 animation = &"default"
 
+[node name="Barrel" type="Marker2D" parent="Left"]
+position = Vector2(-50, 27)
+
 [node name="Right" type="StaticBody2D" parent="." groups=["enemy"]]
 position = Vector2(100, 0)
 
 [node name="Health" parent="Right" instance=ExtResource("1_he5rk")]
 
 [node name="Inventory" parent="Right" instance=ExtResource("5_ok081")]
+basic = ExtResource("4_arbxm")
+special = null
+
+[node name="AttackComponent" parent="Right" instance=ExtResource("4_c5tnt")]
+raw_direction = true
+
+[node name="TurretEnemy" type="Node" parent="Right"]
+script = ExtResource("5_d1y4j")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Right"]
 position = Vector2(-50, -5)
 shape = SubResource("RectangleShape2D_8tqcg")
 
-[node name="LeftGunPort" parent="Right" instance=ExtResource("2_sadoc")]
+[node name="Gunport" parent="Right" instance=ExtResource("2_sadoc")]
 material = SubResource("ShaderMaterial_sm7da")
 position = Vector2(-50, 2)
 sprite_frames = SubResource("SpriteFrames_u4pyj")
@@ -137,6 +168,9 @@ material = SubResource("ShaderMaterial_a5uop")
 position = Vector2(-50, 0)
 sprite_frames = SubResource("SpriteFrames_ftd0i")
 animation = &"default"
+
+[node name="Barrel" type="Marker2D" parent="Right"]
+position = Vector2(-50, 27)
 
 [node name="Core" type="StaticBody2D" parent="." groups=["enemy"]]
 
@@ -153,4 +187,7 @@ shape = SubResource("RectangleShape2D_5xjcn")
 
 [node name="Inventory" parent="Core" instance=ExtResource("5_ok081")]
 
+[connection signal="body_entered" from="PlayerDetection" to="Right/TurretEnemy" method="_on_player_detection_body_entered"]
+[connection signal="body_entered" from="PlayerDetection" to="Left/TurretEnemy" method="_on_player_detection_body_entered"]
+[connection signal="body_exited" from="PlayerDetection" to="Right/TurretEnemy" method="_on_player_detection_body_exited"]
 [connection signal="death" from="Core/Health" to="." method="_on_core_death"]

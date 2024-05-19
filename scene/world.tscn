@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://b6ykw5m575uhe"]
+[gd_scene load_steps=27 format=3 uid="uid://b6ykw5m575uhe"]
 
 [ext_resource type="Script" path="res://src/world.gd" id="1_ruf3k"]
 [ext_resource type="PackedScene" uid="uid://c5beviu8n8ad0" path="res://scene/Player/player.tscn" id="1_y1asa"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://b335a2su6du1" path="res://scene/Utils/hud.tscn" id="7_uua3g"]
 [ext_resource type="PackedScene" uid="uid://ufehmgdh3xly" path="res://scene/Pickup/HealthPickup.tscn" id="9_8o6q6"]
 [ext_resource type="PackedScene" uid="uid://dk3x8rtq2h4qc" path="res://scene/Environment/DeathZone.tscn" id="10_c3vlk"]
+[ext_resource type="Shader" path="res://resources/shaders/FlashDamage.gdshader" id="11_5oolw"]
 [ext_resource type="PackedScene" uid="uid://bku2q6rqjug3g" path="res://scene/Environment/Elevator.tscn" id="11_cbbfk"]
 [ext_resource type="PackedScene" uid="uid://bh52j8kscnprc" path="res://scene/Boss/Boss.tscn" id="12_a82o8"]
 [ext_resource type="PackedScene" uid="uid://ck5nk1gr3wjed" path="res://scene/Enemy/WallDefense.tscn" id="13_ykx6e"]
@@ -812,6 +813,36 @@ custom_data_layer_0/name = "spike"
 custom_data_layer_0/type = 1
 sources/0 = SubResource("TileSetAtlasSource_rs26q")
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_80evx"]
+resource_local_to_scene = true
+shader = ExtResource("11_5oolw")
+shader_parameter/flash_color = Color(1, 1, 1, 1)
+shader_parameter/flash_modifier = false
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_x1f5f"]
+resource_local_to_scene = true
+shader = ExtResource("11_5oolw")
+shader_parameter/flash_color = Color(1, 1, 1, 1)
+shader_parameter/flash_modifier = false
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_sm7da"]
+resource_local_to_scene = true
+shader = ExtResource("11_5oolw")
+shader_parameter/flash_color = Color(1, 1, 1, 1)
+shader_parameter/flash_modifier = false
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_a5uop"]
+resource_local_to_scene = true
+shader = ExtResource("11_5oolw")
+shader_parameter/flash_color = Color(1, 1, 1, 1)
+shader_parameter/flash_modifier = false
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_sh28h"]
+resource_local_to_scene = true
+shader = ExtResource("11_5oolw")
+shader_parameter/flash_color = Color(1, 1, 1, 1)
+shader_parameter/flash_modifier = false
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xdi0k"]
 size = Vector2(1253, 791)
 
@@ -917,6 +948,24 @@ offset = Vector2(0, 895)
 [node name="Boss" parent="." instance=ExtResource("12_a82o8")]
 position = Vector2(3232, 982)
 
+[node name="CollisionShape2D" parent="Boss/PlayerDetection" index="0"]
+position = Vector2(-0.5, 75.5)
+
+[node name="LeftGunPort" parent="Boss/Left" index="5"]
+material = SubResource("ShaderMaterial_80evx")
+
+[node name="Sprite" parent="Boss/Left" index="6"]
+material = SubResource("ShaderMaterial_x1f5f")
+
+[node name="LeftGunPort" parent="Boss/Right" index="5"]
+material = SubResource("ShaderMaterial_sm7da")
+
+[node name="Sprite" parent="Boss/Right" index="6"]
+material = SubResource("ShaderMaterial_a5uop")
+
+[node name="Sprite" parent="Boss/Core" index="0"]
+material = SubResource("ShaderMaterial_sh28h")
+
 [node name="WallDefense" parent="." instance=ExtResource("13_ykx6e")]
 position = Vector2(1295, 16)
 
@@ -948,6 +997,10 @@ position = Vector2(3218, 1085)
 position = Vector2(14.5, -27.5)
 shape = SubResource("RectangleShape2D_eat5b")
 
+[node name="WallDefense3" parent="." instance=ExtResource("13_ykx6e")]
+position = Vector2(2643, 1098)
+
+[editable path="Boss"]
 [editable path="Middle DeathZone"]
 [editable path="Middle DeathZone2"]
 [editable path="BossArea"]

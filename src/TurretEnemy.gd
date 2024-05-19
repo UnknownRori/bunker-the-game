@@ -2,6 +2,7 @@ extends Node
 
 @onready var parent: StaticBody2D = get_parent()
 @onready var attack: Node = get_parent().get_node("AttackComponent")
+@onready var gun_port: Node = get_parent().get_node("Gunport")
 @onready var player_detection: Area2D = get_parent().get_node("PlayerDetection")
 
 var target: CharacterBody2D = null
@@ -14,7 +15,10 @@ func _process(delta):
 func track_player():
 	var dir = (target.position - parent.position).normalized()
 	var rotation = dir.angle()
-	parent.rotation = rotation
+	if gun_port:
+		gun_port.rotation = rotation
+	else:
+		parent.rotation = rotation
 	
 	track_ready = true
 	
@@ -28,7 +32,7 @@ func shoot_player():
 	
 	if !track_ready:
 		return
-		
+	
 	attack.direction = dir
 	attack.raw_direction = true
 	attack.shoot_basic = true

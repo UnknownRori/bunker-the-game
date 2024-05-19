@@ -64,3 +64,6 @@ max_jumps = 1
 script = ExtResource("4_e3tjp")
 
 [node name="Inventory" parent="." instance=ExtResource("10_vik5h")]
+
+[node name="Barrel" type="Marker2D" parent="."]
+position = Vector2(17, 0)

@@ -26,16 +26,21 @@ func _physics_process(delta):
 
 func _on_collider_body_entered(body):
 	if (body.is_in_group("platform")):
-		explosion = explosion.instantiate()
-		explosion.position = position
-		var root = get_node("/root/World")
-		root.add_child(explosion)
-		SoundChip.play_explosion()
-		camera.add_trauma(0.2)
-		var overlap = $ExplosionRadius.get_overlapping_bodies()
-		for i in overlap:
-			if (i.is_in_group("enemy")):
-				var enemy_hp = i.get_node("Health")
-				enemy_hp.damage(damage)
+		explode()
+	if (body.is_in_group("enemy")):
+		explode()
 
-		queue_free()
+func explode():
+	explosion = explosion.instantiate()
+	explosion.position = position
+	var root = get_node("/root/World")
+	root.add_child(explosion)
+	SoundChip.play_explosion()
+	camera.add_trauma(0.2)
+	var overlap = $ExplosionRadius.get_overlapping_bodies()
+	for i in overlap:
+		if (i.is_in_group("enemy")):
+			var enemy_hp = i.get_node("Health")
+			enemy_hp.damage(damage)
+
+	queue_free()
