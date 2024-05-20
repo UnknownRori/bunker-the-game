@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://c5beviu8n8ad0"]
+[gd_scene load_steps=22 format=3 uid="uid://c5beviu8n8ad0"]
 
 [ext_resource type="Texture2D" uid="uid://inusy26ncr0o" path="res://assets/sprite.png" id="1_kje6p"]
 [ext_resource type="Script" path="res://src/player.gd" id="1_m17h1"]
@@ -32,6 +32,10 @@ region = Rect2(0, 0, 16, 16)
 [sub_resource type="AtlasTexture" id="AtlasTexture_8fr0n"]
 atlas = ExtResource("1_kje6p")
 region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_37qvy"]
+atlas = ExtResource("1_kje6p")
+region = Rect2(96, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_l8mgq"]
 atlas = ExtResource("1_kje6p")
@@ -71,6 +75,14 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_37qvy")
+}],
+"loop": true,
+"name": &"up",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_l8mgq")
 }, {
 "duration": 1.0,
@@ -93,9 +105,7 @@ script = ExtResource("1_m17h1")
 [node name="Sprite" parent="." instance=ExtResource("2_v5fh4")]
 material = SubResource("ShaderMaterial_i4j5x")
 sprite_frames = SubResource("SpriteFrames_u4iva")
-animation = &"walking"
-frame = 2
-frame_progress = 0.259047
+animation = &"up"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -0.5)
@@ -110,6 +120,7 @@ special_bullet_speed = 100
 
 [node name="Movement" type="Node" parent="."]
 script = ExtResource("3_nlp1q")
+speed = 150.0
 gravity = 2450.0
 max_jumps = 1
 

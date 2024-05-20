@@ -2,7 +2,7 @@ extends AnimatedSprite2D
 
 @onready var animation_player: AnimationPlayer = get_node("AnimationPlayer")
 
-enum STATE {IDLE,WALKING,SHOOT}
+enum STATE {IDLE,WALKING,SHOOT,UP}
 @export var state: STATE = STATE.IDLE
 
 func _ready():
@@ -20,9 +20,8 @@ func _process(delta):
 			play("walking")
 		STATE.SHOOT:
 			play("shoot")
+		STATE.UP:
+			play("up")
 
 func play_damage():
-	match state:
-		STATE.IDLE: 
-			animation_player.play("damage")
-			
+	animation_player.play("damage")

@@ -1,5 +1,7 @@
 extends Node
 
+@onready var sprite = get_parent().get_node("Sprite")
+
 @export var MOVE_DIR = Vector2.ZERO
 @export var ACTION_A = false
 @export var ACTION_B = false
@@ -22,6 +24,9 @@ func _process(delta):
 		if SWAP:
 			if Input.is_action_pressed("up", 1.):
 				input_dir.y = 1
+				if sprite:
+					sprite.set_state(sprite.STATE.UP)
+				
 		else:
 			if Input.is_action_just_pressed("up", 1.):
 				input_dir.y = 1

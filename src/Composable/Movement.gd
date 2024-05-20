@@ -71,9 +71,11 @@ func move(direction: Vector2, delta: float):
 		
 	if sprite:
 		if parent.velocity.x != 0:
-			sprite.set_state(sprite.STATE.WALKING)
+			if sprite.state != sprite.STATE.UP:
+				sprite.set_state(sprite.STATE.WALKING)
 		elif sprite.state != sprite.STATE.SHOOT:
-			sprite.state = sprite.STATE.IDLE
+			if sprite.state != sprite.STATE.UP:
+				sprite.state = sprite.STATE.IDLE
 
 	parent.move_and_slide()
 	
