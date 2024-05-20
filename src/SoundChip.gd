@@ -11,24 +11,29 @@ var noise_channel
 var music_channel
 
 func play_jump():
-	$SawChannel.stream = jump
-	$SawChannel.play()
+	if !$SawChannel.playing:
+		$SawChannel.stream = jump
+		$SawChannel.play()
 	
 func play_power_up():
-	$SawChannel.stream = power_up
-	$SawChannel.play()
+	if !$SawChannel.playing:
+		$SawChannel.stream = power_up
+		$SawChannel.play()
 
 func play_shoot():
-	$NoiseChannel.stream = shoot
-	$NoiseChannel.play()
+	if !$NoiseChannel.playing:
+		$NoiseChannel.stream = shoot
+		$NoiseChannel.play()
 	
 func play_explosion():
-	$NoiseChannel.stream = explosion
-	$NoiseChannel.play()
+	if !$NoiseChannel.playing:
+		$NoiseChannel.stream = explosion
+		$NoiseChannel.play()
 
 func play_select():
-	$SawChannel.stream = select
-	$SawChannel.play()
+	if !$SawChannel.playing:
+		$SawChannel.stream = select
+		$SawChannel.play()
 
 func play_music(music):
 	if !music_channel == music:
