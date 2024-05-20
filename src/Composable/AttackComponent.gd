@@ -2,6 +2,7 @@ extends Node
 
 @onready var parent: Object = get_parent()
 @onready var controllable: Node = get_parent().get_node("Controllable")
+@onready var sprite: AnimatedSprite2D = get_parent().get_node("Sprite")
 @onready var barrel: Marker2D = get_parent().get_node("Barrel")
 @onready var movement: Node = get_parent().get_node("Movement")
 @onready var player_camera: Camera2D = get_parent().get_node("PlayerCamera")
@@ -69,6 +70,8 @@ func attack_basic(is_up):
 	if !can_fire_basic:
 		return
 	if !shoot:
+		if sprite:
+			sprite.set_state(sprite.STATE.IDLE)
 		return
 	if inventory.basic_has == 0:
 		return
@@ -82,6 +85,8 @@ func attack_basic(is_up):
 	
 	if (player_camera):
 		player_camera.add_trauma(0.1)
+	if sprite:
+		sprite.set_state(sprite.STATE.SHOOT)
 	
 	var bullet = inventory.basic.instantiate()
 	bullet.position = parent.position

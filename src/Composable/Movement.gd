@@ -68,6 +68,12 @@ func move(direction: Vector2, delta: float):
 		parent.velocity.x = lerp(parent.velocity.x, direction.x * speed, acceleration)
 	else:
 		parent.velocity.x = lerp(parent.velocity.x, 0.0, friction)
+		
+	if sprite:
+		if parent.velocity.x != 0:
+			sprite.set_state(sprite.STATE.WALKING)
+		elif sprite.state != sprite.STATE.SHOOT:
+			sprite.state = sprite.STATE.IDLE
 
 	parent.move_and_slide()
 	
