@@ -54,7 +54,6 @@ radius = 225.056
 material = SubResource("ShaderMaterial_x1huw")
 position = Vector2(3, 6)
 sprite_frames = SubResource("SpriteFrames_ylp3t")
-animation = &"shoot"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(2.5, 0.5)
