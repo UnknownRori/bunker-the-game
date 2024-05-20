@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://bh52j8kscnprc"]
+[gd_scene load_steps=36 format=3 uid="uid://bh52j8kscnprc"]
 
 [ext_resource type="Texture2D" uid="uid://inusy26ncr0o" path="res://assets/sprite.png" id="1_8sf23"]
 [ext_resource type="PackedScene" uid="uid://g40wu5scfhpc" path="res://scene/Component/Health.tscn" id="1_he5rk"]
@@ -83,6 +83,12 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_lskgn"]
+resource_local_to_scene = true
+shader = ExtResource("3_p3lbv")
+shader_parameter/flash_color = Color(1, 1, 1, 1)
+shader_parameter/flash_modifier = false
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_10ru2"]
 resource_local_to_scene = true
 shader = ExtResource("3_p3lbv")
@@ -106,6 +112,42 @@ animations = [{
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ks4fh"]
 size = Vector2(13, 12)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_kgw8u"]
+resource_local_to_scene = true
+shader = ExtResource("3_p3lbv")
+shader_parameter/flash_color = Color(1, 1, 1, 1)
+shader_parameter/flash_modifier = false
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_b3uta"]
+resource_local_to_scene = true
+shader = ExtResource("3_p3lbv")
+shader_parameter/flash_color = Color(1, 1, 1, 1)
+shader_parameter/flash_modifier = false
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_f8oue"]
+resource_local_to_scene = true
+shader = ExtResource("3_p3lbv")
+shader_parameter/flash_color = Color(1, 1, 1, 1)
+shader_parameter/flash_modifier = false
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_25f3p"]
+resource_local_to_scene = true
+shader = ExtResource("3_p3lbv")
+shader_parameter/flash_color = Color(1, 1, 1, 1)
+shader_parameter/flash_modifier = false
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jtapv"]
+resource_local_to_scene = true
+shader = ExtResource("3_p3lbv")
+shader_parameter/flash_color = Color(1, 1, 1, 1)
+shader_parameter/flash_modifier = false
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7lofc"]
+resource_local_to_scene = true
+shader = ExtResource("3_p3lbv")
+shader_parameter/flash_color = Color(1, 1, 1, 1)
+shader_parameter/flash_modifier = false
 
 [sub_resource type="ImageTexture" id="ImageTexture_pv7ey"]
 
@@ -158,7 +200,7 @@ sprite_frames = SubResource("SpriteFrames_uk4hc")
 animation = &"default"
 
 [node name="Right" parent="LeftBaseTurret" instance=ExtResource("2_sadoc")]
-material = SubResource("ShaderMaterial_f4gy7")
+material = SubResource("ShaderMaterial_lskgn")
 position = Vector2(8, 16)
 scale = Vector2(-1, 1)
 sprite_frames = SubResource("SpriteFrames_uk4hc")
@@ -218,7 +260,7 @@ shoot = false
 position = Vector2(28, 1)
 
 [node name="Sprite" parent="LeftBaseTurret/RightTurret" instance=ExtResource("2_sadoc")]
-material = SubResource("ShaderMaterial_10ru2")
+material = SubResource("ShaderMaterial_kgw8u")
 position = Vector2(-0.111292, 0.813667)
 sprite_frames = SubResource("SpriteFrames_v0tyw")
 animation = &"default"
@@ -235,7 +277,7 @@ script = ExtResource("7_r1qkv")
 [node name="Health" parent="RightBaseTurret" instance=ExtResource("1_he5rk")]
 
 [node name="Sprite" parent="RightBaseTurret" instance=ExtResource("2_sadoc")]
-material = SubResource("ShaderMaterial_utwua")
+material = SubResource("ShaderMaterial_b3uta")
 sprite_frames = SubResource("SpriteFrames_dnt3r")
 animation = &"default"
 
@@ -243,13 +285,13 @@ animation = &"default"
 shape = SubResource("RectangleShape2D_t2ffp")
 
 [node name="Left" parent="RightBaseTurret" instance=ExtResource("2_sadoc")]
-material = SubResource("ShaderMaterial_f4gy7")
+material = SubResource("ShaderMaterial_f8oue")
 position = Vector2(-8, 16)
 sprite_frames = SubResource("SpriteFrames_uk4hc")
 animation = &"default"
 
 [node name="Right" parent="RightBaseTurret" instance=ExtResource("2_sadoc")]
-material = SubResource("ShaderMaterial_f4gy7")
+material = SubResource("ShaderMaterial_25f3p")
 position = Vector2(8, 16)
 scale = Vector2(-1, 1)
 sprite_frames = SubResource("SpriteFrames_uk4hc")
@@ -277,7 +319,7 @@ shoot = false
 position = Vector2(29, 1)
 
 [node name="Sprite" parent="RightBaseTurret/LeftTurret" instance=ExtResource("2_sadoc")]
-material = SubResource("ShaderMaterial_10ru2")
+material = SubResource("ShaderMaterial_jtapv")
 position = Vector2(-0.111292, 0.813667)
 sprite_frames = SubResource("SpriteFrames_v0tyw")
 animation = &"default"
@@ -309,7 +351,7 @@ shoot = false
 position = Vector2(28, 1)
 
 [node name="Sprite" parent="RightBaseTurret/RightTurret" instance=ExtResource("2_sadoc")]
-material = SubResource("ShaderMaterial_10ru2")
+material = SubResource("ShaderMaterial_7lofc")
 position = Vector2(-0.111292, 0.813667)
 sprite_frames = SubResource("SpriteFrames_v0tyw")
 animation = &"default"
