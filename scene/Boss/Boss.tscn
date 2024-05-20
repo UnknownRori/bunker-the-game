@@ -31,7 +31,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_fgh2d")
 }],
 "loop": true,
-"name": &"default",
+"name": &"idle",
 "speed": 5.0
 }]
 
@@ -55,7 +55,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_nlikj")
 }],
 "loop": true,
-"name": &"default",
+"name": &"idle",
 "speed": 5.0
 }]
 
@@ -79,7 +79,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_18dkx")
 }],
 "loop": true,
-"name": &"default",
+"name": &"idle",
 "speed": 5.0
 }]
 
@@ -106,7 +106,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_b1deq")
 }],
 "loop": true,
-"name": &"default",
+"name": &"idle",
 "speed": 5.0
 }]
 
@@ -169,7 +169,6 @@ shape = SubResource("RectangleShape2D_oaxtv")
 [node name="Sprite" parent="Core" instance=ExtResource("2_sadoc")]
 material = SubResource("ShaderMaterial_sh28h")
 sprite_frames = SubResource("SpriteFrames_vinge")
-animation = &"default"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Core"]
 position = Vector2(0, -4.5)
@@ -188,7 +187,6 @@ script = ExtResource("7_r1qkv")
 [node name="Sprite" parent="LeftBaseTurret" instance=ExtResource("2_sadoc")]
 material = SubResource("ShaderMaterial_utwua")
 sprite_frames = SubResource("SpriteFrames_dnt3r")
-animation = &"default"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LeftBaseTurret"]
 shape = SubResource("RectangleShape2D_t2ffp")
@@ -197,14 +195,12 @@ shape = SubResource("RectangleShape2D_t2ffp")
 material = SubResource("ShaderMaterial_f4gy7")
 position = Vector2(-8, 16)
 sprite_frames = SubResource("SpriteFrames_uk4hc")
-animation = &"default"
 
 [node name="Right" parent="LeftBaseTurret" instance=ExtResource("2_sadoc")]
 material = SubResource("ShaderMaterial_lskgn")
 position = Vector2(8, 16)
 scale = Vector2(-1, 1)
 sprite_frames = SubResource("SpriteFrames_uk4hc")
-animation = &"default"
 
 [node name="LeftTurret" type="StaticBody2D" parent="LeftBaseTurret" groups=["enemy"]]
 position = Vector2(-8, 13)
@@ -231,7 +227,6 @@ position = Vector2(29, 1)
 material = SubResource("ShaderMaterial_10ru2")
 position = Vector2(-0.111292, 0.813667)
 sprite_frames = SubResource("SpriteFrames_v0tyw")
-animation = &"default"
 offset = Vector2(11.1113, 0.186331)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LeftBaseTurret/LeftTurret"]
@@ -263,7 +258,6 @@ position = Vector2(28, 1)
 material = SubResource("ShaderMaterial_kgw8u")
 position = Vector2(-0.111292, 0.813667)
 sprite_frames = SubResource("SpriteFrames_v0tyw")
-animation = &"default"
 offset = Vector2(11.1113, 0.186331)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LeftBaseTurret/RightTurret"]
@@ -279,7 +273,6 @@ script = ExtResource("7_r1qkv")
 [node name="Sprite" parent="RightBaseTurret" instance=ExtResource("2_sadoc")]
 material = SubResource("ShaderMaterial_b3uta")
 sprite_frames = SubResource("SpriteFrames_dnt3r")
-animation = &"default"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RightBaseTurret"]
 shape = SubResource("RectangleShape2D_t2ffp")
@@ -288,14 +281,12 @@ shape = SubResource("RectangleShape2D_t2ffp")
 material = SubResource("ShaderMaterial_f8oue")
 position = Vector2(-8, 16)
 sprite_frames = SubResource("SpriteFrames_uk4hc")
-animation = &"default"
 
 [node name="Right" parent="RightBaseTurret" instance=ExtResource("2_sadoc")]
 material = SubResource("ShaderMaterial_25f3p")
 position = Vector2(8, 16)
 scale = Vector2(-1, 1)
 sprite_frames = SubResource("SpriteFrames_uk4hc")
-animation = &"default"
 
 [node name="LeftTurret" type="StaticBody2D" parent="RightBaseTurret" groups=["enemy"]]
 position = Vector2(-8, 13)
@@ -322,7 +313,6 @@ position = Vector2(29, 1)
 material = SubResource("ShaderMaterial_jtapv")
 position = Vector2(-0.111292, 0.813667)
 sprite_frames = SubResource("SpriteFrames_v0tyw")
-animation = &"default"
 offset = Vector2(11.1113, 0.186331)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RightBaseTurret/LeftTurret"]
@@ -354,7 +344,6 @@ position = Vector2(28, 1)
 material = SubResource("ShaderMaterial_7lofc")
 position = Vector2(-0.111292, 0.813667)
 sprite_frames = SubResource("SpriteFrames_v0tyw")
-animation = &"default"
 offset = Vector2(11.1113, 0.186331)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RightBaseTurret/RightTurret"]
