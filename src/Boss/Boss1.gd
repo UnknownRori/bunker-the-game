@@ -12,6 +12,7 @@ func _on_core_death():
 
 func _on_turret_death():
 	number_of_turret -= 1
+	SoundChip.play_explosion()
 	if number_of_turret <= 0:
 		$Core.add_to_group("enemy")
 
@@ -21,3 +22,7 @@ func _on_boss_area_done_camera():
 	left_right_turret.shoot = true
 	right_left_turret.shoot = true
 	right_right_turret.shoot = true
+
+
+func _on_turret_barrel_death():
+	SoundChip.play_explosion()
