@@ -16,7 +16,7 @@ script = ExtResource("1_cwq0l")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_4ckl8")
 region_enabled = true
-region_rect = Rect2(208, 0, 16, 16)
+region_rect = Rect2(208, 16, 16, 16)
 
 [node name="Collider" type="Area2D" parent="."]
 gravity = 50.0

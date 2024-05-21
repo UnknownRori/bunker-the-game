@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://bwb0ue3qkf5ug"]
+
+[ext_resource type="Texture2D" uid="uid://inusy26ncr0o" path="res://assets/sprite.png" id="1_eixhn"]
+[ext_resource type="Script" path="res://src/Pickup/GrenadePickup.gd" id="2_f8erd"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nne48"]
+size = Vector2(9, 11)
+
+[node name="GrenadePickup" type="Area2D"]
+script = ExtResource("2_f8erd")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_eixhn")
+region_enabled = true
+region_rect = Rect2(208, 0, 16, 16)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.5, 0.5)
+shape = SubResource("RectangleShape2D_nne48")
+
+[node name="Timer" type="Timer" parent="."]
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

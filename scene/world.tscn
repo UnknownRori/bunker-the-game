@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://b6ykw5m575uhe"]
+[gd_scene load_steps=34 format=3 uid="uid://b6ykw5m575uhe"]
 
 [ext_resource type="Script" path="res://src/world.gd" id="1_ruf3k"]
 [ext_resource type="PackedScene" uid="uid://c5beviu8n8ad0" path="res://scene/Player/player.tscn" id="1_y1asa"]
@@ -15,6 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://bh52j8kscnprc" path="res://scene/Boss/Boss.tscn" id="12_a82o8"]
 [ext_resource type="PackedScene" uid="uid://ck5nk1gr3wjed" path="res://scene/Enemy/WallDefense.tscn" id="13_ykx6e"]
 [ext_resource type="PackedScene" uid="uid://dmaffaonl2ss2" path="res://scene/Environment/BossArea.tscn" id="14_5cs6u"]
+[ext_resource type="PackedScene" uid="uid://bwb0ue3qkf5ug" path="res://scene/Pickup/GrenadePickup.tscn" id="16_oubgp"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_17hwv"]
 
@@ -960,7 +961,7 @@ offset = Vector2(500, 0)
 duration = 10.0
 
 [node name="HealthPickup2" parent="." instance=ExtResource("9_8o6q6")]
-position = Vector2(2839, 1126)
+position = Vector2(2842, 1112)
 
 [node name="Enemy8" parent="." instance=ExtResource("5_vw78p")]
 position = Vector2(1847, 281)
@@ -1026,7 +1027,7 @@ position = Vector2(616, 1120)
 [node name="Middle DeathZone" parent="." instance=ExtResource("10_c3vlk")]
 
 [node name="CollisionShape2D" parent="Middle DeathZone" index="0"]
-position = Vector2(741.5, 680.5)
+position = Vector2(744, 639)
 shape = SubResource("RectangleShape2D_xdi0k")
 
 [node name="Middle DeathZone2" parent="." instance=ExtResource("10_c3vlk")]
@@ -1052,7 +1053,16 @@ position = Vector2(1232, 72)
 position = Vector2(1007, 72)
 
 [node name="HealthPickup4" parent="." instance=ExtResource("9_8o6q6")]
-position = Vector2(2688, 29)
+position = Vector2(2687, 24)
+
+[node name="GrenadePickup" parent="." instance=ExtResource("16_oubgp")]
+position = Vector2(2878, 1110)
+
+[node name="GrenadePickup2" parent="." instance=ExtResource("16_oubgp")]
+position = Vector2(2650, 23)
+
+[node name="GrenadePickup3" parent="." instance=ExtResource("16_oubgp")]
+position = Vector2(150, 89)
 
 [connection signal="done_camera" from="BossArea" to="Player" method="_on_boss_area_done_camera"]
 [connection signal="done_camera" from="BossArea" to="Boss" method="_on_boss_area_done_camera"]

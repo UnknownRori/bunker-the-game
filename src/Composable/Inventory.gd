@@ -5,3 +5,6 @@ extends Node
 
 @export var basic_has = -1
 @export var special_has = 10
+
+func fill_grenade():
+	special_has += 10
