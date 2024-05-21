@@ -11,7 +11,7 @@ enum {
 @onready var state := START_GAME
 
 func _ready():
-	SoundChip.play_music(load("res://assets/bgm/bgm.wav"))
+	SoundChip.play_music(load("res://assets/bgm/main_menu.wav"))
 	DiscordPresence.set_detail("In Main Menu")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
