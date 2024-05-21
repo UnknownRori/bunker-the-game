@@ -1,7 +1,7 @@
 extends Area2D
 
 @onready var timer = $Timer
-@export var damage = 20
+@export var damage = 10
 @export var damage_timer = 0.5
 var take_damage = false
 var lists = []

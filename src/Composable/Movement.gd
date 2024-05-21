@@ -2,6 +2,7 @@ extends Node
 
 @export var speed: float = 250
 @export var jump_power: float = -600
+@export var HARD_LIMIT_VEL_Y: float = 450.
 
 @export_range(0.0 , 1.0) var friction: float = 0.5
 @export_range(0.0 , 1.0) var acceleration: float = 0.8
@@ -63,7 +64,7 @@ func flip_animate(direction):
 func move(direction: Vector2, delta: float):
 	# gravity
 	if parent.velocity.y < gravity:
-		parent.velocity.y = min(800, parent.velocity.y + gravity * delta)
+		parent.velocity.y = min(HARD_LIMIT_VEL_Y, parent.velocity.y + gravity * delta)
 	if direction.x != 0:
 		parent.velocity.x = lerp(parent.velocity.x, direction.x * speed, acceleration)
 	else:

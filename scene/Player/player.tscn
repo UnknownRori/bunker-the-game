@@ -120,7 +120,10 @@ special_bullet_speed = 100
 
 [node name="Movement" type="Node" parent="."]
 script = ExtResource("3_nlp1q")
-speed = 150.0
+speed = 125.0
+jump_power = -500.0
+friction = 0.6
+acceleration = 0.6
 gravity = 2450.0
 max_jumps = 1
 
@@ -132,4 +135,4 @@ script = ExtResource("4_e3tjp")
 [node name="Inventory" parent="." instance=ExtResource("10_vik5h")]
 
 [node name="Barrel" type="Marker2D" parent="."]
-position = Vector2(17, 0)
+position = Vector2(3, 0)

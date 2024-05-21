@@ -1064,6 +1064,9 @@ position = Vector2(2650, 23)
 [node name="GrenadePickup3" parent="." instance=ExtResource("16_oubgp")]
 position = Vector2(150, 89)
 
+[node name="HealthPickup5" parent="." instance=ExtResource("9_8o6q6")]
+position = Vector2(2017, 974)
+
 [connection signal="done_camera" from="BossArea" to="Player" method="_on_boss_area_done_camera"]
 [connection signal="done_camera" from="BossArea" to="Boss" method="_on_boss_area_done_camera"]
 [connection signal="start_camera" from="BossArea" to="Player" method="_on_boss_area_start_camera"]
