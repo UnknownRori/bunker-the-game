@@ -14,7 +14,7 @@ As LS16 Home Console is a rather limited console, and limited time by us due to 
 
 - 2 types of enemies
 - 1 Boss
-- 3 Unique BGM
+- 4 Unique BGM
 - A rudimentary score system
 - 2 Pick up able item
 - Perma death (Be careful)

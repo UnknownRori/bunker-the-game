@@ -1,0 +1,73 @@
+[gd_scene load_steps=5 format=3 uid="uid://bwr6jsnakug6v"]
+
+[ext_resource type="Script" path="res://src/PauseUI.gd" id="1_71hfy"]
+[ext_resource type="Texture2D" uid="uid://brxp42hgv3skb" path="res://assets/pause.png" id="1_eygri"]
+[ext_resource type="Theme" uid="uid://c8ou3x4kufrg7" path="res://resources/title.tres" id="2_k1m20"]
+[ext_resource type="Theme" uid="uid://d4m75u4u4cl6h" path="res://resources/default_theme.tres" id="3_v8ric"]
+
+[node name="Pause" type="CanvasLayer"]
+process_mode = 3
+layer = 3
+visible = false
+script = ExtResource("1_71hfy")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 256.0
+offset_bottom = 224.0
+
+[node name="TextureRect" type="TextureRect" parent="Control"]
+offset_right = 256.0
+offset_bottom = 224.0
+texture = ExtResource("1_eygri")
+
+[node name="Select" type="Label" parent="Control"]
+offset_left = 87.0
+offset_top = 120.0
+offset_right = 169.0
+offset_bottom = 138.0
+theme = ExtResource("3_v8ric")
+text = ">                 <"
+vertical_alignment = 1
+
+[node name="Title" type="Label" parent="Control"]
+offset_left = 66.0
+offset_top = 72.0
+offset_right = 190.0
+offset_bottom = 93.0
+theme = ExtResource("2_k1m20")
+text = "Game Pause"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 86.0
+offset_right = -1.0
+offset_bottom = -70.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="Continue" type="Label" parent="Control/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("3_v8ric")
+text = "Continue"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Exit" type="Label" parent="Control/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("3_v8ric")
+text = "Exit"
+horizontal_alignment = 1
+vertical_alignment = 1

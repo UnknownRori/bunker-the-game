@@ -47,7 +47,7 @@ shader_parameter/dissolve_pattern = ExtResource("3_4ebvk")
 
 [node name="SceneTransition" type="CanvasLayer"]
 process_mode = 3
-layer = 2
+layer = 5
 script = ExtResource("1_8fues")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

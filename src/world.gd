@@ -8,8 +8,3 @@ func _ready():
 	sound.play_music(bgm)
 	DiscordPresence.set_detail("In The Demo Stage")
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
-
