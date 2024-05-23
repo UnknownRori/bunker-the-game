@@ -18,11 +18,13 @@ offset_right = 256.0
 offset_bottom = 224.0
 
 [node name="TextureRect" type="TextureRect" parent="Control"]
+layout_mode = 0
 offset_right = 256.0
 offset_bottom = 224.0
 texture = ExtResource("1_eygri")
 
 [node name="Select" type="Label" parent="Control"]
+layout_mode = 0
 offset_left = 87.0
 offset_top = 120.0
 offset_right = 169.0
@@ -32,6 +34,7 @@ text = ">                 <"
 vertical_alignment = 1
 
 [node name="Title" type="Label" parent="Control"]
+layout_mode = 0
 offset_left = 66.0
 offset_top = 72.0
 offset_right = 190.0
