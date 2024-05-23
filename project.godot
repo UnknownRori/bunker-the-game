@@ -392,6 +392,10 @@ right={
 
 2d_physics/layer_1="Platform"
 
+[physics]
+
+2d/physics_engine="GodotPhysics2D"
+
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0
