@@ -927,7 +927,7 @@ texture = ExtResource("3_pflic")
 centered = false
 
 [node name="Player" parent="." instance=ExtResource("1_y1asa")]
-position = Vector2(64, 113)
+position = Vector2(45, 91)
 
 [node name="Enemy1" parent="." instance=ExtResource("5_vw78p")]
 position = Vector2(403, 127)
@@ -996,7 +996,7 @@ position = Vector2(3242, 1022)
 position = Vector2(-9, 53.5)
 shape = SubResource("RectangleShape2D_mnjw1")
 
-[node name="Sprite" parent="Boss/Core" index="0"]
+[node name="Sprite" parent="Boss/Core" index="1"]
 material = SubResource("ShaderMaterial_sh28h")
 
 [node name="Sprite" parent="Boss/LeftBaseTurret" index="1"]

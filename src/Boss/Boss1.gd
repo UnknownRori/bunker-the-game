@@ -15,6 +15,8 @@ func _on_turret_death():
 	SoundChip.play_explosion()
 	if number_of_turret <= 0:
 		$Core.add_to_group("enemy")
+		$Core.cooldown.start()
+		$Core.can_shoot = true
 
 
 func _on_boss_area_done_camera():

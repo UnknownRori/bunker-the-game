@@ -1,8 +1,9 @@
-[gd_scene load_steps=36 format=3 uid="uid://bh52j8kscnprc"]
+[gd_scene load_steps=38 format=3 uid="uid://bh52j8kscnprc"]
 
 [ext_resource type="Texture2D" uid="uid://inusy26ncr0o" path="res://assets/sprite.png" id="1_8sf23"]
 [ext_resource type="PackedScene" uid="uid://g40wu5scfhpc" path="res://scene/Component/Health.tscn" id="1_he5rk"]
 [ext_resource type="Script" path="res://src/Boss/Boss1.gd" id="1_qd2pc"]
+[ext_resource type="Script" path="res://src/Boss/Core.gd" id="2_0175r"]
 [ext_resource type="PackedScene" uid="uid://csw7fbg0tf7eu" path="res://scene/Component/sprite.tscn" id="2_sadoc"]
 [ext_resource type="Shader" path="res://resources/shaders/FlashDamage.gdshader" id="3_p3lbv"]
 [ext_resource type="PackedScene" uid="uid://2q685qh536nx" path="res://scene/Component/Inventory.tscn" id="5_ok081"]
@@ -24,6 +25,10 @@ shader_parameter/flash_modifier = false
 atlas = ExtResource("1_8sf23")
 region = Rect2(32, 112, 32, 32)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_uwl15"]
+atlas = ExtResource("1_8sf23")
+region = Rect2(32, 112, 32, 32)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_vinge"]
 animations = [{
 "frames": [{
@@ -32,6 +37,14 @@ animations = [{
 }],
 "loop": true,
 "name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uwl15")
+}],
+"loop": true,
+"name": &"shoot",
 "speed": 5.0
 }]
 
@@ -165,10 +178,15 @@ position = Vector2(5, 45.5)
 shape = SubResource("RectangleShape2D_oaxtv")
 
 [node name="Core" type="StaticBody2D" parent="."]
+script = ExtResource("2_0175r")
+
+[node name="Marker" type="Marker2D" parent="Core"]
+position = Vector2(0, 8)
 
 [node name="Sprite" parent="Core" instance=ExtResource("2_sadoc")]
 material = SubResource("ShaderMaterial_sh28h")
 sprite_frames = SubResource("SpriteFrames_vinge")
+animation = &"shoot"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Core"]
 position = Vector2(0, -4.5)
@@ -176,7 +194,7 @@ shape = SubResource("RectangleShape2D_5xjcn")
 
 [node name="Health" parent="Core" instance=ExtResource("1_he5rk")]
 
-[node name="Inventory" parent="Core" instance=ExtResource("5_ok081")]
+[node name="Cooldown" type="Timer" parent="Core"]
 
 [node name="LeftBaseTurret" type="StaticBody2D" parent="." groups=["enemy"]]
 position = Vector2(-41, -8)
@@ -364,6 +382,7 @@ direction = Vector2(4, 4)
 spread = 93.65
 gravity = Vector2(0, 0)
 
+[connection signal="body_entered" from="PlayerDetection" to="Core" method="_on_player_detection_body_entered"]
 [connection signal="body_entered" from="PlayerDetection" to="LeftBaseTurret/LeftTurret/TurretComponent" method="_on_player_detection_body_entered"]
 [connection signal="body_entered" from="PlayerDetection" to="LeftBaseTurret/RightTurret/TurretComponent" method="_on_player_detection_body_entered"]
 [connection signal="body_entered" from="PlayerDetection" to="RightBaseTurret/LeftTurret/TurretComponent" method="_on_player_detection_body_entered"]
