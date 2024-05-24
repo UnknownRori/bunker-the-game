@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://c5beviu8n8ad0"]
+[gd_scene load_steps=28 format=3 uid="uid://c5beviu8n8ad0"]
 
 [ext_resource type="Texture2D" uid="uid://inusy26ncr0o" path="res://assets/sprite.png" id="1_kje6p"]
 [ext_resource type="Script" path="res://src/player.gd" id="1_m17h1"]
@@ -92,6 +92,59 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_86auw"]
 size = Vector2(12, 17)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_hnh30"]
+atlas = ExtResource("1_kje6p")
+region = Rect2(80, 96, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qe0ub"]
+atlas = ExtResource("1_kje6p")
+region = Rect2(0, 96, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_85d74"]
+atlas = ExtResource("1_kje6p")
+region = Rect2(16, 96, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cjw6s"]
+atlas = ExtResource("1_kje6p")
+region = Rect2(32, 96, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ckgcr"]
+atlas = ExtResource("1_kje6p")
+region = Rect2(48, 96, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6bbs8"]
+atlas = ExtResource("1_kje6p")
+region = Rect2(64, 96, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ha8d0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hnh30")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qe0ub")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_85d74")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cjw6s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ckgcr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6bbs8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hnh30")
+}],
+"loop": false,
+"name": &"default",
+"speed": 13.0
+}]
+
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 script = ExtResource("1_m17h1")
 
@@ -107,6 +160,7 @@ shape = SubResource("RectangleShape2D_86auw")
 [node name="PlayerCamera" parent="." instance=ExtResource("2_4mxj3")]
 
 [node name="AttackComponent" parent="." instance=ExtResource("3_psbq3")]
+should_smoke = true
 basic_firerate = 0.2
 special_firerate = 0.2
 special_bullet_speed = 100
@@ -129,3 +183,7 @@ script = ExtResource("4_e3tjp")
 
 [node name="Barrel" type="Marker2D" parent="."]
 position = Vector2(3, 0)
+
+[node name="Smoke" type="AnimatedSprite2D" parent="."]
+position = Vector2(8, 0)
+sprite_frames = SubResource("SpriteFrames_ha8d0")
