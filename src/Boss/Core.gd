@@ -22,7 +22,6 @@ func _process(delta):
 	shoot()
 
 func shoot():
-	print(can_shoot, should_shoot, "\n")
 	if !can_shoot:
 		return
 	

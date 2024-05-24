@@ -121,6 +121,14 @@ animations = [{
 "loop": true,
 "name": &"idle",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b1deq")
+}],
+"loop": true,
+"name": &"shoot",
+"speed": 5.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ks4fh"]
@@ -245,6 +253,7 @@ position = Vector2(29, 1)
 material = SubResource("ShaderMaterial_10ru2")
 position = Vector2(-0.111292, 0.813667)
 sprite_frames = SubResource("SpriteFrames_v0tyw")
+animation = &"shoot"
 offset = Vector2(11.1113, 0.186331)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LeftBaseTurret/LeftTurret"]
@@ -331,6 +340,7 @@ position = Vector2(29, 1)
 material = SubResource("ShaderMaterial_jtapv")
 position = Vector2(-0.111292, 0.813667)
 sprite_frames = SubResource("SpriteFrames_v0tyw")
+animation = &"shoot"
 offset = Vector2(11.1113, 0.186331)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RightBaseTurret/LeftTurret"]
