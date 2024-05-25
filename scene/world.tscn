@@ -922,6 +922,8 @@ script = ExtResource("1_ruf3k")
 
 [node name="Platform" type="TileMap" parent="." groups=["platform"]]
 process_mode = 1
+light_mask = 4
+visibility_layer = 4
 tile_set = SubResource("TileSet_u1ocq")
 format = 2
 layer_0/name = "terrain"
