@@ -1,5 +1,7 @@
 extends Area2D
 
+@export var fill = 2
+
 @onready var timer = $Timer
 var current_pos
 
@@ -26,6 +28,6 @@ func _process(delta):
 
 func _on_body_entered(body):
 	if body.is_in_group("player"):
-		body.get_node("Inventory").fill_grenade()
+		body.get_node("Inventory").fill_grenade(fill)
 		SoundChip.play_power_up()
 		queue_free()

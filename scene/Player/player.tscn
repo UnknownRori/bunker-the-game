@@ -162,7 +162,7 @@ shape = SubResource("RectangleShape2D_86auw")
 [node name="AttackComponent" parent="." instance=ExtResource("3_psbq3")]
 should_smoke = true
 basic_firerate = 0.2
-special_firerate = 0.2
+special_firerate = 1.0
 special_bullet_speed = 100
 
 [node name="Movement" type="Node" parent="."]

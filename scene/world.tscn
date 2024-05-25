@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://b6ykw5m575uhe"]
+[gd_scene load_steps=40 format=3 uid="uid://b6ykw5m575uhe"]
 
 [ext_resource type="Script" path="res://src/world.gd" id="1_ruf3k"]
 [ext_resource type="PackedScene" uid="uid://c5beviu8n8ad0" path="res://scene/Player/player.tscn" id="1_y1asa"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://bhj3uhxhl2m3p" path="res://assets/paralax2.png" id="4_i6y05"]
 [ext_resource type="PackedScene" uid="uid://dtwrkbq1topst" path="res://scene/Enemy/enemy_1.tscn" id="5_vw78p"]
 [ext_resource type="PackedScene" uid="uid://bi7meh3gvw2u1" path="res://scene/Environment/moving_platform.tscn" id="6_ncfk1"]
+[ext_resource type="PackedScene" uid="uid://cvpfg1x3epy0i" path="res://scene/Component/DropComponent.tscn" id="7_ss54r"]
 [ext_resource type="PackedScene" uid="uid://b335a2su6du1" path="res://scene/Utils/hud.tscn" id="7_uua3g"]
 [ext_resource type="PackedScene" uid="uid://ufehmgdh3xly" path="res://scene/Pickup/HealthPickup.tscn" id="9_8o6q6"]
 [ext_resource type="PackedScene" uid="uid://dk3x8rtq2h4qc" path="res://scene/Environment/DeathZone.tscn" id="10_c3vlk"]
@@ -816,6 +817,18 @@ custom_data_layer_0/name = "spike"
 custom_data_layer_0/type = 1
 sources/0 = SubResource("TileSetAtlasSource_rs26q")
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xewhs"]
+resource_local_to_scene = true
+shader = ExtResource("11_5oolw")
+shader_parameter/flash_color = Color(1, 1, 1, 1)
+shader_parameter/flash_modifier = false
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_tl2if"]
+resource_local_to_scene = true
+shader = ExtResource("11_5oolw")
+shader_parameter/flash_color = Color(1, 1, 1, 1)
+shader_parameter/flash_modifier = false
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mnjw1"]
 size = Vector2(294, 153)
 
@@ -935,6 +948,13 @@ position = Vector2(403, 127)
 [node name="Enemy2" parent="." instance=ExtResource("5_vw78p")]
 position = Vector2(255, 116)
 
+[node name="Sprite" parent="Enemy2" index="0"]
+material = SubResource("ShaderMaterial_xewhs")
+
+[node name="DropComponent" parent="Enemy2" instance=ExtResource("7_ss54r")]
+item = ExtResource("16_oubgp")
+number = 2
+
 [node name="Enemy3" parent="." instance=ExtResource("5_vw78p")]
 position = Vector2(608, 206)
 
@@ -981,6 +1001,13 @@ position = Vector2(2265, 276)
 
 [node name="Enemy11" parent="." instance=ExtResource("5_vw78p")]
 position = Vector2(2120, 228)
+
+[node name="DropComponent" parent="Enemy11" instance=ExtResource("7_ss54r")]
+item = ExtResource("16_oubgp")
+number = 2
+
+[node name="Sprite" parent="Enemy11" index="1"]
+material = SubResource("ShaderMaterial_tl2if")
 
 [node name="Enemy12" parent="." instance=ExtResource("5_vw78p")]
 position = Vector2(2585, 220)
@@ -1077,11 +1104,17 @@ position = Vector2(2017, 974)
 [node name="BossDoor" parent="." instance=ExtResource("18_how73")]
 position = Vector2(3068, 1127)
 
+[connection signal="death" from="Enemy2/Health" to="Enemy2/DropComponent" method="_on_health_death"]
+[connection signal="death" from="Enemy11/Health" to="Enemy11/DropComponent" method="_on_health_death"]
 [connection signal="boss_died" from="Boss" to="BossArea" method="_on_boss_boss_died"]
 [connection signal="done_camera" from="BossArea" to="Player" method="_on_boss_area_done_camera"]
 [connection signal="done_camera" from="BossArea" to="Boss" method="_on_boss_area_done_camera"]
 [connection signal="start_camera" from="BossArea" to="Player" method="_on_boss_area_start_camera"]
 
+[editable path="Enemy2"]
+[editable path="Enemy2/Sprite"]
+[editable path="Enemy11"]
+[editable path="Enemy11/Sprite"]
 [editable path="Boss"]
 [editable path="Middle DeathZone"]
 [editable path="Middle DeathZone2"]
