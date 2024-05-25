@@ -25,7 +25,6 @@ func _start_tween():
 	tween.play()
 
 func _finish_tween():
-	print("test")
 	running = false
 	emit_signal("elevator_done")
 	tween.stop()

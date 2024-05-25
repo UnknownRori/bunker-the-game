@@ -7,6 +7,7 @@ extends Node
 @onready var power_up = preload("res://assets/sfx/power_up.wav")
 @onready var hit = preload("res://assets/sfx/hit.wav")
 @onready var throw = preload("res://assets/sfx/throw.wav")
+@onready var door_sound = preload("res://assets/sfx/door_open_close.wav")
 
 var saw_channel
 var noise_channel
@@ -16,6 +17,12 @@ func play_jump():
 	if !$SawChannel.playing:
 		$SawChannel.stop()
 	$SawChannel.stream = jump
+	$SawChannel.play()
+	
+func play_door_sound():
+	if !$SawChannel.playing:
+		$SawChannel.stop()
+	$SawChannel.stream = door_sound
 	$SawChannel.play()
 	
 func play_power_up():
