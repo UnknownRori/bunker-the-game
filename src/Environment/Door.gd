@@ -1,5 +1,12 @@
 extends StaticBody2D
 
+@export var closed = false
+
+func _ready():
+	if closed:
+		close()
+	else:
+		open()
 
 func close():
 	set_collision_layer_value(1, true)
