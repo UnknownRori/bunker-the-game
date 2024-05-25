@@ -149,7 +149,8 @@ func attack_special():
 	special.position = parent.position
 	special.damage = special_bullet_damage
 	var velocity = Vector2(movement.direction_face * special_bullet_speed, 0.)
-	sound_chip.play_shoot()
+	# TODO : Make this depend on inventory
+	sound_chip.play_throw()
 	if barrel:
 		special.launch(Vector2(velocity.x  + parent.velocity.x , velocity.y), direction.x * barrel.position + parent.position)
 	else:

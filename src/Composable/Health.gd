@@ -25,6 +25,7 @@ func damage(value) -> bool:
 	hp -= value
 	
 	sprite.play_damage()
+	SoundChip.play_hit()
 	if is_dead():
 		emit_signal("death")
 	else:

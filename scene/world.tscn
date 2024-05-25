@@ -927,7 +927,7 @@ texture = ExtResource("3_pflic")
 centered = false
 
 [node name="Player" parent="." instance=ExtResource("1_y1asa")]
-position = Vector2(45, 91)
+position = Vector2(60, 87)
 
 [node name="Enemy1" parent="." instance=ExtResource("5_vw78p")]
 position = Vector2(403, 127)
@@ -1077,6 +1077,7 @@ position = Vector2(2017, 974)
 [node name="BossDoor" parent="." instance=ExtResource("18_how73")]
 position = Vector2(3068, 1127)
 
+[connection signal="boss_died" from="Boss" to="BossArea" method="_on_boss_boss_died"]
 [connection signal="done_camera" from="BossArea" to="Player" method="_on_boss_area_done_camera"]
 [connection signal="done_camera" from="BossArea" to="Boss" method="_on_boss_area_done_camera"]
 [connection signal="start_camera" from="BossArea" to="Player" method="_on_boss_area_start_camera"]

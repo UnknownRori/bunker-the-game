@@ -5,6 +5,8 @@ extends Node
 @onready var select = preload("res://assets/sfx/select.wav")
 @onready var explosion = preload("res://assets/sfx/explosion.wav")
 @onready var power_up = preload("res://assets/sfx/power_up.wav")
+@onready var hit = preload("res://assets/sfx/hit.wav")
+@onready var throw = preload("res://assets/sfx/throw.wav")
 
 var saw_channel
 var noise_channel
@@ -27,6 +29,18 @@ func play_shoot():
 		$NoiseChannel.stop()
 	$NoiseChannel.stream = shoot
 	$NoiseChannel.play()
+	
+func play_hit():
+	if !$SawChannel.playing:
+		$SawChannel.stop()
+	$SawChannel.stream = hit
+	$SawChannel.play()
+	
+func play_throw():
+	if !$SawChannel.playing:
+		$SawChannel.stop()
+	$SawChannel.stream = throw
+	$SawChannel.play()
 	
 func play_explosion():
 	if !$NoiseChannel.playing:
