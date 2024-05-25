@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://c5beviu8n8ad0"]
+[gd_scene load_steps=34 format=3 uid="uid://c5beviu8n8ad0"]
 
 [ext_resource type="Texture2D" uid="uid://inusy26ncr0o" path="res://assets/sprite.png" id="1_kje6p"]
 [ext_resource type="Script" path="res://src/player.gd" id="1_m17h1"]
@@ -145,6 +145,49 @@ animations = [{
 "speed": 13.0
 }]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_2dqgn"]
+atlas = ExtResource("1_kje6p")
+region = Rect2(160, 80, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b6cr5"]
+atlas = ExtResource("1_kje6p")
+region = Rect2(112, 80, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uurqb"]
+atlas = ExtResource("1_kje6p")
+region = Rect2(128, 80, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8bc8n"]
+atlas = ExtResource("1_kje6p")
+region = Rect2(144, 80, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pbska"]
+atlas = ExtResource("1_kje6p")
+region = Rect2(160, 80, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_y5mdb"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2dqgn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b6cr5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uurqb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8bc8n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pbska")
+}],
+"loop": false,
+"name": &"default",
+"speed": 13.0
+}]
+
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 script = ExtResource("1_m17h1")
 
@@ -161,6 +204,7 @@ shape = SubResource("RectangleShape2D_86auw")
 
 [node name="AttackComponent" parent="." instance=ExtResource("3_psbq3")]
 should_smoke = true
+should_muzzle_flash = true
 basic_firerate = 0.2
 special_firerate = 1.0
 special_bullet_speed = 100
@@ -187,3 +231,9 @@ position = Vector2(3, 0)
 [node name="Smoke" type="AnimatedSprite2D" parent="."]
 position = Vector2(8, 0)
 sprite_frames = SubResource("SpriteFrames_ha8d0")
+
+[node name="MuzzleFlash" type="AnimatedSprite2D" parent="."]
+position = Vector2(10, 2)
+sprite_frames = SubResource("SpriteFrames_y5mdb")
+frame = 4
+frame_progress = 1.0

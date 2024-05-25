@@ -14,6 +14,8 @@ extends Node
 @onready var root = get_node("/root/World")
 
 @export var should_smoke = false
+@export var should_muzzle_flash = false
+
 @export var basic_firerate = 0.5
 @export var basic_bullet_speed = 250
 @export var basic_bullet_damage = 10
@@ -111,10 +113,35 @@ func attack_basic(is_up):
 		bullet.launch(velocity, Vector2(offset + barrel.global_position.x, barrel.global_position.y))
 		if should_smoke:
 			var smoker = get_parent().get_node("Smoke")
-			if direction.x < 0:
-				smoker.position.x = -8
-			if direction.x > 0:
-				smoker.position.x = 8
+			if !is_up:
+				if direction.x < 0:
+					smoker.position.x = -8
+					smoker.position.y = 0
+				if direction.x > 0:
+					smoker.position.x = 8
+					smoker.position.y = 0
+			else:
+					smoker.position.x = 3
+					smoker.position.y = -5
+			smoker.play("default")
+		if should_muzzle_flash:
+			var smoker = get_parent().get_node("MuzzleFlash")
+			if !is_up:
+				if direction.x < 0:
+					smoker.position.x = -8
+					smoker.position.y = 0
+					smoker.scale.x = -1
+					smoker.rotation = 0
+				if direction.x > 0:
+					smoker.position.x = 8
+					smoker.position.y = 0
+					smoker.scale.x = 1
+					smoker.rotation = 0
+			else:
+					smoker.position.x = 3
+					smoker.position.y = -5
+					smoker.scale.x = 1
+					smoker.rotation = deg_to_rad(-90)
 			smoker.play("default")
 	else:
 		bullet.launch(velocity, parent.global_position)

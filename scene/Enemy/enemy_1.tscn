@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://dtwrkbq1topst"]
+[gd_scene load_steps=33 format=3 uid="uid://dtwrkbq1topst"]
 
 [ext_resource type="PackedScene" uid="uid://csw7fbg0tf7eu" path="res://scene/Component/sprite.tscn" id="1_wh5cv"]
 [ext_resource type="Texture2D" uid="uid://inusy26ncr0o" path="res://assets/sprite.png" id="1_ykxtj"]
@@ -136,6 +136,49 @@ animations = [{
 "speed": 13.0
 }]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_2dqgn"]
+atlas = ExtResource("1_ykxtj")
+region = Rect2(160, 80, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b6cr5"]
+atlas = ExtResource("1_ykxtj")
+region = Rect2(112, 80, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uurqb"]
+atlas = ExtResource("1_ykxtj")
+region = Rect2(128, 80, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8bc8n"]
+atlas = ExtResource("1_ykxtj")
+region = Rect2(144, 80, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pbska"]
+atlas = ExtResource("1_ykxtj")
+region = Rect2(160, 80, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_rgyx2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2dqgn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b6cr5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uurqb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8bc8n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pbska")
+}],
+"loop": false,
+"name": &"default",
+"speed": 13.0
+}]
+
 [node name="Enemy1" type="CharacterBody2D" groups=["enemy"]]
 
 [node name="Sprite" parent="." instance=ExtResource("1_wh5cv")]
@@ -149,6 +192,7 @@ shape = SubResource("CapsuleShape2D_hyijo")
 
 [node name="AttackComponent" parent="." instance=ExtResource("2_g6tyi")]
 should_smoke = true
+should_muzzle_flash = true
 basic_bullet_damage = 5
 
 [node name="Movement" type="Node" parent="."]
@@ -190,5 +234,9 @@ sprite_frames = SubResource("SpriteFrames_4u755")
 
 [node name="Barrel" type="Marker2D" parent="."]
 position = Vector2(6, 0)
+
+[node name="MuzzleFlash" type="AnimatedSprite2D" parent="."]
+position = Vector2(10, 2)
+sprite_frames = SubResource("SpriteFrames_rgyx2")
 
 [editable path="Sprite"]
