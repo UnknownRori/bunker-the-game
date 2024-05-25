@@ -1,6 +1,6 @@
 extends StaticBody2D
 
-@export var cooldown_shoot = 1
+@export var cooldown_shoot = 1.5
 @export var missile = preload("res://scene/Enemy/missile_enemy.tscn")
 @onready var root = get_node("/root/World")
 
@@ -26,6 +26,9 @@ func shoot():
 		return
 	
 	if !should_shoot:
+		return
+	
+	if !target:
 		return
 	
 	should_shoot = false

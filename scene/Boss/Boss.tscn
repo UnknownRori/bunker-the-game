@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://bh52j8kscnprc"]
+[gd_scene load_steps=39 format=3 uid="uid://bh52j8kscnprc"]
 
 [ext_resource type="Texture2D" uid="uid://inusy26ncr0o" path="res://assets/sprite.png" id="1_8sf23"]
 [ext_resource type="PackedScene" uid="uid://g40wu5scfhpc" path="res://scene/Component/Health.tscn" id="1_he5rk"]
@@ -11,6 +11,7 @@
 [ext_resource type="Script" path="res://src/Boss/Boss1BaseTurret.gd" id="7_r1qkv"]
 [ext_resource type="PackedScene" uid="uid://dnqrn0ge4xuq4" path="res://scene/Enemy/enemy_bullet.tscn" id="7_xfg76"]
 [ext_resource type="Script" path="res://src/TurretEnemy.gd" id="8_s8ems"]
+[ext_resource type="Texture2D" uid="uid://b8uccwstgkowj" path="res://assets/particles/explosion.png" id="12_pm362"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_oaxtv"]
 size = Vector2(291, 197)
@@ -170,10 +171,20 @@ shader = ExtResource("3_p3lbv")
 shader_parameter/flash_color = Color(1, 1, 1, 1)
 shader_parameter/flash_modifier = false
 
-[sub_resource type="ImageTexture" id="ImageTexture_pv7ey"]
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_v38ni"]
+particles_animation = true
+particles_anim_h_frames = 5
+particles_anim_v_frames = 1
+particles_anim_loop = false
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_i1gtt"]
-atlas = SubResource("ImageTexture_pv7ey")
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_fo3tg"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(25, 25, 1)
+gravity = Vector3(0, 0, 0)
+scale_min = 0.5
+anim_speed_min = 1.0
+anim_speed_max = 1.0
 
 [node name="Boss1" type="Node2D" groups=["enemy_boss"]]
 script = ExtResource("1_qd2pc")
@@ -378,19 +389,13 @@ offset = Vector2(11.1113, 0.186331)
 position = Vector2(0, 1)
 shape = SubResource("RectangleShape2D_ks4fh")
 
-[node name="GPUParticles2D" type="CPUParticles2D" parent="."]
-position = Vector2(-41, -2)
-amount = 4
-lifetime = 2.0
-explosiveness = 1.0
-randomness = 1.0
-lifetime_randomness = 1.0
-texture = SubResource("AtlasTexture_i1gtt")
-emission_shape = 3
-emission_rect_extents = Vector2(15, 15)
-direction = Vector2(4, 4)
-spread = 93.65
-gravity = Vector2(0, 0)
+[node name="CoreExplosion" type="GPUParticles2D" parent="."]
+material = SubResource("CanvasItemMaterial_v38ni")
+emitting = false
+amount = 24
+process_material = SubResource("ParticleProcessMaterial_fo3tg")
+texture = ExtResource("12_pm362")
+one_shot = true
 
 [connection signal="body_entered" from="PlayerDetection" to="Core" method="_on_player_detection_body_entered"]
 [connection signal="body_entered" from="PlayerDetection" to="LeftBaseTurret/LeftTurret/TurretComponent" method="_on_player_detection_body_entered"]
