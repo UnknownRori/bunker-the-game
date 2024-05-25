@@ -12,23 +12,27 @@ var music_channel
 
 func play_jump():
 	if !$SawChannel.playing:
-		$SawChannel.stream = jump
-		$SawChannel.play()
+		$SawChannel.stop()
+	$SawChannel.stream = jump
+	$SawChannel.play()
 	
 func play_power_up():
 	if !$SawChannel.playing:
-		$SawChannel.stream = power_up
-		$SawChannel.play()
+		$SawChannel.stop()
+	$SawChannel.stream = power_up
+	$SawChannel.play()
 
 func play_shoot():
 	if !$NoiseChannel.playing:
-		$NoiseChannel.stream = shoot
-		$NoiseChannel.play()
+		$NoiseChannel.stop()
+	$NoiseChannel.stream = shoot
+	$NoiseChannel.play()
 	
 func play_explosion():
 	if !$NoiseChannel.playing:
-		$NoiseChannel.stream = explosion
-		$NoiseChannel.play()
+		$NoiseChannel.stop()
+	$NoiseChannel.stream = explosion
+	$NoiseChannel.play()
 
 func play_select():
 	if !$SawChannel.playing:
