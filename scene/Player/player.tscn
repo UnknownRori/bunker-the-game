@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://c5beviu8n8ad0"]
+[gd_scene load_steps=36 format=3 uid="uid://c5beviu8n8ad0"]
 
 [ext_resource type="Texture2D" uid="uid://inusy26ncr0o" path="res://assets/sprite.png" id="1_kje6p"]
 [ext_resource type="Script" path="res://src/player.gd" id="1_m17h1"]
@@ -16,6 +16,14 @@ resource_local_to_scene = true
 shader = ExtResource("3_b7j36")
 shader_parameter/flash_color = Color(1, 1, 1, 1)
 shader_parameter/flash_modifier = false
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6qpov"]
+atlas = ExtResource("1_kje6p")
+region = Rect2(64, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dn5v5"]
+atlas = ExtResource("1_kje6p")
+region = Rect2(80, 16, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3l45h"]
 atlas = ExtResource("1_kje6p")
@@ -47,6 +55,17 @@ region = Rect2(32, 16, 16, 16)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_u4iva"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6qpov")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dn5v5")
+}],
+"loop": true,
+"name": &"dead",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_3l45h")
@@ -196,7 +215,7 @@ script = ExtResource("1_m17h1")
 [node name="Sprite" parent="." instance=ExtResource("2_v5fh4")]
 material = SubResource("ShaderMaterial_i4j5x")
 sprite_frames = SubResource("SpriteFrames_u4iva")
-animation = &"shoot"
+animation = &"dead"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -0.5)

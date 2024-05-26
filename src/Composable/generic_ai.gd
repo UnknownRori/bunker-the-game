@@ -13,6 +13,7 @@ extends Node
 @onready var should_turn = false
 
 @export_range(0., 1.) var wander_multiplier = 0.3
+@export var active = true
 
 enum {
 	SIMPLE_WANDER,
@@ -29,6 +30,9 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
+	if !active:
+		return
+
 	match state:
 		SIMPLE_WANDER:
 			# Change state to attack player if it exist on the raycast

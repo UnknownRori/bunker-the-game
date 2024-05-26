@@ -25,6 +25,11 @@ region = Rect2(0, 64, 16, 16)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ylp3t"]
 animations = [{
+"frames": [],
+"loop": true,
+"name": &"dead",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_dlg78")

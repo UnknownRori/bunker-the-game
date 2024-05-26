@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://dtwrkbq1topst"]
+[gd_scene load_steps=35 format=3 uid="uid://dtwrkbq1topst"]
 
 [ext_resource type="PackedScene" uid="uid://csw7fbg0tf7eu" path="res://scene/Component/sprite.tscn" id="1_wh5cv"]
 [ext_resource type="Texture2D" uid="uid://inusy26ncr0o" path="res://assets/sprite.png" id="1_ykxtj"]
@@ -15,6 +15,14 @@ resource_local_to_scene = true
 shader = ExtResource("2_5r2ey")
 shader_parameter/flash_color = Color(1, 1, 1, 1)
 shader_parameter/flash_modifier = false
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o2a5s"]
+atlas = ExtResource("1_ykxtj")
+region = Rect2(64, 48, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fkef2"]
+atlas = ExtResource("1_ykxtj")
+region = Rect2(80, 48, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_i5ukp"]
 atlas = ExtResource("1_ykxtj")
@@ -42,6 +50,17 @@ region = Rect2(32, 48, 16, 16)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_duk6b"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o2a5s")
+}, {
+"duration": 1.4,
+"texture": SubResource("AtlasTexture_fkef2")
+}],
+"loop": true,
+"name": &"dead",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_i5ukp")
@@ -184,10 +203,10 @@ collision_layer = 5
 collision_mask = 5
 
 [node name="Sprite" parent="." instance=ExtResource("1_wh5cv")]
+z_index = 1
 material = SubResource("ShaderMaterial_xewhs")
 sprite_frames = SubResource("SpriteFrames_duk6b")
-animation = &"walking"
-frame_progress = 0.479034
+animation = &"dead"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_hyijo")
@@ -205,6 +224,7 @@ max_jumps = 1
 [node name="Health" parent="." instance=ExtResource("4_awgl0")]
 hp = 30.0
 max_hp = 30.0
+should_animate_dead = true
 
 [node name="Inventory" parent="." instance=ExtResource("9_sakck")]
 basic = ExtResource("4_p5cma")

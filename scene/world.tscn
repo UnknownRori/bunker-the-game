@@ -957,7 +957,7 @@ texture = ExtResource("3_pflic")
 centered = false
 
 [node name="Player" parent="." instance=ExtResource("1_y1asa")]
-position = Vector2(-1168, -408)
+position = Vector2(3020, 1125)
 
 [node name="Enemy1" parent="." instance=ExtResource("5_vw78p")]
 position = Vector2(403, 127)
