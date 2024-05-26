@@ -17,6 +17,7 @@ As LS16 Home Console is a rather limited console, and limited time by us due to 
 - 4 Unique BGM
 - A rudimentary score system
 - 2 Pick up able item
+- Discord Rich Presence (yes, why not)
 - Perma death (Be careful)
 
 And for mechanics, figure it out yourself:)
@@ -28,7 +29,7 @@ And for mechanics, figure it out yourself:)
 |    A    |     Z    | Primary Attack    |
 |    B    |     X    | Secondary Attack  |
 |  Start  |   Enter  | Accept & Pause    |
-|  Select |   Space  | ???               |
+|  Select |   Space  | Control Swap      |
 |  D-Pads |   Arrow  | Navigation        |
 
 * Secondary Controls : Figure it out yourself, why not try pressing `Select` :)
@@ -47,6 +48,13 @@ cd bunker-the-game
 
 # Open with Godot
 ```
+
+## Contributors
+
+- Programmer - [UnknownRori](https://unknownrori.vercel.app/)
+- Art & Animation - [Aezakmi](https://pyown-kun.web.app/) & [UnknownRori](https://unknownrori.vercel.app/)
+- SFX / Music - [UnknownRori](https://unknownrori.vercel.app/)
+- Game Design - [RimuEirnarn](https://rimueirnarn.github.io/) & [UnknownRori](https://unknownrori.vercel.app/)
 
 ## License
 
