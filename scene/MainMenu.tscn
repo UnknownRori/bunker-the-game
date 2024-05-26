@@ -61,9 +61,9 @@ vertical_alignment = 1
 [node name="Select" type="Label" parent="."]
 layout_mode = 0
 offset_left = 95.0
-offset_top = 149.0
-offset_right = 159.0
-offset_bottom = 169.0
+offset_top = 154.0
+offset_right = 161.0
+offset_bottom = 174.0
 theme = ExtResource("4_4apg4")
 text = ">          <"
 vertical_alignment = 1

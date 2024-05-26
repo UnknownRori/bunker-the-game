@@ -89,8 +89,11 @@ func attack_basic(is_up):
 	if (player_camera):
 		player_camera.add_trauma(0.1)
 	if sprite:
-		sprite.set_state(sprite.STATE.SHOOT)
-	
+		if is_up:
+			sprite.state = sprite.STATE.UP
+		else:
+			sprite.state = sprite.STATE.SHOOT
+
 	var bullet = inventory.basic.instantiate()
 	bullet.position = parent.position
 	bullet.damage = basic_bullet_damage
@@ -127,18 +130,19 @@ func attack_basic(is_up):
 		if should_muzzle_flash:
 			var smoker = get_parent().get_node("MuzzleFlash")
 			if !is_up:
+				smoker.position.y = 0
+				smoker.rotation = 0	
 				if direction.x < 0:
 					smoker.position.x = -8
-					smoker.position.y = 0
 					smoker.scale.x = -1
-					smoker.rotation = 0
 				if direction.x > 0:
 					smoker.position.x = 8
-					smoker.position.y = 0
 					smoker.scale.x = 1
-					smoker.rotation = 0
 			else:
-					smoker.position.x = 3
+					if direction.x > 0:
+						smoker.position.x = 3
+					else:
+						smoker.position.x = -3
 					smoker.position.y = -5
 					smoker.scale.x = 1
 					smoker.rotation = deg_to_rad(-90)
