@@ -14,6 +14,7 @@ extends Node
 @onready var root = get_node("/root/World")
 
 @export var should_smoke = false
+@export var muzzle_flash_manual_transform = false
 @export var should_muzzle_flash = false
 
 @export var basic_firerate = 0.5
@@ -117,38 +118,45 @@ func attack_basic(is_up):
 		if should_smoke:
 			var smoker = get_parent().get_node("Smoke")
 			if !is_up:
+				smoker.position.y = 0
 				if direction.x < 0:
 					smoker.position.x = -8
-					smoker.position.y = 0
 				if direction.x > 0:
 					smoker.position.x = 8
-					smoker.position.y = 0
 			else:
+				smoker.position.y = -5
+				if direction.x < 0:
+					smoker.position.x = -3
+				if direction.x > 0:
 					smoker.position.x = 3
-					smoker.position.y = -5
 			smoker.play("default")
 		if should_muzzle_flash:
-			var smoker = get_parent().get_node("MuzzleFlash")
-			if !is_up:
-				smoker.position.y = 0
-				smoker.rotation = 0	
-				if direction.x < 0:
-					smoker.position.x = -8
-					smoker.scale.x = -1
-				if direction.x > 0:
-					smoker.position.x = 8
-					smoker.scale.x = 1
-			else:
+			var muzzle = get_parent().get_node("MuzzleFlash")
+			if !muzzle_flash_manual_transform:
+				if !is_up:
+					muzzle.position.y = 0
+					muzzle.rotation = 0	
+					if direction.x < 0:
+						muzzle.position.x = -8
+						muzzle.scale.x = -1
 					if direction.x > 0:
-						smoker.position.x = 3
-					else:
-						smoker.position.x = -3
-					smoker.position.y = -5
-					smoker.scale.x = 1
-					smoker.rotation = deg_to_rad(-90)
-			smoker.play("default")
+						muzzle.position.x = 8
+						muzzle.scale.x = 1
+				else:
+						if direction.x > 0:
+							muzzle.position.x = 3
+						else:
+							muzzle.position.x = -3
+						muzzle.position.y = -5
+						muzzle.scale.x = 1
+						muzzle.rotation = deg_to_rad(-90)
+			muzzle.play("default")
 	else:
 		bullet.launch(velocity, parent.global_position)
+		
+	if muzzle_flash_manual_transform:
+		var muzzle = get_parent().get_node("MuzzleFlash")
+		muzzle.play("default")
 	root.add_child(bullet)
 	sound_chip.play_shoot()
 	shoot_basic = false

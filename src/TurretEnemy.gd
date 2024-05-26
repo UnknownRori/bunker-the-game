@@ -4,6 +4,7 @@ extends Node
 @onready var attack: Node = get_parent().get_node("AttackComponent")
 @onready var rotation_marker: Marker2D = get_parent().get_node("RotationMarker")
 @onready var player_detection: Area2D = get_parent().get_node("PlayerDetection")
+@onready var muzzle_flash: AnimatedSprite2D = get_parent().get_node("MuzzleFlash")
 
 @export var shoot: bool = true
 
@@ -23,6 +24,8 @@ func track_player():
 		
 	var rotation = dir.angle()
 	parent.rotation = rotation
+	if muzzle_flash:
+		muzzle_flash.rotation = rotation
 	
 	track_ready = true
 	

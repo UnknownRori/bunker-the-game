@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://ck5nk1gr3wjed"]
+[gd_scene load_steps=21 format=3 uid="uid://ck5nk1gr3wjed"]
 
 [ext_resource type="PackedScene" uid="uid://csw7fbg0tf7eu" path="res://scene/Component/sprite.tscn" id="1_ktudg"]
 [ext_resource type="Shader" path="res://resources/shaders/FlashDamage.gdshader" id="1_x7c5s"]
@@ -48,6 +48,49 @@ size = Vector2(9, 5)
 [sub_resource type="CircleShape2D" id="CircleShape2D_2reqr"]
 radius = 225.056
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_2dqgn"]
+atlas = ExtResource("3_g6wl5")
+region = Rect2(160, 80, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b6cr5"]
+atlas = ExtResource("3_g6wl5")
+region = Rect2(112, 80, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uurqb"]
+atlas = ExtResource("3_g6wl5")
+region = Rect2(128, 80, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8bc8n"]
+atlas = ExtResource("3_g6wl5")
+region = Rect2(144, 80, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pbska"]
+atlas = ExtResource("3_g6wl5")
+region = Rect2(160, 80, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_f78cb"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2dqgn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b6cr5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uurqb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8bc8n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pbska")
+}],
+"loop": false,
+"name": &"default",
+"speed": 13.0
+}]
+
 [node name="WallDefense" type="StaticBody2D" groups=["enemy"]]
 
 [node name="Sprite" parent="." instance=ExtResource("1_ktudg")]
@@ -60,6 +103,8 @@ position = Vector2(2.5, 0.5)
 shape = SubResource("RectangleShape2D_px3q7")
 
 [node name="AttackComponent" parent="." instance=ExtResource("2_ub6gv")]
+muzzle_flash_manual_transform = true
+should_muzzle_flash = true
 basic_firerate = 2.0
 basic_bullet_speed = 100
 basic_bullet_damage = 5
@@ -80,6 +125,12 @@ special_has = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetection"]
 shape = SubResource("CircleShape2D_2reqr")
+
+[node name="MuzzleFlash" type="AnimatedSprite2D" parent="."]
+position = Vector2(11, -1)
+sprite_frames = SubResource("SpriteFrames_f78cb")
+frame = 4
+frame_progress = 1.0
 
 [connection signal="body_entered" from="PlayerDetection" to="TurretEnemy" method="_on_player_detection_body_entered"]
 [connection signal="body_exited" from="PlayerDetection" to="TurretEnemy" method="_on_player_detection_body_exited"]
