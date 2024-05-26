@@ -238,7 +238,7 @@ particles_anim_loop = false
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_fo3tg"]
 particle_flag_disable_z = true
 emission_shape = 3
-emission_box_extents = Vector3(25, 25, 1)
+emission_box_extents = Vector3(10, 10, 1)
 gravity = Vector3(0, 0, 0)
 scale_min = 0.5
 anim_speed_min = 1.0
@@ -256,6 +256,7 @@ shape = SubResource("RectangleShape2D_oaxtv")
 
 [node name="Core" type="StaticBody2D" parent="."]
 script = ExtResource("2_0175r")
+cooldown_shoot = 2.0
 
 [node name="Marker" type="Marker2D" parent="Core"]
 position = Vector2(0, 8)
@@ -263,7 +264,6 @@ position = Vector2(0, 8)
 [node name="Sprite" parent="Core" instance=ExtResource("2_sadoc")]
 material = SubResource("ShaderMaterial_sh28h")
 sprite_frames = SubResource("SpriteFrames_vinge")
-animation = &"death"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Core"]
 position = Vector2(0, -4.5)
@@ -471,6 +471,22 @@ process_material = SubResource("ParticleProcessMaterial_fo3tg")
 texture = ExtResource("12_pm362")
 one_shot = true
 
+[node name="RightTurretExplosion" type="GPUParticles2D" parent="."]
+material = SubResource("CanvasItemMaterial_v38ni")
+position = Vector2(39, 0)
+emitting = false
+process_material = SubResource("ParticleProcessMaterial_fo3tg")
+texture = ExtResource("12_pm362")
+one_shot = true
+
+[node name="LeftTurretExplosion" type="GPUParticles2D" parent="."]
+material = SubResource("CanvasItemMaterial_v38ni")
+position = Vector2(-41, 0)
+emitting = false
+process_material = SubResource("ParticleProcessMaterial_fo3tg")
+texture = ExtResource("12_pm362")
+one_shot = true
+
 [connection signal="body_entered" from="PlayerDetection" to="Core" method="_on_player_detection_body_entered"]
 [connection signal="body_entered" from="PlayerDetection" to="LeftBaseTurret/LeftTurret/TurretComponent" method="_on_player_detection_body_entered"]
 [connection signal="body_entered" from="PlayerDetection" to="LeftBaseTurret/RightTurret/TurretComponent" method="_on_player_detection_body_entered"]
@@ -482,10 +498,12 @@ one_shot = true
 [connection signal="body_exited" from="PlayerDetection" to="RightBaseTurret/RightTurret/TurretComponent" method="_on_player_detection_body_exited"]
 [connection signal="death" from="Core/Health" to="." method="_on_core_death"]
 [connection signal="death" from="LeftBaseTurret/Health" to="." method="_on_turret_death"]
+[connection signal="death" from="LeftBaseTurret/Health" to="." method="left_death_turret"]
 [connection signal="death" from="LeftBaseTurret/Health" to="LeftBaseTurret" method="_on_base_death"]
 [connection signal="death" from="LeftBaseTurret/LeftTurret/Health" to="." method="_on_turret_barrel_death"]
 [connection signal="death" from="LeftBaseTurret/RightTurret/Health" to="." method="_on_turret_barrel_death"]
 [connection signal="death" from="RightBaseTurret/Health" to="." method="_on_turret_death"]
+[connection signal="death" from="RightBaseTurret/Health" to="." method="right_turret_death"]
 [connection signal="death" from="RightBaseTurret/Health" to="RightBaseTurret" method="_on_base_death"]
 [connection signal="death" from="RightBaseTurret/LeftTurret/Health" to="." method="_on_turret_barrel_death"]
 [connection signal="death" from="RightBaseTurret/RightTurret/Health" to="." method="_on_turret_barrel_death"]

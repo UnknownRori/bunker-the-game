@@ -40,3 +40,13 @@ func _on_boss_area_done_camera():
 
 func _on_turret_barrel_death():
 	SoundChip.play_explosion()
+
+
+func left_death_turret():
+	$LeftTurretExplosion.emitting = true
+	SoundChip.play_explosion()
+
+
+func right_turret_death():
+	$RightTurretExplosion.emitting = true
+	SoundChip.play_explosion()
