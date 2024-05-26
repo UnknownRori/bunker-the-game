@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=3 uid="uid://b6ykw5m575uhe"]
+[gd_scene load_steps=44 format=3 uid="uid://b6ykw5m575uhe"]
 
 [ext_resource type="Script" path="res://src/world.gd" id="1_ruf3k"]
 [ext_resource type="PackedScene" uid="uid://c5beviu8n8ad0" path="res://scene/Player/player.tscn" id="1_y1asa"]
@@ -19,6 +19,7 @@
 [ext_resource type="PackedScene" uid="uid://bwb0ue3qkf5ug" path="res://scene/Pickup/GrenadePickup.tscn" id="16_oubgp"]
 [ext_resource type="PackedScene" uid="uid://bwr6jsnakug6v" path="res://scene/Pause.tscn" id="17_j3gj1"]
 [ext_resource type="PackedScene" uid="uid://bc5bsu4pqysys" path="res://scene/Environment/Door.tscn" id="18_how73"]
+[ext_resource type="PackedScene" uid="uid://byj2urkcyxpwb" path="res://scene/Enemy/KamikazeDrone.tscn" id="20_uglfw"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_17hwv"]
 
@@ -957,7 +958,7 @@ texture = ExtResource("3_pflic")
 centered = false
 
 [node name="Player" parent="." instance=ExtResource("1_y1asa")]
-position = Vector2(3020, 1125)
+position = Vector2(-1171, -419)
 
 [node name="Enemy1" parent="." instance=ExtResource("5_vw78p")]
 position = Vector2(403, 127)
@@ -1178,6 +1179,24 @@ position = Vector2(-170, -153)
 
 [node name="HealthPickup2" parent="." instance=ExtResource("9_8o6q6")]
 position = Vector2(2734, 1116)
+
+[node name="KamikazeDrone2" parent="." instance=ExtResource("20_uglfw")]
+position = Vector2(-552, 63)
+
+[node name="KamikazeDrone3" parent="." instance=ExtResource("20_uglfw")]
+position = Vector2(669, 119)
+
+[node name="KamikazeDrone4" parent="." instance=ExtResource("20_uglfw")]
+position = Vector2(2104, 163)
+
+[node name="KamikazeDrone" parent="." instance=ExtResource("20_uglfw")]
+position = Vector2(-203, 68)
+
+[node name="KamikazeDrone5" parent="." instance=ExtResource("20_uglfw")]
+position = Vector2(1606, 79)
+
+[node name="KamikazeDrone6" parent="." instance=ExtResource("20_uglfw")]
+position = Vector2(1149, 97)
 
 [connection signal="death" from="Enemy2/Health" to="Enemy2/DropComponent" method="_on_health_death"]
 [connection signal="death" from="Enemy11/Health" to="Enemy11/DropComponent" method="_on_health_death"]
