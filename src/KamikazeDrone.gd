@@ -14,6 +14,7 @@ var bombing = false
 var ready_explode = false
 
 var target = null
+var pernanent_target = null
 
 var explosion_sprite = preload("res://scene/Environment/ExplodingSprite.tscn")
 @onready var camera = get_node("/root/World/Player/PlayerCamera")
@@ -35,6 +36,7 @@ func timer_timeout():
 	
 func init_explosion_timer():
 	timer.start()
+	state = STATE.EXPLODING
 	bombing = true
 	
 func _process(delta):
@@ -42,17 +44,20 @@ func _process(delta):
 		STATE.IDLE:
 			if target:
 				state = STATE.CHASE
+				return
 			move_and_slide()
 		STATE.CHASE:
 			var target2 = target
-			if target2:
+			if !target2:
 				state = STATE.IDLE
+				return
 				
+			pernanent_target = target2
 			var dir = (target2.position - position).normalized()
 			velocity += dir * (acceleration * delta)
 			move_and_slide()
 		STATE.EXPLODING:
-			var dir = (target.position - position).normalized()
+			var dir = (pernanent_target.position - position).normalized()
 			velocity += dir * (acceleration * delta)
 			move_and_slide()
 

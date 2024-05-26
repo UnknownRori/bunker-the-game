@@ -22,12 +22,16 @@ var current_jump: int = 0
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
+	pass
+
+func _process(delta):
 	if (controllable):
 		direction = controllable.MOVE_DIR
-
 	move(direction, delta)
 	flip_animate(direction)
-
+	if parent.is_on_floor():
+		current_jump = 1
+		
 	for i in parent.get_slide_collision_count():
 		var collision = parent.get_slide_collision(i)
 		var collider = collision.get_collider()
@@ -42,10 +46,6 @@ func _physics_process(delta):
 						hp.damage_spike(10)
 
 	direction = Vector2.ZERO
-
-func _process(delta):
-	if parent.is_on_floor():
-		current_jump = 1
 	
 func flip_animate(direction):
 	if (!sprite):
