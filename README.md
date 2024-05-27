@@ -29,7 +29,7 @@ And for mechanics, figure it out yourself:)
 |    A    |     Z    | Primary Attack    |
 |    B    |     X    | Secondary Attack  |
 |  Start  |   Enter  | Accept & Pause    |
-|  Select |   Space  | Control Swap      |
+|  Select |   Shift  | Control Swap      |
 |  D-Pads |   Arrow  | Navigation        |
 
 * Secondary Controls : Figure it out yourself, why not try pressing `Select` :)
