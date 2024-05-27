@@ -12,7 +12,7 @@ config_version=5
 
 config/name="Bunker the Game"
 config/description="A simple fast paced action platformer created using GDScript for Lospec 2 Game Jam it's currently targeted for LS16 Home Console (Lospec 2 Console) with 256x224 Resolution, strict color pallete, a limited sound channel, control and more."
-run/main_scene="res://scene/world.tscn"
+run/main_scene="res://scene/MainMenu.tscn"
 config/features=PackedStringArray("4.2", "GL Compatibility")
 run/max_fps=60
 boot_splash/bg_color=Color(0, 0, 0, 1)
@@ -30,6 +30,7 @@ DiscordPresence="*res://src/DiscordPresence.gd"
 
 window/size/viewport_width=256
 window/size/viewport_height=224
+window/size/mode=3
 window/size/resizable=false
 window/stretch/mode="canvas_items"
 
@@ -347,7 +348,7 @@ Start={
 }
 Select={
 "deadzone": 0.5,
-"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":32,"key_label":0,"unicode":0,"echo":false,"script":null)
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":4194325,"key_label":0,"unicode":0,"echo":false,"script":null)
 , Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"button_index":4,"pressure":0.0,"pressed":false,"script":null)
 ]
 }

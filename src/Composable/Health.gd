@@ -76,12 +76,12 @@ func _process(delta):
 				if attack:
 					get_parent().remove_child(attack)
 				
-				if parent.is_in_group("player"):
-					parent.dead_callback()
 				dead_animate = true
 
 				await sprite.animation_looped
 				await sprite.animation_looped
-			
+
+		if parent.is_in_group("player"):
+				parent.dead_callback()
 		parent.queue_free()
 	pass
